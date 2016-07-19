@@ -1,3 +1,4 @@
+using HairSalon.Models;
 using System;
 
 namespace HairSalon.Data
@@ -25,8 +26,22 @@ namespace HairSalon.Data
             RepositoryProvider = repositoryProvider;
         }
 
-        public IRepository<Models.HairStylist> HairStylists { get { return GetStandardRepo<Models.HairStylist>(); } }
-        
+        public IRepository<HairStylist> HairStylists { get { return GetStandardRepo<Models.HairStylist>(); } }
+        public IRepository<App> Apps { get { return GetStandardRepo<App>(); } }
+        public IRepository<UI> UIs { get { return GetStandardRepo<UI>(); } }
+        public IRepository<Section> Sections { get { return GetStandardRepo<Section>(); } }
+        public IRepository<Property> Properties { get { return GetStandardRepo<Property>(); } }        
+        public IRepository<Photo> Photos { get { return GetStandardRepo<Photo>(); } }
+        public IRepository<Gallery> Galleries { get { return GetStandardRepo<Gallery>(); } }
+        public IRepository<User> Users { get { return GetStandardRepo<User>(); } }
+        public IRepository<Role> Roles { get { return GetStandardRepo<Role>(); } }
+        public IRepository<Customer> Customers { get { return GetStandardRepo<Customer>(); } }
+        public IRepository<Category> Categories { get { return GetStandardRepo<Category>(); } }
+        public IRepository<Contact> Contacts { get { return GetStandardRepo<Contact>(); } }
+        public IRepository<SocialShareItem> SocialShareItems { get { return GetStandardRepo<SocialShareItem>(); } }
+        public IRepository<ProfessionalService> ProfessionalServices { get { return GetStandardRepo<ProfessionalService>(); } }
+        public IRepository<Menu> Menus { get { return GetStandardRepo<Menu>(); } }
+        public IRepository<MenuItem> MenuItems { get { return GetStandardRepo<MenuItem>(); } }
 
         protected void ConfigureDbContext(IDbContext dbContext)
         {

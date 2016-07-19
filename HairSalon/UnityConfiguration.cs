@@ -21,7 +21,22 @@ namespace HairSalon
             container.RegisterType<IEncryptionService, EncryptionService>();
             container.RegisterType<ILogger, Logger>();
             container.RegisterType<IHairStylistService, HairStylistService>();
-            container.RegisterInstance(AuthConfiguration.LazyConfig);            
+            container.RegisterType<IAppService, AppService>();
+            container.RegisterType<IContactService, ContactService>();
+            container.RegisterType<ICustomerService, CustomerService>();
+            container.RegisterType<IUIService, UIService>();
+            container.RegisterType<ISectionService, SectionService>();
+            container.RegisterType<IPropertyService, PropertyService>();
+            container.RegisterType<IPhotoService, PhotoService>();
+            container.RegisterType<IGalleryService, GalleryService>();
+            container.RegisterType<IUserService, UserService>();            
+            container.RegisterType<ISocialShareItemService, SocialShareItemService>();
+            container.RegisterType<IProfessionalServiceService, ProfessionalServiceService>();
+            container.RegisterType<IMenuItemService, MenuItemService>();
+            container.RegisterType<IMenuService, MenuService>();
+
+            container.RegisterInstance(AuthConfiguration.LazyConfig);   
+            container.RegisterInstance(TraceConfiguration.LazyConfig);         
             return container;
         }
     }

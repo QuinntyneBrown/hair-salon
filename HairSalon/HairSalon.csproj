@@ -110,6 +110,26 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.0.0\lib\net45\Serilog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Sinks.MSSqlServer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.MSSqlServer.4.0.0\lib\net45\Serilog.Sinks.MSSqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Sinks.PeriodicBatching, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.PeriodicBatching.2.0.0\lib\net45\Serilog.Sinks.PeriodicBatching.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SerilogMetrics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d4b150f150627b06, processorArchitecture=MSIL">
+      <HintPath>..\packages\SerilogMetrics.AddProperties.Fork.1.0.36\lib\net45\SerilogMetrics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SerilogWeb.Classic, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9462ddd55fbc0e7f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SerilogWeb.Classic.2.0.9\lib\net45\SerilogWeb.Classic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
       <Private>True</Private>
@@ -162,6 +182,10 @@
       <HintPath>..\packages\Unity.WebAPI.5.2.3\lib\net45\Unity.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebApi.OutputCache.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Strathweb.CacheOutput.WebApi2.0.9.0\lib\net45\WebApi.OutputCache.Core.dll</HintPath>
       <Private>True</Private>
@@ -173,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiConfiguration.cs" />
+    <Compile Include="App_Start\AppActivator.cs" />
+    <Compile Include="Configuration\ITraceConfiguration.cs" />
+    <Compile Include="Configuration\TraceConfiguration.cs" />
     <Compile Include="Controllers\HairStylistController.cs" />
     <Compile Include="App_Start\WebApiUnityActionFilterProvider.cs" />
     <Compile Include="Authentication\JwtOptions.cs" />
@@ -201,9 +228,33 @@
     <Compile Include="Dtos\RegistrationResponseDto.cs" />
     <Compile Include="Dtos\TokenDto.cs" />
     <Compile Include="Filters\HandleError.cs" />
+    <Compile Include="Helpers\PropertyHelper.cs" />
     <Compile Include="Infrastructure\Constants.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\App.cs" />
+    <Compile Include="Models\AppProperty.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\GalleryCategory.cs" />
+    <Compile Include="Models\GalleryPhoto.cs" />
     <Compile Include="Models\HairStylist.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\ProfessionalService.cs" />
+    <Compile Include="Models\Property.cs" />
+    <Compile Include="Models\PropertyType.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\SectionProperty.cs" />
+    <Compile Include="Models\SocialShareItem.cs" />
+    <Compile Include="Models\UI.cs" />
+    <Compile Include="Models\UIProperty.cs" />
+    <Compile Include="Models\UISection.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HairStylistService.cs" />
     <Compile Include="Services\Cache.cs" />
@@ -216,6 +267,12 @@
     <Compile Include="Services\IEncryptionService.cs" />
     <Compile Include="Services\IIdentityService.cs" />
     <Compile Include="Services\MemoryCache.cs" />
+    <Compile Include="Trace\EventIdEnricher.cs" />
+    <Compile Include="Trace\ITraceService.cs" />
+    <Compile Include="Trace\LoggerExtensions.cs" />
+    <Compile Include="Trace\TraceEvent.cs" />
+    <Compile Include="Trace\TraceService.cs" />
+    <Compile Include="Trace\TracingEvents.cs" />
     <Compile Include="UnityConfiguration.cs" />
     <Compile Include="UploadHandlers\FileMultipartFormDataStreamProvider.cs" />
     <Compile Include="UploadHandlers\InMemoryMultipartFormDataStreamProvider.cs" />
@@ -225,6 +282,96 @@
     <Compile Include="Utilities\ILoggerProvider.cs" />
     <Compile Include="Utilities\Logger.cs" />
     <Compile Include="Utilities\LoggerFactory.cs" />
+    <Compile Include="Dtos\AppDto.cs" />
+    <Compile Include="Dtos\AppAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\AppAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\CategoryDto.cs" />
+    <Compile Include="Dtos\CategoryAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\CategoryAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\ContactDto.cs" />
+    <Compile Include="Dtos\ContactAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\ContactAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\CustomerDto.cs" />
+    <Compile Include="Dtos\CustomerAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\CustomerAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\GalleryDto.cs" />
+    <Compile Include="Dtos\GalleryAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\GalleryAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\MenuDto.cs" />
+    <Compile Include="Dtos\MenuAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\MenuAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\MenuItemDto.cs" />
+    <Compile Include="Dtos\MenuItemAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\MenuItemAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\PhotoDto.cs" />
+    <Compile Include="Dtos\PhotoAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\PhotoAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\ProfessionalServiceDto.cs" />
+    <Compile Include="Dtos\ProfessionalServiceAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\ProfessionalServiceAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\PropertyDto.cs" />
+    <Compile Include="Dtos\PropertyAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\PropertyAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\RoleDto.cs" />
+    <Compile Include="Dtos\RoleAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\RoleAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\SectionDto.cs" />
+    <Compile Include="Dtos\SectionAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\SectionAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\SocialShareItemDto.cs" />
+    <Compile Include="Dtos\SocialShareItemAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\SocialShareItemAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\UIDto.cs" />
+    <Compile Include="Dtos\UIAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\UIAddOrUpdateResponseDto.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
+    <Compile Include="Dtos\UserAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\UserAddOrUpdateResponseDto.cs" />
+    <Compile Include="Services\AppService.cs" />
+    <Compile Include="Services\IAppService.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\ICategoryService.cs" />
+    <Compile Include="Services\GalleryService.cs" />
+    <Compile Include="Services\IGalleryService.cs" />
+    <Compile Include="Services\MenuService.cs" />
+    <Compile Include="Services\IMenuService.cs" />
+    <Compile Include="Services\MenuItemService.cs" />
+    <Compile Include="Services\IMenuItemService.cs" />
+    <Compile Include="Services\PhotoService.cs" />
+    <Compile Include="Services\IPhotoService.cs" />
+    <Compile Include="Services\ProfessionalServiceService.cs" />
+    <Compile Include="Services\IProfessionalServiceService.cs" />
+    <Compile Include="Services\PropertyService.cs" />
+    <Compile Include="Services\IPropertyService.cs" />
+    <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\IRoleService.cs" />
+    <Compile Include="Services\SectionService.cs" />
+    <Compile Include="Services\ISectionService.cs" />
+    <Compile Include="Services\SocialShareItemService.cs" />
+    <Compile Include="Services\ISocialShareItemService.cs" />
+    <Compile Include="Services\UIService.cs" />
+    <Compile Include="Services\IUIService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\MenuItemController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\ProfessionalServiceController.cs" />
+    <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SectionController.cs" />
+    <Compile Include="Controllers\SocialShareItemController.cs" />
+    <Compile Include="Controllers\UIController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Services\ContactService.cs" />
+    <Compile Include="Services\IContactService.cs" />
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\ICustomerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
