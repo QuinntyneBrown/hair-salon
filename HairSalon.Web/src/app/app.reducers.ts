@@ -6,7 +6,32 @@ export const allAppsReducer = (state, action) => {
         state.app = state.app || { properties: [] };
 
         for (var i = 0; i < action.entity.properties.length; i++) {
+            if (action.entity.properties[i].name === appProperties.homePageHeroImageUrl)
+                state.app.homePageHeroImageUrl = action.entity.properties[i].value;
 
+            if (action.entity.properties[i].name === appProperties.contactPageHeroImageUrl)
+                state.app.contactPageHeroImageUrl = action.entity.properties[i].value;
+
+            if (action.entity.properties[i].name === appProperties.servicesPageHeroImageUrl)
+                state.app.servicesPageHeroImageUrl = action.entity.properties[i].value;
+
+            if (action.entity.properties[i].name === appProperties.whatsNewPageHeroImageUrl)
+                state.app.whatsNewPageHeroImageUrl = action.entity.properties[i].value;
+
+            if (action.entity.properties[i].name === appProperties.galleriesPageHeroImageUrl)
+                state.app.galleriesPageHeroImageUrl = action.entity.properties[i].value;
+
+            if (action.entity.properties[i].name === appProperties.logo)
+                state.app.logo = action.entity.properties[i].value;
+
+            if (action.entity.properties[i].name === appProperties.whatsNew)
+                state.app.whatsNew = action.entity.properties[i].htmlBody;
+
+            if (action.entity.properties[i].name === appProperties.biography)
+                state.app.biography = action.entity.properties[i].htmlBody;
+
+            if (action.entity.properties[i].name === appProperties.galleriesPageHeroImageUrl)
+                state.app.galleriesPageHeroImageUrl = action.entity.properties[i].value;
         }
     }
     return state;
