@@ -2,7 +2,6 @@
 require("./app/content-aggregation");
 require("./app/customers");
 require("./app/galleries");
-require("./app/login");
 require("./app/menu-items");
 require("./app/menus");
 require("./app/pages");

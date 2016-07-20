@@ -13,3 +13,5 @@ export class SetCurrentPhotoAction { constructor(public entity) { } }
 export class AddOrUpdatePhotoSuccessAction { constructor(public entity) { } }
 
 export class CurrentPhotoRemovedAction { constructor() { } }
+
+export class PhotoUploadAction { constructor(public id, public entities) { } }

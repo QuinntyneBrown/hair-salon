@@ -1,8 +1,20 @@
+using HairSalon.Data;
 using HairSalon.Dtos;
+using HairSalon.Models;
 using HairSalon.Services;
+using HairSalon.UploadHandlers;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using WebApi.OutputCache.V2;
 
 namespace HairSalon.Controllers
 {
@@ -10,9 +22,12 @@ namespace HairSalon.Controllers
     [RoutePrefix("api/photo")]
     public class PhotoController : ApiController
     {
-        public PhotoController(IPhotoService photoService)
+        public PhotoController(IPhotoService photoService, IUow uow, ICacheProvider cacheProvider)
         {
             _photoService = photoService;
+            _uow = uow;
+            _repository = uow.Photos;
+            _cache = cacheProvider.GetCache();
         }
 
         [Route("add")]
@@ -41,8 +56,64 @@ namespace HairSalon.Controllers
         [ResponseType(typeof(int))]
         public IHttpActionResult Remove(int id) { return Ok(_photoService.Remove(id)); }
 
+        [AllowAnonymous]
+        [Route("upload")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> Upload(HttpRequestMessage request)
+        {
+            var photos = new List<Photo>();
+            try
+            {
+                if (!Request.Content.IsMimeMultipartContent("form-data"))
+                    throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+                var provider = await Request.Content.ReadAsMultipartAsync(new InMemoryMultipartFormDataStreamProvider());
+
+                NameValueCollection formData = provider.FormData;
+                IList<HttpContent> files = provider.Files;
+
+                foreach (var file in files)
+                {
+                    var filename = new FileInfo(file.Headers.ContentDisposition.FileName.Trim(new char[] { '"' })
+                        .Replace("&", "and")).Name;
+                    Stream stream = await file.ReadAsStreamAsync();
+                    var bytes = StreamHelper.ReadToEnd(stream);
+                    var photo = new Photo();
+                    photo.FileName = filename;
+                    photo.Bytes = bytes;
+                    photo.ContentType = System.Convert.ToString(file.Headers.ContentType);
+                    _repository.Add(photo);
+                    photos.Add(photo);
+                }
+
+                _uow.SaveChanges();
+            }
+            catch (Exception exception)
+            {
+                var e = exception;
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, new PhotoUploadResponseDto(photos));
+        }
+
+        [Route("serve")]
+        [HttpGet]
+        [AllowAnonymous]
+        [CacheOutput(ClientTimeSpan = 1000, ServerTimeSpan = 1000)]
+        public HttpResponseMessage Serve([FromUri]Guid uniqueId, int? height = null)
+        {
+            Photo photo = _cache.FromCacheOrService(() => _repository.GetAll().FirstOrDefault(x => x.UniqueId == uniqueId), uniqueId.ToString());
+            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+            if (photo == null)
+                return result;
+            result.Content = new ByteArrayContent(photo.Bytes);
+            result.Content.Headers.ContentType = new MediaTypeHeaderValue(photo.ContentType);
+            return result;
+        }
+
         protected readonly IPhotoService _photoService;
-
-
+        protected readonly IRepository<Photo> _repository;
+        protected readonly IUow _uow;
+        protected readonly ICache _cache;
     }
 }

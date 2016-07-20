@@ -17,4 +17,4 @@ bootstrap(appHairStylistsModule, {
     actions: actions
 });
 
-export * from "./hairStylists.routes";
+export * from "./hair-stylists.routes";

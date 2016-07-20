@@ -2,14 +2,14 @@ import { BaseService, Injectable, Service } from "angular-rx-ui/src/components/c
 
 @Injectable()
 @Service({
-	serviceName: "photoService",
+	serviceName: "customerService",
 	viewProviders: ["$q","apiEndpoint","fetch"]
 })
-export class PhotoService extends BaseService {
+export class CustomerService extends BaseService {
     constructor($q: angular.IQService, apiEndpoint, fetch) {
         super($q, apiEndpoint, fetch)
     }
 
-    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/photo"; }
+    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/v1/customer"; }
 
 }

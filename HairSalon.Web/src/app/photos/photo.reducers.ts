@@ -27,3 +27,13 @@ export const setCurrentPhotoReducer = (state, action) => {
     }
     return state;
 }
+
+export const photoUploadReducer = (state, action) => {
+    if (action instanceof actions.PhotoUploadAction) {
+        state.currentPhotoId = action.id;
+        for (var i = 0; i < action.entities.length; i++) {
+            addOrUpdate({ items: state.photos, item: action.entities[i] });
+        }
+    }
+    return state;
+}

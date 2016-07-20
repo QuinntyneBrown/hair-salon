@@ -30,8 +30,8 @@ export const allAppsReducer = (state, action) => {
             if (action.entity.properties[i].name === appProperties.biography)
                 state.app.biography = action.entity.properties[i].htmlBody;
 
-            if (action.entity.properties[i].name === appProperties.galleriesPageHeroImageUrl)
-                state.app.galleriesPageHeroImageUrl = action.entity.properties[i].value;
+            if (action.entity.properties[i].name === appProperties.contactInfomation)
+                state.app.contactInfomation = action.entity.properties[i].htmlBody;
         }
     }
     return state;

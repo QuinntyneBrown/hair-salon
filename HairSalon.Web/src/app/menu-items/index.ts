@@ -17,4 +17,4 @@ bootstrap(appMenuItemsModule, {
     actions: actions
 });
 
-export * from "./menuItems.routes";
+export * from "./menu-items.routes";

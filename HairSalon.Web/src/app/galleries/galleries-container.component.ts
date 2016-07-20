@@ -4,10 +4,10 @@ import { GalleryActionCreator } from "./gallery.action-creator";
 import { Gallery } from "./gallery.model";
 
 @Component({
-    routes: ["/admin/gallerys","/admin/gallery/edit/:galleryId"],
-    template: require("./gallerys-container.component.html"),
-    styles: [require("./gallerys-container.component.scss")],
-    selector: "gallerys-container",
+    routes: ["/admin/galleries","/admin/gallery/edit/:galleryId"],
+    template: require("./galleries-container.component.html"),
+    styles: [require("./galleries-container.component.scss")],
+    selector: "galleries-container",
     viewProviders: ["$location","$routeParams","galleryActionCreator","invokeAsync"],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -17,13 +17,13 @@ import { Gallery } from "./gallery.model";
     if (galleryId) { promises.push(invokeAsync({ action: galleryActionCreator.getById, params: { id: galleryId } })) };
     return $q.all(promises);
 }])
-export class GallerysContainerComponent { 
+export class GalleriesContainerComponent { 
     constructor(private $location: angular.ILocationService, private $routeParams: angular.route.IRouteParamsService, private galleryActionCreator: GalleryActionCreator, private _invokeAsync) { }
     storeOnChange = state => {        
         this.entities = state.gallerys;
 
 		if (state.lastTriggeredByAction instanceof actions.SetCurrentGalleryAction && !state.lastTriggeredByAction.entity) 
-            this.$location.path("/admin/gallerys");
+            this.$location.path("/admin/galleries");
 
         if (state.lastTriggeredByAction instanceof actions.SetCurrentGalleryAction && state.lastTriggeredByAction.entity) 
             this.$location.path("/admin/gallery/edit/" + state.lastTriggeredByAction.entity.id);
@@ -33,7 +33,7 @@ export class GallerysContainerComponent {
 
         if (state.lastTriggeredByAction instanceof actions.RemoveGalleryAction && this.entity && this.entity.id) {
             this.entity = pluck({ value: Number(this.$routeParams["galleryId"]), items: this.entities }) as Gallery;
-            if (Object.keys(this.entity).length === 0) { this.$location.path("/admin/gallerys"); }
+            if (Object.keys(this.entity).length === 0) { this.$location.path("/admin/galleries"); }
         }
     }
 
@@ -53,10 +53,10 @@ export class GallerysContainerComponent {
             action: this.galleryActionCreator.addOrUpdate,
             params: { data: options.data }
         }).then(() => {
-            if (this.$location.path() === "/admin/gallerys") {
+            if (this.$location.path() === "/admin/galleries") {
                 this.entity = new Gallery();
             } else {
-                this.$location.path("/admin/gallerys")
+                this.$location.path("/admin/galleries")
             }
         });        
     };

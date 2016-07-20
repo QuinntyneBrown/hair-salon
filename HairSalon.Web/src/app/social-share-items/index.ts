@@ -17,4 +17,4 @@ bootstrap(appSocialShareItemsModule, {
     actions: actions
 });
 
-export * from "./socialShareItems.routes";
+export * from "./social-share-items.routes";
