@@ -219,6 +219,129 @@
     <Content Include="config\webpack.config.js" />
     <Content Include="gulpfile.js" />
     <Content Include="packages.config" />
+    <Content Include="src\app\admin-app.component.html">
+      <DependentUpon>admin-app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\admin-app.component.scss">
+      <DependentUpon>admin-app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\app.component.html">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\app.component.scss">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\app-editor.component.html" />
+    <Content Include="src\app\content-aggregation\components\app-list.component.html" />
+    <Content Include="src\app\content-aggregation\components\app.component.html" />
+    <Content Include="src\app\content-aggregation\components\property-editor.component.html" />
+    <Content Include="src\app\content-aggregation\components\property-list.component.html" />
+    <Content Include="src\app\content-aggregation\components\property-paged-list.component.html" />
+    <Content Include="src\app\content-aggregation\components\property-picker-modal.component.html" />
+    <Content Include="src\app\content-aggregation\components\property.component.html" />
+    <Content Include="src\app\content-aggregation\components\section-editor.component.html" />
+    <Content Include="src\app\content-aggregation\components\section-list.component.html" />
+    <Content Include="src\app\content-aggregation\components\section.component.html" />
+    <Content Include="src\app\content-aggregation\components\ui-editor.component.html" />
+    <Content Include="src\app\content-aggregation\components\ui-list.component.html" />
+    <Content Include="src\app\content-aggregation\components\ui.component.html" />
+    <Content Include="src\app\content-aggregation\containers\apps-container.component.html" />
+    <Content Include="src\app\content-aggregation\containers\properties-container.component.html" />
+    <Content Include="src\app\content-aggregation\containers\sections-container.component.html" />
+    <Content Include="src\app\content-aggregation\containers\uis-container.component.html" />
+    <Content Include="src\app\galleries\galleries-container.component.html">
+      <DependentUpon>galleries-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\galleries\gallery-editor.component.html">
+      <DependentUpon>gallery-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\galleries\gallery-list.component.html">
+      <DependentUpon>gallery-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\galleries\gallery.component.html">
+      <DependentUpon>gallery.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\galleries\gallery.component.scss">
+      <DependentUpon>gallery.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\hair-stylists\hair-stylist-editor.component.html">
+      <DependentUpon>hair-stylist-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\hair-stylists\hair-stylist-list.component.html">
+      <DependentUpon>hair-stylist-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\hair-stylists\hair-stylist.component.html">
+      <DependentUpon>hair-stylist.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\hair-stylists\hair-stylist.component.scss">
+      <DependentUpon>hair-stylist.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\hair-stylists\hair-stylists-container.component.html">
+      <DependentUpon>hair-stylists-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\biography-page.component.html">
+      <DependentUpon>biography-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\biography-page.component.scss">
+      <DependentUpon>biography-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\contact-page.component.html">
+      <DependentUpon>contact-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\contact-page.component.scss">
+      <DependentUpon>contact-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\galleries-page.component.html">
+      <DependentUpon>galleries-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\galleries-page.component.scss">
+      <DependentUpon>galleries-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\gallery-page.component.html">
+      <DependentUpon>gallery-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\gallery-page.component.scss">
+      <DependentUpon>gallery-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\home-page.component.html">
+      <DependentUpon>home-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\home-page.component.scss">
+      <DependentUpon>home-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\login-page.component.html">
+      <DependentUpon>login-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\login-page.component.scss">
+      <DependentUpon>login-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\professional-services-page.component.html">
+      <DependentUpon>professional-services-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\professional-services-page.component.scss">
+      <DependentUpon>professional-services-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\whats-new-page.component.html">
+      <DependentUpon>whats-new-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\whats-new-page.component.scss">
+      <DependentUpon>whats-new-page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\professional-services\professional-service-editor.component.html">
+      <DependentUpon>professional-service-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\professional-services\professional-service-list.component.html">
+      <DependentUpon>professional-service-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\professional-services\professional-service.component.html">
+      <DependentUpon>professional-service.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\professional-services\professional-service.component.scss">
+      <DependentUpon>professional-service.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\professional-services\professional-services-container.component.html">
+      <DependentUpon>professional-services-container.component.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="bower.json" />
@@ -229,12 +352,73 @@
     <Content Include="typings\globals\jasmine\typings.json" />
     <Content Include="typings\globals\jquery\typings.json" />
     <Content Include="typings\globals\require\typings.json" />
+    <Content Include="src\app\content-aggregation\components\app-editor.component.scss" />
+    <Content Include="src\app\content-aggregation\components\app-list.component.scss" />
+    <Content Include="src\app\content-aggregation\components\app.component.scss" />
+    <Content Include="src\app\content-aggregation\components\property-editor.component.scss" />
+    <Content Include="src\app\content-aggregation\components\property-list.component.scss" />
+    <Content Include="src\app\content-aggregation\components\property-paged-list.component.scss" />
+    <Content Include="src\app\content-aggregation\components\property-picker-modal.component.scss" />
+    <Content Include="src\app\content-aggregation\components\property.component.scss" />
+    <Content Include="src\app\content-aggregation\components\section-editor.component.scss" />
+    <Content Include="src\app\content-aggregation\components\section-list.component.scss" />
+    <Content Include="src\app\content-aggregation\components\section.component.scss" />
+    <Content Include="src\app\content-aggregation\components\ui-editor.component.scss" />
+    <Content Include="src\app\content-aggregation\components\ui-list.component.scss" />
+    <Content Include="src\app\content-aggregation\components\ui.component.scss" />
+    <Content Include="src\app\content-aggregation\containers\apps-container.component.scss" />
+    <Content Include="src\app\content-aggregation\containers\properties-container.component.scss" />
+    <Content Include="src\app\content-aggregation\containers\sections-container.component.scss" />
+    <Content Include="src\app\content-aggregation\containers\uis-container.component.scss" />
+    <Content Include="src\app\hair-stylists\hair-stylist-editor.component.scss">
+      <DependentUpon>hair-stylist-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\hair-stylists\hair-stylist-list.component.scss">
+      <DependentUpon>hair-stylist-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\hair-stylists\hair-stylists-container.component.scss">
+      <DependentUpon>hair-stylists-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\galleries\gallery-editor.component.scss">
+      <DependentUpon>gallery-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\galleries\gallery-list.component.scss">
+      <DependentUpon>gallery-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\galleries\galleries-container.component.scss">
+      <DependentUpon>galleries-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\professional-services\professional-service-editor.component.scss">
+      <DependentUpon>professional-service-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\professional-services\professional-service-list.component.scss">
+      <DependentUpon>professional-service-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\professional-services\professional-services-container.component.scss">
+      <DependentUpon>professional-services-container.component.ts</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="src\app\social-share-items\social-share-items-container.component.css" />
+    <Content Include="src\app\social-share-items\social-share-items-container.component.html" />
+    <Content Include="src\app\social-share-items\social-share-item.component.scss" />
+    <Content Include="src\app\social-share-items\social-share-item.component.html" />
+    <Content Include="src\app\social-share-items\social-share-item-list.component.css" />
+    <Content Include="src\app\social-share-items\social-share-item-list.component.html" />
+    <Content Include="src\app\social-share-items\social-share-item-editor.component.css" />
+    <Content Include="src\app\social-share-items\social-share-item-editor.component.html" />
+    <Content Include="src\app\photos\photos-container.component.css" />
+    <Content Include="src\app\photos\photos-container.component.html" />
+    <Content Include="src\app\photos\photo.component.scss" />
+    <Content Include="src\app\photos\photo.component.html" />
+    <Content Include="src\app\photos\photo-list.component.css" />
+    <Content Include="src\app\photos\photo-list.component.html" />
+    <Content Include="src\app\photos\photo-editor.component.css" />
+    <Content Include="src\app\photos\photo-editor.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -252,6 +436,58 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\app.constants.ts" />
+    <TypeScriptCompile Include="src\app\app.guard.ts" />
+    <TypeScriptCompile Include="src\app\app.reducers.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\app.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\property.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\section.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\action-creators\ui.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\app.actions.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\property.actions.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\section.actions.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\actions\ui.actions.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\app-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\app-list.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\app.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\property-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\property-list.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\property-paged-list.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\property-picker-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\property.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\section-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\section-list.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\section.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\ui-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\ui-list.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\components\ui.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\apps-container.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\properties-container.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\sections-container.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\containers\uis-container.component.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\content-aggregation.routes.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\app.model.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\property.model.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\section.model.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\models\ui.model.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\app.reducers.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\property.reducers.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\section.reducers.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\reducers\ui.reducers.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\app.service.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\index.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\property.service.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\section.service.ts" />
+    <TypeScriptCompile Include="src\app\content-aggregation\services\ui.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\index.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-services.routes.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="typings\globals\angular-mocks\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\angular-route\index.d.ts" />
@@ -262,6 +498,68 @@
     <TypeScriptCompile Include="typings\globals\require\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\rx\rx.all.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\admin-app.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\home-page.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\contact-page.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\whats-new-page.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\galleries-page.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\gallery-page.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\biography-page.component.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-item.model.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\index.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-items-container.component.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-item.actions.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-item.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-item.reducers.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-item.component.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-item.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-item.service.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-item-list.component.ts" />
+    <TypeScriptCompile Include="src\app\social-share-items\social-share-item-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.model.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\index.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylists-container.component.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.actions.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.reducers.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.component.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.service.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist-list.component.ts" />
+    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-service.model.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\index.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-services-container.component.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-service.actions.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-service.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-service.reducers.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-service.component.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-service.service.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-service-list.component.ts" />
+    <TypeScriptCompile Include="src\app\professional-services\professional-service-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.model.ts" />
+    <TypeScriptCompile Include="src\app\photos\index.ts" />
+    <TypeScriptCompile Include="src\app\photos\photos-container.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.actions.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.reducers.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.service.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo-list.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\galleries\gallery.model.ts" />
+    <TypeScriptCompile Include="src\app\galleries\index.ts" />
+    <TypeScriptCompile Include="src\app\galleries\galleries-container.component.ts" />
+    <TypeScriptCompile Include="src\app\galleries\gallery.actions.ts" />
+    <TypeScriptCompile Include="src\app\galleries\gallery.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\galleries\gallery.reducers.ts" />
+    <TypeScriptCompile Include="src\app\galleries\gallery.component.ts" />
+    <TypeScriptCompile Include="src\app\galleries\gallery.service.ts" />
+    <TypeScriptCompile Include="src\app\galleries\gallery-list.component.ts" />
+    <TypeScriptCompile Include="src\app\galleries\gallery-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\professional-services-page.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\login-page.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -1,0 +1,22 @@
+.hairStylistList-name,
+.hairStylistList-actions {
+    position:relative;
+    float:left;
+}
+
+.hairStylistList-name {
+    min-width:200px;
+}
+
+.hairStylistList-item {
+    height:50px;
+}
+
+.hairStylistList-actions span {
+    cursor:pointer;
+}
+
+.hairStylistList-actions {
+    text-transform: uppercase;
+}
+   
