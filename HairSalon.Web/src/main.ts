@@ -10,8 +10,16 @@ require("./app/shared");
 require("./app/social-share-items");
 
 import * as reducers from "./app/app.reducers";
-import { ContentAggregationRoutes } from "./app/content-aggregation";
 
+import { ContactsRoutes } from "./app/contacts";
+import { ContentAggregationRoutes } from "./app/content-aggregation";
+import { CustomersRoutes } from "./app/customers";
+import { GalleriesRoutes } from "./app/galleries";
+import { MenuItemsRoutes } from "./app/menu-items";
+import { MenusRoutes } from "./app/menus";
+import { PagesRoutes } from "./app/pages";
+import { PhotosRoutes } from "./app/photos";
+import { SocialShareItemsRoutes } from "./app/social-share-items";
 
 import { provide, provideRoutePromise, bootstrap } from "angular-rx-ui/src/components/core";
 import { authorizationGuard } from "angular-rx-ui/src/components/routing/authorization-guard";
@@ -24,7 +32,16 @@ import { AdminAppComponent } from "./app/admin-app.component";
 const appModule = angular.module("app", [
     "components",
 
-    "app.contentAggregation"
+    "app.contacts",
+    "app.contentAggregation",
+    "app.customers",
+    "app.galleries",
+    "app.menuItems",
+    "app.menus",
+    "app.pages",
+    "app.photos",
+    "app.shared",
+    "app.socialShareItems"
 ]);
 
 bootstrap(appModule, {
@@ -36,6 +53,14 @@ bootstrap(appModule, {
     run: [routeChangeSuccessIsAdminReducer],
     reducers: reducers,
     routes: [
+        ...ContactsRoutes,
         ...ContentAggregationRoutes,
+        ...CustomersRoutes,
+        ...GalleriesRoutes,
+        ...MenuItemsRoutes,
+        ...MenusRoutes,
+        ...PagesRoutes,
+        ...PhotosRoutes,
+        ...SocialShareItemsRoutes
     ]
 });

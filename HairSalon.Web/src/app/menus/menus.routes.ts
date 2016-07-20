@@ -1,7 +1,7 @@
 ﻿import { IRouteConfig } from "angular-rx-ui/src/components/core";
 import { MenusContainerComponent } from "./menus-container.component";
 
-export const PhotosRoutes: Array<IRouteConfig> = [
+export const MenusRoutes: Array<IRouteConfig> = [
     {
         path: "/admin/menus",
         component: MenusContainerComponent,

@@ -12,7 +12,7 @@ namespace HairSalon.Services
     {
         public UserService(IUow uow, ICacheProvider cacheProvider)
         {
-            this.uow = uow;
+            this._uow = uow;
             this.repository = uow.Users;
             this.cache = cacheProvider.GetCache();
         }
@@ -23,7 +23,7 @@ namespace HairSalon.Services
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
             if (entity == null) repository.Add(entity = new User());
             entity.Name = request.Name;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return new UserAddOrUpdateResponseDto(entity);
         }
 
@@ -31,7 +31,7 @@ namespace HairSalon.Services
         {
             var entity = repository.GetById(id);
             entity.IsDeleted = true;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return id;
         }
 
@@ -49,7 +49,13 @@ namespace HairSalon.Services
             return new UserDto(repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
 
-        protected readonly IUow uow;
+        public CurrentUserResponseDto Current(string username)
+            => new CurrentUserResponseDto(_uow.Users
+                .GetAll()
+                .Where(x => x.IsDeleted == false)
+                .Single(x => x.Username == username));
+
+        protected readonly IUow _uow;
         protected readonly IRepository<User> repository;
         protected readonly ICache cache;
     }

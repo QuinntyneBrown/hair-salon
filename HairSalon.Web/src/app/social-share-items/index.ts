@@ -8,7 +8,7 @@ import { SocialShareItemService } from "./social-share-item.service";
 import *  as reducers from "./social-share-item.reducers";
 import *  as actions from "./social-share-item.actions";
 
-const appSocialShareItemsModule = angular.module("app.social-share-items", []);
+const appSocialShareItemsModule = angular.module("app.socialShareItems", []);
 
 bootstrap(appSocialShareItemsModule, {
     components: [SocialShareItemComponent, SocialShareItemEditorComponent, SocialShareItemsContainerComponent, SocialShareItemListComponent],

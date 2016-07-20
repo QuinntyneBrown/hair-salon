@@ -1,7 +1,7 @@
 ﻿import { CustomersContainerComponent  } from "./customers-container.component";
 import { IRouteConfig } from "angular-rx-ui/src/components/core";
 
-export const GalleriesRoutes: Array<IRouteConfig> = [
+export const CustomersRoutes: Array<IRouteConfig> = [
     {
         path: "/admin/customers",
         component: CustomersContainerComponent,

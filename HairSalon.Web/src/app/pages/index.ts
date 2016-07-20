@@ -4,6 +4,7 @@ import { ContactPageComponent } from "./contact-page.component";
 import { HomePageComponent } from "./home-page.component";
 import { GalleriesPageComponent } from "./galleries-page.component";
 import { GalleryPageComponent } from "./gallery-page.component";
+import { LoginPageComponent } from "./login-page.component";
 import { ProfessionalServicesPageComponent } from "./professional-services-page.component";
 import { WhatsNewComponent } from "./whats-new.component";
 
@@ -16,6 +17,7 @@ bootstrap(pagesModule, {
         GalleriesPageComponent,
         GalleryPageComponent,
         HomePageComponent,
+        LoginPageComponent,
         ProfessionalServicesPageComponent,
         WhatsNewComponent 
     ]

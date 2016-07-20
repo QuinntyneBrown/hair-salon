@@ -9,5 +9,6 @@ namespace HairSalon.Services
         ICollection<UserDto> Get();
         UserDto GetById(int id);
         dynamic Remove(int id);
+        CurrentUserResponseDto Current(string username);
     }
 }

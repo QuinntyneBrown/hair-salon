@@ -5,10 +5,10 @@ import { GalleryComponent } from "./gallery.component";
 import { GalleriesContainerComponent } from "./galleries-container.component";
 import { GalleryActionCreator } from "./gallery.action-creator";
 import { GalleryService } from "./gallery.service";
-import *  as reducers from "./gallery.reducers";
-import *  as actions from "./gallery.actions";
+import * as reducers from "./gallery.reducers";
+import * as actions from "./gallery.actions";
 
-const appGallerysModule = angular.module("app.gallerys", []);
+const appGallerysModule = angular.module("app.galleries", []);
 
 bootstrap(appGallerysModule, {
     components: [GalleryComponent, GalleryEditorComponent, GalleriesContainerComponent, GalleryListComponent],

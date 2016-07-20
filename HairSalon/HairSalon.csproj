@@ -221,6 +221,7 @@
     <Compile Include="Data\RepositoryFactories.cs" />
     <Compile Include="Data\RepositoryProvider.cs" />
     <Compile Include="Data\Uow.cs" />
+    <Compile Include="Dtos\CurrentUserResponseDto.cs" />
     <Compile Include="Dtos\HairStylistAddOrUpdateRequestDto.cs" />
     <Compile Include="Dtos\HairStylistAddOrUpdateResponseDto.cs" />
     <Compile Include="Dtos\HairStylistDto.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Dtos\RegistrationResponseDto.cs" />
     <Compile Include="Dtos\TokenDto.cs" />
     <Compile Include="Filters\HandleError.cs" />
+    <Compile Include="Helpers\FrontEndPreCacheHelper.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
     <Compile Include="Infrastructure\Constants.cs" />
     <Compile Include="Migrations\Configuration.cs" />

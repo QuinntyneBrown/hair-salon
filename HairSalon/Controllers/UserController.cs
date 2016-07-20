@@ -1,8 +1,11 @@
+using HairSalon.Data;
 using HairSalon.Dtos;
 using HairSalon.Services;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Linq;
+using HairSalon.Models;
 
 namespace HairSalon.Controllers
 {
@@ -41,8 +44,27 @@ namespace HairSalon.Controllers
         [ResponseType(typeof(int))]
         public IHttpActionResult Remove(int id) { return Ok(_userService.Remove(id)); }
 
+        [HttpPost]
+        [Route("register")]
+        [AllowAnonymous]
+        public IHttpActionResult Register(RegistrationRequestDto request)
+        {
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("current")]
+        [AllowAnonymous]
+        [ResponseType(typeof(CurrentUserResponseDto))]
+        public IHttpActionResult Current()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return Ok();
+
+            return Ok(_userService.Current(User.Identity.Name));
+        }
+
         protected readonly IUserService _userService;
-
-
+        protected readonly Uow uow;
     }
 }
