@@ -26,7 +26,7 @@ namespace HairSalon.Data
             RepositoryProvider = repositoryProvider;
         }
 
-        public IRepository<HairStylist> HairStylists { get { return GetStandardRepo<Models.HairStylist>(); } }
+        public IRepository<ServiceProvider> ServiceProviders { get { return GetStandardRepo<Models.ServiceProvider>(); } }
         public IRepository<App> Apps { get { return GetStandardRepo<App>(); } }
         public IRepository<UI> UIs { get { return GetStandardRepo<UI>(); } }
         public IRepository<Section> Sections { get { return GetStandardRepo<Section>(); } }

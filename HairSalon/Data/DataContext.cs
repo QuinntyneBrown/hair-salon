@@ -13,7 +13,7 @@ namespace HairSalon.Data
             Configuration.AutoDetectChangesEnabled = true;
         }
 
-        public DbSet<HairStylist> HairStylists { get; set; }        
+        public DbSet<ServiceProvider> ServiceProviders { get; set; }        
         public DbSet<App> Apps { get; set; }
         public DbSet<UI> UIs { get; set; }
         public DbSet<Section> Sections { get; set; }

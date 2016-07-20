@@ -1,7 +1,7 @@
 ﻿import { IRouteConfig } from "angular-rx-ui/src/components/core";
 import { ProfessionalServicesContainerComponent } from "./professional-services-container.component";
 
-export const PhotosRoutes: Array<IRouteConfig> = [
+export const ProfessionalServicesRoutes: Array<IRouteConfig> = [
     {
         path: "/admin/professionalservices",
         component: ProfessionalServicesContainerComponent,

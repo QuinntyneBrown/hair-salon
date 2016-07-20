@@ -54,8 +54,10 @@
 	__webpack_require__(284);
 	__webpack_require__(318);
 	__webpack_require__(349);
-	__webpack_require__(364);
-	var reducers = __webpack_require__(387);
+	__webpack_require__(372);
+	__webpack_require__(395);
+	__webpack_require__(410);
+	var reducers = __webpack_require__(433);
 	var contacts_1 = __webpack_require__(1);
 	var content_aggregation_1 = __webpack_require__(81);
 	var customers_1 = __webpack_require__(192);
@@ -64,13 +66,15 @@
 	var menus_1 = __webpack_require__(261);
 	var pages_1 = __webpack_require__(284);
 	var photos_1 = __webpack_require__(318);
-	var social_share_items_1 = __webpack_require__(364);
+	var professional_services_1 = __webpack_require__(349);
+	var service_providers_1 = __webpack_require__(372);
+	var social_share_items_1 = __webpack_require__(410);
 	var core_1 = __webpack_require__(2);
-	var authorization_guard_1 = __webpack_require__(389);
-	var app_guard_1 = __webpack_require__(390);
-	var route_change_success_is_admin_reducer_1 = __webpack_require__(391);
-	var app_component_1 = __webpack_require__(392);
-	var admin_app_component_1 = __webpack_require__(396);
+	var authorization_guard_1 = __webpack_require__(435);
+	var app_guard_1 = __webpack_require__(436);
+	var route_change_success_is_admin_reducer_1 = __webpack_require__(437);
+	var app_component_1 = __webpack_require__(438);
+	var admin_app_component_1 = __webpack_require__(442);
 	var appModule = angular.module("app", [
 	    "components",
 	    "app.contacts",
@@ -81,7 +85,9 @@
 	    "app.menus",
 	    "app.pages",
 	    "app.photos",
+	    "app.professionalServices",
 	    "app.shared",
+	    "app.serviceProviders",
 	    "app.socialShareItems"
 	]);
 	core_1.bootstrap(appModule, {
@@ -92,7 +98,7 @@
 	    guards: [authorization_guard_1.authorizationGuard, app_guard_1.appGuard],
 	    run: [route_change_success_is_admin_reducer_1.routeChangeSuccessIsAdminReducer],
 	    reducers: reducers,
-	    routes: contacts_1.ContactsRoutes.concat(content_aggregation_1.ContentAggregationRoutes, customers_1.CustomersRoutes, galleries_1.GalleriesRoutes, menu_items_1.MenuItemsRoutes, menus_1.MenusRoutes, pages_1.PagesRoutes, photos_1.PhotosRoutes, social_share_items_1.SocialShareItemsRoutes)
+	    routes: contacts_1.ContactsRoutes.concat(content_aggregation_1.ContentAggregationRoutes, customers_1.CustomersRoutes, galleries_1.GalleriesRoutes, menu_items_1.MenuItemsRoutes, menus_1.MenusRoutes, pages_1.PagesRoutes, photos_1.PhotosRoutes, professional_services_1.ProfessionalServicesRoutes, service_providers_1.ServiceProvidersRoutes, social_share_items_1.SocialShareItemsRoutes)
 	});
 
 
@@ -3043,7 +3049,7 @@
 	        _super.call(this, $q, apiEndpoint, fetch);
 	    }
 	    Object.defineProperty(ContactService.prototype, "baseUri", {
-	        get: function () { return this.apiEndpoint.getBaseUrl() + "/v1/contact"; },
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/contact"; },
 	        enumerable: true,
 	        configurable: true
 	    });
@@ -6596,7 +6602,7 @@
 	        _super.call(this, $q, apiEndpoint, fetch);
 	    }
 	    Object.defineProperty(CustomerService.prototype, "baseUri", {
-	        get: function () { return this.apiEndpoint.getBaseUrl() + "/v1/customer"; },
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/customer"; },
 	        enumerable: true,
 	        configurable: true
 	    });
@@ -6729,7 +6735,7 @@
 /* 217 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"galleryEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Gallery <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Gallery: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"gallery-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Gallery Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"galleryEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Gallery <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Gallery: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"gallery-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Gallery Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 218 */
@@ -6808,7 +6814,7 @@
 /* 221 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"galleryList\">\r\n    <div class=\"galleryList-header\">\r\n        <h1>Gallerys</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"galleryList-item\">\r\n        <div class=\"galleryList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"galleryList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"galleryList\">\r\n    <div class=\"galleryList-header\">\r\n        <h1>Galleries</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"galleryList-item\">\r\n        <div class=\"galleryList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"galleryList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 222 */
@@ -7211,7 +7217,7 @@
 	        _super.call(this, $q, apiEndpoint, fetch);
 	    }
 	    Object.defineProperty(GalleryService.prototype, "baseUri", {
-	        get: function () { return this.apiEndpoint.getBaseUrl() + "/v1/gallery"; },
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/gallery"; },
 	        enumerable: true,
 	        configurable: true
 	    });
@@ -7268,7 +7274,7 @@
 	var galleries_container_component_1 = __webpack_require__(228);
 	exports.GalleriesRoutes = [
 	    {
-	        path: "/admin",
+	        path: "/admin/galleries",
 	        component: galleries_container_component_1.GalleriesContainerComponent,
 	        authorizationRequired: true
 	    },
@@ -7826,7 +7832,7 @@
 	        _super.call(this, $q, apiEndpoint, fetch);
 	    }
 	    Object.defineProperty(MenuItemService.prototype, "baseUri", {
-	        get: function () { return this.apiEndpoint.getBaseUrl() + "/v1/menuItem"; },
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/menuItem"; },
 	        enumerable: true,
 	        configurable: true
 	    });
@@ -8441,7 +8447,7 @@
 	        _super.call(this, $q, apiEndpoint, fetch);
 	    }
 	    Object.defineProperty(MenuService.prototype, "baseUri", {
-	        get: function () { return this.apiEndpoint.getBaseUrl() + "/v1/menu"; },
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/menu"; },
 	        enumerable: true,
 	        configurable: true
 	    });
@@ -8526,7 +8532,7 @@
 	var gallery_page_component_1 = __webpack_require__(301);
 	var login_page_component_1 = __webpack_require__(305);
 	var professional_services_page_component_1 = __webpack_require__(309);
-	var whats_new_component_1 = __webpack_require__(313);
+	var whats_new_page_component_1 = __webpack_require__(313);
 	var pagesModule = angular.module("app.pages", []);
 	core_1.bootstrap(pagesModule, {
 	    components: [
@@ -8537,7 +8543,7 @@
 	        home_page_component_1.HomePageComponent,
 	        login_page_component_1.LoginPageComponent,
 	        professional_services_page_component_1.ProfessionalServicesPageComponent,
-	        whats_new_component_1.WhatsNewComponent
+	        whats_new_page_component_1.WhatsNewPageComponent
 	    ]
 	});
 	__export(__webpack_require__(317));
@@ -8560,6 +8566,8 @@
 	var core_1 = __webpack_require__(2);
 	var BiographyPageComponent = (function () {
 	    function BiographyPageComponent() {
+	        this.storeOnChange = function (state) {
+	        };
 	    }
 	    BiographyPageComponent = __decorate([
 	        core_1.Component({
@@ -8638,6 +8646,8 @@
 	var core_1 = __webpack_require__(2);
 	var ContactPageComponent = (function () {
 	    function ContactPageComponent() {
+	        this.storeOnChange = function (state) {
+	        };
 	    }
 	    ContactPageComponent = __decorate([
 	        core_1.Component({
@@ -8716,6 +8726,8 @@
 	var core_1 = __webpack_require__(2);
 	var HomePageComponent = (function () {
 	    function HomePageComponent() {
+	        this.storeOnChange = function (state) {
+	        };
 	    }
 	    HomePageComponent = __decorate([
 	        core_1.Component({
@@ -8794,6 +8806,8 @@
 	var core_1 = __webpack_require__(2);
 	var GalleriesPageComponent = (function () {
 	    function GalleriesPageComponent() {
+	        this.storeOnChange = function (state) {
+	        };
 	    }
 	    GalleriesPageComponent = __decorate([
 	        core_1.Component({
@@ -8872,6 +8886,8 @@
 	var core_1 = __webpack_require__(2);
 	var GalleryPageComponent = (function () {
 	    function GalleryPageComponent() {
+	        this.storeOnChange = function (state) {
+	        };
 	    }
 	    GalleryPageComponent = __decorate([
 	        core_1.Component({
@@ -9035,6 +9051,8 @@
 	var core_1 = __webpack_require__(2);
 	var ProfessionalServicesPageComponent = (function () {
 	    function ProfessionalServicesPageComponent() {
+	        this.storeOnChange = function (state) {
+	        };
 	    }
 	    ProfessionalServicesPageComponent = __decorate([
 	        core_1.Component({
@@ -9111,28 +9129,30 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var WhatsNewComponent = (function () {
-	    function WhatsNewComponent() {
+	var WhatsNewPageComponent = (function () {
+	    function WhatsNewPageComponent() {
+	        this.storeOnChange = function (state) {
+	        };
 	    }
-	    WhatsNewComponent = __decorate([
+	    WhatsNewPageComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(314),
 	            styles: [__webpack_require__(315)],
-	            selector: "whats-new",
+	            selector: "whats-new-page",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], WhatsNewComponent);
-	    return WhatsNewComponent;
+	    ], WhatsNewPageComponent);
+	    return WhatsNewPageComponent;
 	}());
-	exports.WhatsNewComponent = WhatsNewComponent;
+	exports.WhatsNewPageComponent = WhatsNewPageComponent;
 
 
 /***/ },
 /* 314 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"whats-new\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"whats-new-page\">\r\n\r\n</div>\r\n"
 
 /***/ },
 /* 315 */
@@ -9150,8 +9170,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./whats-new.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./whats-new.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./whats-new-page.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./whats-new-page.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -9186,7 +9206,7 @@
 	var gallery_page_component_1 = __webpack_require__(301);
 	var login_page_component_1 = __webpack_require__(305);
 	var professional_services_page_component_1 = __webpack_require__(309);
-	var whats_new_component_1 = __webpack_require__(313);
+	var whats_new_page_component_1 = __webpack_require__(313);
 	exports.PagesRoutes = [
 	    {
 	        path: "/",
@@ -9218,7 +9238,7 @@
 	    },
 	    {
 	        path: "/whats-new",
-	        component: whats_new_component_1.WhatsNewComponent
+	        component: whats_new_page_component_1.WhatsNewPageComponent
 	    }
 	];
 
@@ -9289,7 +9309,7 @@
 /* 320 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Photo Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Photo Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 321 */
@@ -10074,181 +10094,232 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	__webpack_require__(350);
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
 	var core_1 = __webpack_require__(2);
-	var app_footer_component_1 = __webpack_require__(352);
-	var app_header_component_1 = __webpack_require__(356);
-	var admin_header_component_1 = __webpack_require__(360);
-	var sharedModule = angular.module("app.shared", []);
-	core_1.bootstrap(sharedModule, {
-	    components: [app_footer_component_1.AppFooterComponent, app_header_component_1.AppHeaderComponent, admin_header_component_1.AdminHeaderComponent],
+	var professional_service_editor_component_1 = __webpack_require__(350);
+	var professional_service_list_component_1 = __webpack_require__(354);
+	var professional_service_component_1 = __webpack_require__(358);
+	var professional_services_container_component_1 = __webpack_require__(362);
+	var professional_service_action_creator_1 = __webpack_require__(364);
+	var professional_service_service_1 = __webpack_require__(369);
+	var reducers = __webpack_require__(370);
+	var actions = __webpack_require__(363);
+	var appProfessionalServicesModule = angular.module("app.professionalServices", []);
+	core_1.bootstrap(appProfessionalServicesModule, {
+	    components: [professional_service_component_1.ProfessionalServiceComponent, professional_service_editor_component_1.ProfessionalServiceEditorComponent, professional_services_container_component_1.ProfessionalServicesContainerComponent, professional_service_list_component_1.ProfessionalServiceListComponent],
+	    providers: [professional_service_action_creator_1.ProfessionalServiceActionCreator, professional_service_service_1.ProfessionalServiceService],
+	    reducers: reducers,
+	    actions: actions
 	});
+	__export(__webpack_require__(371));
 
 
 /***/ },
 /* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var ProfessionalServiceEditorComponent = (function () {
+	    function ProfessionalServiceEditorComponent() {
+	    }
+	    ProfessionalServiceEditorComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(351),
+	            styles: [__webpack_require__(352)],
+	            selector: "professional-service-editor",
+	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ProfessionalServiceEditorComponent);
+	    return ProfessionalServiceEditorComponent;
+	}());
+	exports.ProfessionalServiceEditorComponent = ProfessionalServiceEditorComponent;
 
-	// load the styles
-	var content = __webpack_require__(351);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(60)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./shared.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./shared.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
 
 /***/ },
 /* 351 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	exports = module.exports = __webpack_require__(59)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "", ""]);
-
-	// exports
-
+	module.exports = "<div class=\"professionalServiceEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Professional Service <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Professional Service: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"professional-service-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Professional Service Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(2);
-	var AppFooterComponent = (function () {
-	    function AppFooterComponent() {
-	    }
-	    AppFooterComponent = __decorate([
-	        core_1.Component({
-	            template: __webpack_require__(353),
-	            styles: [__webpack_require__(354)],
-	            selector: "app-footer",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], AppFooterComponent);
-	    return AppFooterComponent;
-	}());
-	exports.AppFooterComponent = AppFooterComponent;
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 
+	// load the styles
+	var content = __webpack_require__(353);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-service-editor.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-service-editor.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
 /* 353 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"app-footer\">\r\n\r\n</div>\r\n"
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
 
 /***/ },
 /* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var ProfessionalServiceListComponent = (function () {
+	    function ProfessionalServiceListComponent() {
+	    }
+	    ProfessionalServiceListComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(355),
+	            styles: [__webpack_require__(356)],
+	            selector: "professional-service-list",
+	            inputs: ['entities', 'edit', 'remove'],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ProfessionalServiceListComponent);
+	    return ProfessionalServiceListComponent;
+	}());
+	exports.ProfessionalServiceListComponent = ProfessionalServiceListComponent;
 
-	// load the styles
-	var content = __webpack_require__(355);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(60)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./app-footer.component.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./app-footer.component.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
 
 /***/ },
 /* 355 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	exports = module.exports = __webpack_require__(59)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "", ""]);
-
-	// exports
-
+	module.exports = "<div class=\"professionalServiceList\">\r\n    <div class=\"professionalServiceList-header\">\r\n        <h1>ProfessionalServices</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"professionalServiceList-item\">\r\n        <div class=\"professionalServiceList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"professionalServiceList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(2);
-	var AppHeaderComponent = (function () {
-	    function AppHeaderComponent() {
-	    }
-	    AppHeaderComponent = __decorate([
-	        core_1.Component({
-	            template: __webpack_require__(357),
-	            styles: [__webpack_require__(358)],
-	            selector: "app-header",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], AppHeaderComponent);
-	    return AppHeaderComponent;
-	}());
-	exports.AppHeaderComponent = AppHeaderComponent;
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 
+	// load the styles
+	var content = __webpack_require__(357);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-service-list.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-service-list.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
 /* 357 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"app-header\">\r\n    <h1>Expo Hair</h1>\r\n</div>\r\n"
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".professionalServiceList-name,\n.professionalServiceList-actions {\n  position: relative;\n  float: left; }\n\n.professionalServiceList-name {\n  min-width: 200px; }\n\n.professionalServiceList-item {\n  height: 50px; }\n\n.professionalServiceList-actions span {\n  cursor: pointer; }\n\n.professionalServiceList-actions {\n  text-transform: uppercase; }\n", ""]);
+
+	// exports
+
 
 /***/ },
 /* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var ProfessionalServiceComponent = (function () {
+	    function ProfessionalServiceComponent() {
+	    }
+	    ProfessionalServiceComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(359),
+	            styles: [__webpack_require__(360)],
+	            selector: "professional-service",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ProfessionalServiceComponent);
+	    return ProfessionalServiceComponent;
+	}());
+	exports.ProfessionalServiceComponent = ProfessionalServiceComponent;
+
+
+/***/ },
+/* 359 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"professional-service\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 360 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(359);
+	var content = __webpack_require__(361);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -10257,8 +10328,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./app-header.component.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./app-header.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-service.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-service.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -10268,7 +10339,7 @@
 	}
 
 /***/ },
-/* 359 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -10282,7 +10353,7 @@
 
 
 /***/ },
-/* 360 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10296,71 +10367,138 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var AdminHeaderComponent = (function () {
-	    function AdminHeaderComponent($location) {
+	var actions = __webpack_require__(363);
+	var professional_service_action_creator_1 = __webpack_require__(364);
+	var professional_service_model_1 = __webpack_require__(365);
+	var ProfessionalServicesContainerComponent = (function () {
+	    function ProfessionalServicesContainerComponent($location, $routeParams, professionalServiceActionCreator, _invokeAsync) {
 	        var _this = this;
 	        this.$location = $location;
-	        this.onTitleClick = function () { return _this.$location.path("/"); };
+	        this.$routeParams = $routeParams;
+	        this.professionalServiceActionCreator = professionalServiceActionCreator;
+	        this._invokeAsync = _invokeAsync;
+	        this.storeOnChange = function (state) {
+	            _this.entities = state.professionalServices;
+	            if (state.lastTriggeredByAction instanceof actions.SetCurrentProfessionalServiceAction && !state.lastTriggeredByAction.entity)
+	                _this.$location.path("/admin/professionalservices");
+	            if (state.lastTriggeredByAction instanceof actions.SetCurrentProfessionalServiceAction && state.lastTriggeredByAction.entity)
+	                _this.$location.path("/admin/professionalservice/edit/" + state.lastTriggeredByAction.entity.id);
+	            if (state.lastTriggeredByAction instanceof actions.AddOrUpdateProfessionalServiceAction)
+	                _this.entity = new professional_service_model_1.ProfessionalService();
+	            if (state.lastTriggeredByAction instanceof actions.RemoveProfessionalServiceAction && _this.entity && _this.entity.id) {
+	                _this.entity = core_1.pluck({ value: Number(_this.$routeParams["professionalServiceId"]), items: _this.entities });
+	                if (Object.keys(_this.entity).length === 0) {
+	                    _this.$location.path("/admin/professionalservices");
+	                }
+	            }
+	        };
+	        this.ngOnInit = function () {
+	            if (_this.$routeParams["professionalServiceId"]) {
+	                _this.entity = core_1.pluck({ value: Number(_this.$routeParams["professionalServiceId"]), items: _this.entities });
+	            }
+	            else {
+	                _this.entity = new professional_service_model_1.ProfessionalService();
+	            }
+	        };
+	        this.edit = function (entity) { return _this.professionalServiceActionCreator.edit(entity); };
+	        this.remove = function (entity) { return _this.professionalServiceActionCreator.remove(entity); };
+	        this.create = function (entity) { return _this.professionalServiceActionCreator.create(); };
+	        this.addOrUpdate = function (options) {
+	            _this._invokeAsync({
+	                action: _this.professionalServiceActionCreator.addOrUpdate,
+	                params: { data: options.data }
+	            }).then(function () {
+	                if (_this.$location.path() === "/admin/professionalservices") {
+	                    _this.entity = new professional_service_model_1.ProfessionalService();
+	                }
+	                else {
+	                    _this.$location.path("/admin/professionalservices");
+	                }
+	            });
+	        };
 	    }
-	    AdminHeaderComponent = __decorate([
+	    ProfessionalServicesContainerComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(361),
-	            styles: [__webpack_require__(362)],
-	            selector: "admin-header",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
-	            viewProviders: ["$location"]
-	        }), 
-	        __metadata('design:paramtypes', [Object])
-	    ], AdminHeaderComponent);
-	    return AdminHeaderComponent;
+	            routes: ["/admin/professionalservices", "/admin/professionalservice/edit/:professionalServiceId"],
+	            template: __webpack_require__(366),
+	            styles: [__webpack_require__(367)],
+	            selector: "professional-services-container",
+	            viewProviders: ["$location", "$routeParams", "professionalServiceActionCreator", "invokeAsync"],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }),
+	        core_1.CanActivate(["$q", "$route", "invokeAsync", "professionalServiceActionCreator", function ($q, $route, invokeAsync, professionalServiceActionCreator) {
+	                var professionalServiceId = $route.current.params.professionalServiceId;
+	                var promises = [invokeAsync(professionalServiceActionCreator.all)];
+	                if (professionalServiceId) {
+	                    promises.push(invokeAsync({ action: professionalServiceActionCreator.getById, params: { id: professionalServiceId } }));
+	                }
+	                ;
+	                return $q.all(promises);
+	            }]), 
+	        __metadata('design:paramtypes', [Object, Object, professional_service_action_creator_1.ProfessionalServiceActionCreator, Object])
+	    ], ProfessionalServicesContainerComponent);
+	    return ProfessionalServicesContainerComponent;
 	}());
-	exports.AdminHeaderComponent = AdminHeaderComponent;
+	exports.ProfessionalServicesContainerComponent = ProfessionalServicesContainerComponent;
 
-
-/***/ },
-/* 361 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"admin-header\">\r\n    <div class=\"admin-header-inner\">\r\n        <h1 class=\"admin-header-title\" data-ng-click=\"vm.onTitleClick()\">\r\n            Admin\r\n        </h1>\r\n    </div>\r\n</div>\r\n"
-
-/***/ },
-/* 362 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(363);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(60)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./admin-header.component.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./admin-header.component.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
 
 /***/ },
 /* 363 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	exports = module.exports = __webpack_require__(59)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "", ""]);
-
-	// exports
+	"use strict";
+	var AddOrUpdateProfessionalServiceAction = (function () {
+	    function AddOrUpdateProfessionalServiceAction(id, entity) {
+	        this.id = id;
+	        this.entity = entity;
+	    }
+	    return AddOrUpdateProfessionalServiceAction;
+	}());
+	exports.AddOrUpdateProfessionalServiceAction = AddOrUpdateProfessionalServiceAction;
+	var AllProfessionalServicesAction = (function () {
+	    function AllProfessionalServicesAction(id, entities) {
+	        this.id = id;
+	        this.entities = entities;
+	    }
+	    return AllProfessionalServicesAction;
+	}());
+	exports.AllProfessionalServicesAction = AllProfessionalServicesAction;
+	var RemoveProfessionalServiceAction = (function () {
+	    function RemoveProfessionalServiceAction(id, entity) {
+	        this.id = id;
+	        this.entity = entity;
+	    }
+	    return RemoveProfessionalServiceAction;
+	}());
+	exports.RemoveProfessionalServiceAction = RemoveProfessionalServiceAction;
+	var ProfessionalServicesFilterAction = (function () {
+	    function ProfessionalServicesFilterAction(id, term) {
+	        this.id = id;
+	        this.term = term;
+	    }
+	    return ProfessionalServicesFilterAction;
+	}());
+	exports.ProfessionalServicesFilterAction = ProfessionalServicesFilterAction;
+	var SetCurrentProfessionalServiceAction = (function () {
+	    function SetCurrentProfessionalServiceAction(entity) {
+	        this.entity = entity;
+	    }
+	    return SetCurrentProfessionalServiceAction;
+	}());
+	exports.SetCurrentProfessionalServiceAction = SetCurrentProfessionalServiceAction;
+	var AddOrUpdateProfessionalServiceSuccessAction = (function () {
+	    function AddOrUpdateProfessionalServiceSuccessAction(entity) {
+	        this.entity = entity;
+	    }
+	    return AddOrUpdateProfessionalServiceSuccessAction;
+	}());
+	exports.AddOrUpdateProfessionalServiceSuccessAction = AddOrUpdateProfessionalServiceSuccessAction;
+	var CurrentProfessionalServiceRemovedAction = (function () {
+	    function CurrentProfessionalServiceRemovedAction() {
+	    }
+	    return CurrentProfessionalServiceRemovedAction;
+	}());
+	exports.CurrentProfessionalServiceRemovedAction = CurrentProfessionalServiceRemovedAction;
 
 
 /***/ },
@@ -10368,33 +10506,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	var core_1 = __webpack_require__(2);
-	var social_share_item_editor_component_1 = __webpack_require__(365);
-	var social_share_item_list_component_1 = __webpack_require__(369);
-	var social_share_item_component_1 = __webpack_require__(373);
-	var social_share_items_container_component_1 = __webpack_require__(377);
-	var social_share_item_action_creator_1 = __webpack_require__(379);
-	var social_share_item_service_1 = __webpack_require__(384);
-	var reducers = __webpack_require__(385);
-	var actions = __webpack_require__(378);
-	var appSocialShareItemsModule = angular.module("app.socialShareItems", []);
-	core_1.bootstrap(appSocialShareItemsModule, {
-	    components: [social_share_item_component_1.SocialShareItemComponent, social_share_item_editor_component_1.SocialShareItemEditorComponent, social_share_items_container_component_1.SocialShareItemsContainerComponent, social_share_item_list_component_1.SocialShareItemListComponent],
-	    providers: [social_share_item_action_creator_1.SocialShareItemActionCreator, social_share_item_service_1.SocialShareItemService],
-	    reducers: reducers,
-	    actions: actions
-	});
-	__export(__webpack_require__(386));
-
-
-/***/ },
-/* 365 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10405,29 +10521,53 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var SocialShareItemEditorComponent = (function () {
-	    function SocialShareItemEditorComponent() {
+	var modal_action_creator_1 = __webpack_require__(72);
+	var professional_service_actions_1 = __webpack_require__(363);
+	var ProfessionalServiceActionCreator = (function (_super) {
+	    __extends(ProfessionalServiceActionCreator, _super);
+	    function ProfessionalServiceActionCreator($location, dispatcher, professionalServiceService, guid, invokeAsync, modalActionCreator) {
+	        var _this = this;
+	        _super.call(this, $location, professionalServiceService, dispatcher, guid, professional_service_actions_1.AddOrUpdateProfessionalServiceAction, professional_service_actions_1.AllProfessionalServicesAction, professional_service_actions_1.RemoveProfessionalServiceAction, professional_service_actions_1.SetCurrentProfessionalServiceAction);
+	        this.invokeAsync = invokeAsync;
+	        this.modalActionCreator = modalActionCreator;
+	        this.addOrUpdateSuccess = function (options) { return _this.dispatcher.dispatch(new professional_service_actions_1.AddOrUpdateProfessionalServiceSuccessAction(options.entity)); };
+	        this.currentProfessionalServiceRemoved = function () { return _this.dispatcher.dispatch(new professional_service_actions_1.CurrentProfessionalServiceRemovedAction()); };
+	        this.openAllProfessionalServicesModal = function () {
+	            _this.invokeAsync(_this.all).then(function (results) {
+	                _this.modalActionCreator.open({ html: "<all-professional-service-modal></all-professional-service-modal>" });
+	            });
+	        };
 	    }
-	    SocialShareItemEditorComponent = __decorate([
-	        core_1.Component({
-	            template: __webpack_require__(366),
-	            styles: [__webpack_require__(367)],
-	            selector: "social-share-item-editor",
-	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	    ProfessionalServiceActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "professionalServiceActionCreator",
+	            viewProviders: ["$location", "dispatcher", "professionalServiceService", "guid", "invokeAsync", "modalActionCreator"]
 	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], SocialShareItemEditorComponent);
-	    return SocialShareItemEditorComponent;
+	        __metadata('design:paramtypes', [Object, Object, Object, Object, Object, modal_action_creator_1.ModalActionCreator])
+	    ], ProfessionalServiceActionCreator);
+	    return ProfessionalServiceActionCreator;
+	}(core_1.BaseActionCreator));
+	exports.ProfessionalServiceActionCreator = ProfessionalServiceActionCreator;
+
+
+/***/ },
+/* 365 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var ProfessionalService = (function () {
+	    function ProfessionalService() {
+	    }
+	    return ProfessionalService;
 	}());
-	exports.SocialShareItemEditorComponent = SocialShareItemEditorComponent;
+	exports.ProfessionalService = ProfessionalService;
 
 
 /***/ },
 /* 366 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"socialShareItemEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Social Share Item <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Social Share Item: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"social-share-item-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Social Share Item Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div>\r\n    <professional-service-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></professional-service-editor>\r\n    <professional-service-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></professional-service-list>\r\n</div>\r\n"
 
 /***/ },
 /* 367 */
@@ -10445,8 +10585,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-editor.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-editor.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-services-container.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-services-container.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -10474,6 +10614,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10484,68 +10629,106 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var SocialShareItemListComponent = (function () {
-	    function SocialShareItemListComponent() {
+	var ProfessionalServiceService = (function (_super) {
+	    __extends(ProfessionalServiceService, _super);
+	    function ProfessionalServiceService($q, apiEndpoint, fetch) {
+	        _super.call(this, $q, apiEndpoint, fetch);
 	    }
-	    SocialShareItemListComponent = __decorate([
-	        core_1.Component({
-	            template: __webpack_require__(370),
-	            styles: [__webpack_require__(371)],
-	            selector: "social-share-item-list",
-	            inputs: ['entities', 'edit', 'remove'],
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	    Object.defineProperty(ProfessionalServiceService.prototype, "baseUri", {
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/professionalService"; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    ProfessionalServiceService = __decorate([
+	        core_1.Injectable(),
+	        core_1.Service({
+	            serviceName: "professionalServiceService",
+	            viewProviders: ["$q", "apiEndpoint", "fetch"]
 	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], SocialShareItemListComponent);
-	    return SocialShareItemListComponent;
-	}());
-	exports.SocialShareItemListComponent = SocialShareItemListComponent;
+	        __metadata('design:paramtypes', [Function, Object, Object])
+	    ], ProfessionalServiceService);
+	    return ProfessionalServiceService;
+	}(core_1.BaseService));
+	exports.ProfessionalServiceService = ProfessionalServiceService;
 
 
 /***/ },
 /* 370 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"socialShareItemList\">\r\n    <div class=\"socialShareItemList-header\">\r\n        <h1>SocialShareItems</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"socialShareItemList-item\">\r\n        <div class=\"socialShareItemList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"socialShareItemList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
+	"use strict";
+	var actions = __webpack_require__(363);
+	var core_1 = __webpack_require__(2);
+	exports.removeProfessionalServiceReducer = function (state, action) {
+	    if (action instanceof actions.RemoveProfessionalServiceAction)
+	        core_1.pluckOut({ items: state.professionalServices, value: action.entity.id });
+	    return state;
+	};
+	exports.addProfessionalServiceReducer = function (state, action) {
+	    if (action instanceof actions.AddOrUpdateProfessionalServiceAction) {
+	        core_1.addOrUpdate({ items: state.professionalServices, item: action.entity });
+	    }
+	    return state;
+	};
+	exports.allProfessionalServicesReducer = function (state, action) {
+	    if (action instanceof actions.AllProfessionalServicesAction) {
+	        state.professionalServices = action.entities;
+	    }
+	    return state;
+	};
+	exports.setCurrentProfessionalServiceReducer = function (state, action) {
+	    if (action instanceof actions.SetCurrentProfessionalServiceAction) {
+	        state.currentProfessionalServiceId = action.id;
+	    }
+	    return state;
+	};
+
 
 /***/ },
 /* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	"use strict";
+	var professional_services_container_component_1 = __webpack_require__(362);
+	exports.ProfessionalServicesRoutes = [
+	    {
+	        path: "/admin/professionalservices",
+	        component: professional_services_container_component_1.ProfessionalServicesContainerComponent,
+	        authorizationRequired: true
+	    },
+	    {
+	        path: "/admin/professionalservice/edit/:photoId",
+	        component: professional_services_container_component_1.ProfessionalServicesContainerComponent,
+	        authorizationRequired: true
+	    }
+	];
 
-	// load the styles
-	var content = __webpack_require__(372);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(60)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-list.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-list.component.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
 
 /***/ },
 /* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(59)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".socialShareItemList-name,\n.socialShareItemList-actions {\n  position: relative;\n  float: left; }\n\n.socialShareItemList-name {\n  min-width: 200px; }\n\n.socialShareItemList-item {\n  height: 50px; }\n\n.socialShareItemList-actions span {\n  cursor: pointer; }\n\n.socialShareItemList-actions {\n  text-transform: uppercase; }\n", ""]);
-
-	// exports
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	var core_1 = __webpack_require__(2);
+	var service_provider_editor_component_1 = __webpack_require__(373);
+	var service_provider_list_component_1 = __webpack_require__(377);
+	var service_provider_component_1 = __webpack_require__(381);
+	var service_providers_container_component_1 = __webpack_require__(385);
+	var service_provider_action_creator_1 = __webpack_require__(387);
+	var service_provider_service_1 = __webpack_require__(392);
+	var reducers = __webpack_require__(393);
+	var actions = __webpack_require__(386);
+	var appServiceProvidersModule = angular.module("app.serviceProviders", []);
+	core_1.bootstrap(appServiceProvidersModule, {
+	    components: [service_provider_component_1.ServiceProviderComponent, service_provider_editor_component_1.ServiceProviderEditorComponent, service_providers_container_component_1.ServiceProvidersContainerComponent, service_provider_list_component_1.ServiceProviderListComponent],
+	    providers: [service_provider_action_creator_1.ServiceProviderActionCreator, service_provider_service_1.ServiceProviderService],
+	    reducers: reducers,
+	    actions: actions
+	});
+	__export(__webpack_require__(394));
 
 
 /***/ },
@@ -10563,28 +10746,29 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var SocialShareItemComponent = (function () {
-	    function SocialShareItemComponent() {
+	var ServiceProviderEditorComponent = (function () {
+	    function ServiceProviderEditorComponent() {
 	    }
-	    SocialShareItemComponent = __decorate([
+	    ServiceProviderEditorComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(374),
 	            styles: [__webpack_require__(375)],
-	            selector: "social-share-item",
+	            selector: "service-provider-editor",
+	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], SocialShareItemComponent);
-	    return SocialShareItemComponent;
+	    ], ServiceProviderEditorComponent);
+	    return ServiceProviderEditorComponent;
 	}());
-	exports.SocialShareItemComponent = SocialShareItemComponent;
+	exports.ServiceProviderEditorComponent = ServiceProviderEditorComponent;
 
 
 /***/ },
 /* 374 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"social-share-item\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"serviceProviderEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Service Provider <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Service Provider: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"service-provider-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Service Provider Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 375 */
@@ -10602,8 +10786,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./service-provider-editor.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./service-provider-editor.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -10641,9 +10825,1075 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var actions = __webpack_require__(378);
-	var social_share_item_action_creator_1 = __webpack_require__(379);
-	var social_share_item_model_1 = __webpack_require__(380);
+	var ServiceProviderListComponent = (function () {
+	    function ServiceProviderListComponent() {
+	    }
+	    ServiceProviderListComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(378),
+	            styles: [__webpack_require__(379)],
+	            selector: "service-provider-list",
+	            inputs: ['entities', 'edit', 'remove'],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ServiceProviderListComponent);
+	    return ServiceProviderListComponent;
+	}());
+	exports.ServiceProviderListComponent = ServiceProviderListComponent;
+
+
+/***/ },
+/* 378 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"serviceProviderList\">\r\n    <div class=\"serviceProviderList-header\">\r\n        <h1>ServiceProviders</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"serviceProviderList-item\">\r\n        <div class=\"serviceProviderList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"serviceProviderList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
+
+/***/ },
+/* 379 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(380);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./service-provider-list.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./service-provider-list.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 380 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".serviceProviderList-name,\n.serviceProviderList-actions {\n  position: relative;\n  float: left; }\n\n.serviceProviderList-name {\n  min-width: 200px; }\n\n.serviceProviderList-item {\n  height: 50px; }\n\n.serviceProviderList-actions span {\n  cursor: pointer; }\n\n.serviceProviderList-actions {\n  text-transform: uppercase; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 381 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var ServiceProviderComponent = (function () {
+	    function ServiceProviderComponent() {
+	    }
+	    ServiceProviderComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(382),
+	            styles: [__webpack_require__(383)],
+	            selector: "service-provider",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ServiceProviderComponent);
+	    return ServiceProviderComponent;
+	}());
+	exports.ServiceProviderComponent = ServiceProviderComponent;
+
+
+/***/ },
+/* 382 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"service-provider\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 383 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(384);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./service-provider.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./service-provider.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 384 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 385 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var actions = __webpack_require__(386);
+	var service_provider_action_creator_1 = __webpack_require__(387);
+	var service_provider_model_1 = __webpack_require__(388);
+	var ServiceProvidersContainerComponent = (function () {
+	    function ServiceProvidersContainerComponent($location, $routeParams, serviceProviderActionCreator, _invokeAsync) {
+	        var _this = this;
+	        this.$location = $location;
+	        this.$routeParams = $routeParams;
+	        this.serviceProviderActionCreator = serviceProviderActionCreator;
+	        this._invokeAsync = _invokeAsync;
+	        this.storeOnChange = function (state) {
+	            _this.entities = state.serviceProviders;
+	            if (state.lastTriggeredByAction instanceof actions.SetCurrentServiceProviderAction && !state.lastTriggeredByAction.entity)
+	                _this.$location.path("/admin/serviceproviders");
+	            if (state.lastTriggeredByAction instanceof actions.SetCurrentServiceProviderAction && state.lastTriggeredByAction.entity)
+	                _this.$location.path("/admin/serviceprovider/edit/" + state.lastTriggeredByAction.entity.id);
+	            if (state.lastTriggeredByAction instanceof actions.AddOrUpdateServiceProviderAction)
+	                _this.entity = new service_provider_model_1.ServiceProvider();
+	            if (state.lastTriggeredByAction instanceof actions.RemoveServiceProviderAction && _this.entity && _this.entity.id) {
+	                _this.entity = core_1.pluck({ value: Number(_this.$routeParams["serviceProviderId"]), items: _this.entities });
+	                if (Object.keys(_this.entity).length === 0) {
+	                    _this.$location.path("/admin/serviceproviders");
+	                }
+	            }
+	        };
+	        this.ngOnInit = function () {
+	            if (_this.$routeParams["serviceProviderId"]) {
+	                _this.entity = core_1.pluck({ value: Number(_this.$routeParams["serviceProviderId"]), items: _this.entities });
+	            }
+	            else {
+	                _this.entity = new service_provider_model_1.ServiceProvider();
+	            }
+	        };
+	        this.edit = function (entity) { return _this.serviceProviderActionCreator.edit(entity); };
+	        this.remove = function (entity) { return _this.serviceProviderActionCreator.remove(entity); };
+	        this.create = function (entity) { return _this.serviceProviderActionCreator.create(); };
+	        this.addOrUpdate = function (options) {
+	            _this._invokeAsync({
+	                action: _this.serviceProviderActionCreator.addOrUpdate,
+	                params: { data: options.data }
+	            }).then(function () {
+	                if (_this.$location.path() === "/admin/serviceproviders") {
+	                    _this.entity = new service_provider_model_1.ServiceProvider();
+	                }
+	                else {
+	                    _this.$location.path("/admin/serviceproviders");
+	                }
+	            });
+	        };
+	    }
+	    ServiceProvidersContainerComponent = __decorate([
+	        core_1.Component({
+	            routes: ["/admin/serviceproviders", "/admin/serviceprovider/edit/:serviceProviderId"],
+	            template: __webpack_require__(389),
+	            styles: [__webpack_require__(390)],
+	            selector: "service-providers-container",
+	            viewProviders: ["$location", "$routeParams", "serviceProviderActionCreator", "invokeAsync"],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }),
+	        core_1.CanActivate(["$q", "$route", "invokeAsync", "serviceProviderActionCreator", function ($q, $route, invokeAsync, serviceProviderActionCreator) {
+	                var serviceProviderId = $route.current.params.serviceProviderId;
+	                var promises = [invokeAsync(serviceProviderActionCreator.all)];
+	                if (serviceProviderId) {
+	                    promises.push(invokeAsync({ action: serviceProviderActionCreator.getById, params: { id: serviceProviderId } }));
+	                }
+	                ;
+	                return $q.all(promises);
+	            }]), 
+	        __metadata('design:paramtypes', [Object, Object, service_provider_action_creator_1.ServiceProviderActionCreator, Object])
+	    ], ServiceProvidersContainerComponent);
+	    return ServiceProvidersContainerComponent;
+	}());
+	exports.ServiceProvidersContainerComponent = ServiceProvidersContainerComponent;
+
+
+/***/ },
+/* 386 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var AddOrUpdateServiceProviderAction = (function () {
+	    function AddOrUpdateServiceProviderAction(id, entity) {
+	        this.id = id;
+	        this.entity = entity;
+	    }
+	    return AddOrUpdateServiceProviderAction;
+	}());
+	exports.AddOrUpdateServiceProviderAction = AddOrUpdateServiceProviderAction;
+	var AllServiceProvidersAction = (function () {
+	    function AllServiceProvidersAction(id, entities) {
+	        this.id = id;
+	        this.entities = entities;
+	    }
+	    return AllServiceProvidersAction;
+	}());
+	exports.AllServiceProvidersAction = AllServiceProvidersAction;
+	var RemoveServiceProviderAction = (function () {
+	    function RemoveServiceProviderAction(id, entity) {
+	        this.id = id;
+	        this.entity = entity;
+	    }
+	    return RemoveServiceProviderAction;
+	}());
+	exports.RemoveServiceProviderAction = RemoveServiceProviderAction;
+	var ServiceProvidersFilterAction = (function () {
+	    function ServiceProvidersFilterAction(id, term) {
+	        this.id = id;
+	        this.term = term;
+	    }
+	    return ServiceProvidersFilterAction;
+	}());
+	exports.ServiceProvidersFilterAction = ServiceProvidersFilterAction;
+	var SetCurrentServiceProviderAction = (function () {
+	    function SetCurrentServiceProviderAction(entity) {
+	        this.entity = entity;
+	    }
+	    return SetCurrentServiceProviderAction;
+	}());
+	exports.SetCurrentServiceProviderAction = SetCurrentServiceProviderAction;
+	var AddOrUpdateServiceProviderSuccessAction = (function () {
+	    function AddOrUpdateServiceProviderSuccessAction(entity) {
+	        this.entity = entity;
+	    }
+	    return AddOrUpdateServiceProviderSuccessAction;
+	}());
+	exports.AddOrUpdateServiceProviderSuccessAction = AddOrUpdateServiceProviderSuccessAction;
+	var CurrentServiceProviderRemovedAction = (function () {
+	    function CurrentServiceProviderRemovedAction() {
+	    }
+	    return CurrentServiceProviderRemovedAction;
+	}());
+	exports.CurrentServiceProviderRemovedAction = CurrentServiceProviderRemovedAction;
+
+
+/***/ },
+/* 387 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var modal_action_creator_1 = __webpack_require__(72);
+	var service_provider_actions_1 = __webpack_require__(386);
+	var ServiceProviderActionCreator = (function (_super) {
+	    __extends(ServiceProviderActionCreator, _super);
+	    function ServiceProviderActionCreator($location, dispatcher, serviceProviderService, guid, invokeAsync, modalActionCreator) {
+	        var _this = this;
+	        _super.call(this, $location, serviceProviderService, dispatcher, guid, service_provider_actions_1.AddOrUpdateServiceProviderAction, service_provider_actions_1.AllServiceProvidersAction, service_provider_actions_1.RemoveServiceProviderAction, service_provider_actions_1.SetCurrentServiceProviderAction);
+	        this.invokeAsync = invokeAsync;
+	        this.modalActionCreator = modalActionCreator;
+	        this.addOrUpdateSuccess = function (options) { return _this.dispatcher.dispatch(new service_provider_actions_1.AddOrUpdateServiceProviderSuccessAction(options.entity)); };
+	        this.currentServiceProviderRemoved = function () { return _this.dispatcher.dispatch(new service_provider_actions_1.CurrentServiceProviderRemovedAction()); };
+	        this.openAllServiceProvidersModal = function () {
+	            _this.invokeAsync(_this.all).then(function (results) {
+	                _this.modalActionCreator.open({ html: "<all-service-provider-modal></all-service-provider-modal>" });
+	            });
+	        };
+	    }
+	    ServiceProviderActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "serviceProviderActionCreator",
+	            viewProviders: ["$location", "dispatcher", "serviceProviderService", "guid", "invokeAsync", "modalActionCreator"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, Object, Object, Object, modal_action_creator_1.ModalActionCreator])
+	    ], ServiceProviderActionCreator);
+	    return ServiceProviderActionCreator;
+	}(core_1.BaseActionCreator));
+	exports.ServiceProviderActionCreator = ServiceProviderActionCreator;
+
+
+/***/ },
+/* 388 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var ServiceProvider = (function () {
+	    function ServiceProvider() {
+	    }
+	    return ServiceProvider;
+	}());
+	exports.ServiceProvider = ServiceProvider;
+
+
+/***/ },
+/* 389 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>\r\n    <service-provider-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></service-provider-editor>\r\n    <service-provider-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></service-provider-list>\r\n</div>\r\n"
+
+/***/ },
+/* 390 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(391);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./service-providers-container.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./service-providers-container.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 391 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 392 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var ServiceProviderService = (function (_super) {
+	    __extends(ServiceProviderService, _super);
+	    function ServiceProviderService($q, apiEndpoint, fetch) {
+	        _super.call(this, $q, apiEndpoint, fetch);
+	    }
+	    Object.defineProperty(ServiceProviderService.prototype, "baseUri", {
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/serviceProvider"; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    ServiceProviderService = __decorate([
+	        core_1.Injectable(),
+	        core_1.Service({
+	            serviceName: "serviceProviderService",
+	            viewProviders: ["$q", "apiEndpoint", "fetch"]
+	        }), 
+	        __metadata('design:paramtypes', [Function, Object, Object])
+	    ], ServiceProviderService);
+	    return ServiceProviderService;
+	}(core_1.BaseService));
+	exports.ServiceProviderService = ServiceProviderService;
+
+
+/***/ },
+/* 393 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var actions = __webpack_require__(386);
+	var core_1 = __webpack_require__(2);
+	exports.removeServiceProviderReducer = function (state, action) {
+	    if (action instanceof actions.RemoveServiceProviderAction)
+	        core_1.pluckOut({ items: state.serviceProviders, value: action.entity.id });
+	    return state;
+	};
+	exports.addServiceProviderReducer = function (state, action) {
+	    if (action instanceof actions.AddOrUpdateServiceProviderAction) {
+	        core_1.addOrUpdate({ items: state.serviceProviders, item: action.entity });
+	    }
+	    return state;
+	};
+	exports.allServiceProvidersReducer = function (state, action) {
+	    if (action instanceof actions.AllServiceProvidersAction) {
+	        state.serviceProviders = action.entities;
+	    }
+	    return state;
+	};
+	exports.setCurrentServiceProviderReducer = function (state, action) {
+	    if (action instanceof actions.SetCurrentServiceProviderAction) {
+	        state.currentServiceProviderId = action.id;
+	    }
+	    return state;
+	};
+
+
+/***/ },
+/* 394 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var service_providers_container_component_1 = __webpack_require__(385);
+	exports.ServiceProvidersRoutes = [
+	    {
+	        path: "/admin/serviceproviders",
+	        component: service_providers_container_component_1.ServiceProvidersContainerComponent,
+	        authorizationRequired: true
+	    },
+	    {
+	        path: "/admin/serviceprovider/edit/:photoId",
+	        component: service_providers_container_component_1.ServiceProvidersContainerComponent,
+	        authorizationRequired: true
+	    }
+	];
+
+
+/***/ },
+/* 395 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	__webpack_require__(396);
+	var core_1 = __webpack_require__(2);
+	var app_footer_component_1 = __webpack_require__(398);
+	var app_header_component_1 = __webpack_require__(402);
+	var admin_header_component_1 = __webpack_require__(406);
+	var sharedModule = angular.module("app.shared", []);
+	core_1.bootstrap(sharedModule, {
+	    components: [app_footer_component_1.AppFooterComponent, app_header_component_1.AppHeaderComponent, admin_header_component_1.AdminHeaderComponent],
+	});
+
+
+/***/ },
+/* 396 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(397);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./shared.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./shared.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 397 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 398 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var AppFooterComponent = (function () {
+	    function AppFooterComponent() {
+	    }
+	    AppFooterComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(399),
+	            styles: [__webpack_require__(400)],
+	            selector: "app-footer",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], AppFooterComponent);
+	    return AppFooterComponent;
+	}());
+	exports.AppFooterComponent = AppFooterComponent;
+
+
+/***/ },
+/* 399 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"app-footer\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 400 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(401);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./app-footer.component.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./app-footer.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 401 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 402 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var AppHeaderComponent = (function () {
+	    function AppHeaderComponent() {
+	    }
+	    AppHeaderComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(403),
+	            styles: [__webpack_require__(404)],
+	            selector: "app-header",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], AppHeaderComponent);
+	    return AppHeaderComponent;
+	}());
+	exports.AppHeaderComponent = AppHeaderComponent;
+
+
+/***/ },
+/* 403 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"app-header\">\r\n    <h1>Expo Hair</h1>\r\n</div>\r\n"
+
+/***/ },
+/* 404 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(405);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./app-header.component.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./app-header.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 405 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 406 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var AdminHeaderComponent = (function () {
+	    function AdminHeaderComponent($location) {
+	        var _this = this;
+	        this.$location = $location;
+	        this.onTitleClick = function () { return _this.$location.path("/"); };
+	    }
+	    AdminHeaderComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(407),
+	            styles: [__webpack_require__(408)],
+	            selector: "admin-header",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+	            viewProviders: ["$location"]
+	        }), 
+	        __metadata('design:paramtypes', [Object])
+	    ], AdminHeaderComponent);
+	    return AdminHeaderComponent;
+	}());
+	exports.AdminHeaderComponent = AdminHeaderComponent;
+
+
+/***/ },
+/* 407 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"admin-header\">\r\n    <div class=\"admin-header-inner\">\r\n        <h1 class=\"admin-header-title\" data-ng-click=\"vm.onTitleClick()\">\r\n            Admin\r\n        </h1>\r\n    </div>\r\n</div>\r\n"
+
+/***/ },
+/* 408 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(409);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./admin-header.component.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./admin-header.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 409 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".admin-header-title {\n  cursor: pointer; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 410 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	var core_1 = __webpack_require__(2);
+	var social_share_item_editor_component_1 = __webpack_require__(411);
+	var social_share_item_list_component_1 = __webpack_require__(415);
+	var social_share_item_component_1 = __webpack_require__(419);
+	var social_share_items_container_component_1 = __webpack_require__(423);
+	var social_share_item_action_creator_1 = __webpack_require__(425);
+	var social_share_item_service_1 = __webpack_require__(430);
+	var reducers = __webpack_require__(431);
+	var actions = __webpack_require__(424);
+	var appSocialShareItemsModule = angular.module("app.socialShareItems", []);
+	core_1.bootstrap(appSocialShareItemsModule, {
+	    components: [social_share_item_component_1.SocialShareItemComponent, social_share_item_editor_component_1.SocialShareItemEditorComponent, social_share_items_container_component_1.SocialShareItemsContainerComponent, social_share_item_list_component_1.SocialShareItemListComponent],
+	    providers: [social_share_item_action_creator_1.SocialShareItemActionCreator, social_share_item_service_1.SocialShareItemService],
+	    reducers: reducers,
+	    actions: actions
+	});
+	__export(__webpack_require__(432));
+
+
+/***/ },
+/* 411 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var SocialShareItemEditorComponent = (function () {
+	    function SocialShareItemEditorComponent() {
+	    }
+	    SocialShareItemEditorComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(412),
+	            styles: [__webpack_require__(413)],
+	            selector: "social-share-item-editor",
+	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], SocialShareItemEditorComponent);
+	    return SocialShareItemEditorComponent;
+	}());
+	exports.SocialShareItemEditorComponent = SocialShareItemEditorComponent;
+
+
+/***/ },
+/* 412 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"socialShareItemEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Social Share Item <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Social Share Item: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"social-share-item-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Social Share Item Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+
+/***/ },
+/* 413 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(414);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-editor.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-editor.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 414 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 415 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var SocialShareItemListComponent = (function () {
+	    function SocialShareItemListComponent() {
+	    }
+	    SocialShareItemListComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(416),
+	            styles: [__webpack_require__(417)],
+	            selector: "social-share-item-list",
+	            inputs: ['entities', 'edit', 'remove'],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], SocialShareItemListComponent);
+	    return SocialShareItemListComponent;
+	}());
+	exports.SocialShareItemListComponent = SocialShareItemListComponent;
+
+
+/***/ },
+/* 416 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"socialShareItemList\">\r\n    <div class=\"socialShareItemList-header\">\r\n        <h1>SocialShareItems</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"socialShareItemList-item\">\r\n        <div class=\"socialShareItemList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"socialShareItemList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
+
+/***/ },
+/* 417 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(418);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-list.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-list.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 418 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".socialShareItemList-name,\n.socialShareItemList-actions {\n  position: relative;\n  float: left; }\n\n.socialShareItemList-name {\n  min-width: 200px; }\n\n.socialShareItemList-item {\n  height: 50px; }\n\n.socialShareItemList-actions span {\n  cursor: pointer; }\n\n.socialShareItemList-actions {\n  text-transform: uppercase; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 419 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var SocialShareItemComponent = (function () {
+	    function SocialShareItemComponent() {
+	    }
+	    SocialShareItemComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(420),
+	            styles: [__webpack_require__(421)],
+	            selector: "social-share-item",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], SocialShareItemComponent);
+	    return SocialShareItemComponent;
+	}());
+	exports.SocialShareItemComponent = SocialShareItemComponent;
+
+
+/***/ },
+/* 420 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"social-share-item\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 421 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(422);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 422 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 423 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var actions = __webpack_require__(424);
+	var social_share_item_action_creator_1 = __webpack_require__(425);
+	var social_share_item_model_1 = __webpack_require__(426);
 	var SocialShareItemsContainerComponent = (function () {
 	    function SocialShareItemsContainerComponent($location, $routeParams, socialShareItemActionCreator, _invokeAsync) {
 	        var _this = this;
@@ -10694,8 +11944,8 @@
 	    SocialShareItemsContainerComponent = __decorate([
 	        core_1.Component({
 	            routes: ["/admin/socialshareitems", "/admin/socialshareitem/edit/:socialShareItemId"],
-	            template: __webpack_require__(381),
-	            styles: [__webpack_require__(382)],
+	            template: __webpack_require__(427),
+	            styles: [__webpack_require__(428)],
 	            selector: "social-share-items-container",
 	            viewProviders: ["$location", "$routeParams", "socialShareItemActionCreator", "invokeAsync"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -10717,7 +11967,7 @@
 
 
 /***/ },
-/* 378 */
+/* 424 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10776,7 +12026,7 @@
 
 
 /***/ },
-/* 379 */
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10796,7 +12046,7 @@
 	};
 	var core_1 = __webpack_require__(2);
 	var modal_action_creator_1 = __webpack_require__(72);
-	var social_share_item_actions_1 = __webpack_require__(378);
+	var social_share_item_actions_1 = __webpack_require__(424);
 	var SocialShareItemActionCreator = (function (_super) {
 	    __extends(SocialShareItemActionCreator, _super);
 	    function SocialShareItemActionCreator($location, dispatcher, socialShareItemService, guid, invokeAsync, modalActionCreator) {
@@ -10825,7 +12075,7 @@
 
 
 /***/ },
-/* 380 */
+/* 426 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10838,19 +12088,19 @@
 
 
 /***/ },
-/* 381 */
+/* 427 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\r\n    <social-share-item-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></social-share-item-editor>\r\n    <social-share-item-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></social-share-item-list>\r\n</div>\r\n"
 
 /***/ },
-/* 382 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(383);
+	var content = __webpack_require__(429);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -10870,7 +12120,7 @@
 	}
 
 /***/ },
-/* 383 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -10884,7 +12134,7 @@
 
 
 /***/ },
-/* 384 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10927,11 +12177,11 @@
 
 
 /***/ },
-/* 385 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(378);
+	var actions = __webpack_require__(424);
 	var core_1 = __webpack_require__(2);
 	exports.removeSocialShareItemReducer = function (state, action) {
 	    if (action instanceof actions.RemoveSocialShareItemAction)
@@ -10959,11 +12209,11 @@
 
 
 /***/ },
-/* 386 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var social_share_items_container_component_1 = __webpack_require__(377);
+	var social_share_items_container_component_1 = __webpack_require__(423);
 	exports.SocialShareItemsRoutes = [
 	    {
 	        path: "/admin/socialshareitems",
@@ -10979,12 +12229,12 @@
 
 
 /***/ },
-/* 387 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var app_actions_1 = __webpack_require__(84);
-	var app_constants_1 = __webpack_require__(388);
+	var app_constants_1 = __webpack_require__(434);
 	exports.allAppsReducer = function (state, action) {
 	    if (action instanceof app_actions_1.AddOrUpdateAppAction) {
 	        state.app = state.app || { properties: [] };
@@ -11014,7 +12264,7 @@
 
 
 /***/ },
-/* 388 */
+/* 434 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -11036,7 +12286,7 @@
 
 
 /***/ },
-/* 389 */
+/* 435 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -11060,7 +12310,7 @@
 
 
 /***/ },
-/* 390 */
+/* 436 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -11080,7 +12330,7 @@
 
 
 /***/ },
-/* 391 */
+/* 437 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -11098,7 +12348,7 @@
 
 
 /***/ },
-/* 392 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11117,8 +12367,8 @@
 	    }
 	    AppComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(393),
-	            styles: [__webpack_require__(394)],
+	            template: __webpack_require__(439),
+	            styles: [__webpack_require__(440)],
 	            selector: "root-app",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -11130,19 +12380,19 @@
 
 
 /***/ },
-/* 393 */
+/* 439 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"app\">\r\n    <app-header></app-header>\r\n    <div data-ng-view></div>\r\n    <app-footer></app-footer>\r\n</div>"
 
 /***/ },
-/* 394 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(395);
+	var content = __webpack_require__(441);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -11162,7 +12412,7 @@
 	}
 
 /***/ },
-/* 395 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -11176,7 +12426,7 @@
 
 
 /***/ },
-/* 396 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11197,8 +12447,8 @@
 	    }
 	    AdminAppComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(397),
-	            styles: [__webpack_require__(398)],
+	            template: __webpack_require__(443),
+	            styles: [__webpack_require__(444)],
 	            selector: "admin-app",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -11210,19 +12460,19 @@
 
 
 /***/ },
-/* 397 */
+/* 443 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"admin-app\">\r\n    <admin-header></admin-header>\r\n    <div class=\"admin-content-container\">\r\n        <div class=\"admin-side-nav\" data-ng-if=\"vm.currentUser\">\r\n            <ul>\r\n                <li><a href=\"/admin/photos\">Photos</a></li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"admin-main-content\" data-ng-view></div>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"admin-app\">\r\n    <admin-header></admin-header>\r\n    <div class=\"admin-content-container\">\r\n        <div class=\"admin-side-nav\" data-ng-if=\"vm.currentUser\">\r\n            <ul>\r\n                <li><a href=\"/admin/photos\">Photos</a></li>\r\n                <li><a href=\"/admin/galleries\">Galleries</a></li>\r\n                <li><a href=\"/admin/professionalservices\">Services</a></li>\r\n                <li><a href=\"/admin/properties\">Properties</a></li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"admin-main-content\" data-ng-view></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 398 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(399);
+	var content = __webpack_require__(445);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -11242,7 +12492,7 @@
 	}
 
 /***/ },
-/* 399 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -11250,7 +12500,7 @@
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".admin-content-container:after {\n  content: \" \";\n  display: block; }\n\n.admin-side-nav {\n  position: relative;\n  float: left;\n  width: 200px; }\n\n.admin-main-content {\n  position: relative;\n  float: left; }\n\n.admin-app {\n  padding-left: 10px;\n  padding-right: 10px; }\n\n.admin-side-nav ul {\n  list-style-type: none; }\n\n.admin-side-nav a {\n  cursor: pointer;\n  text-decoration: none;\n  color: #272727;\n  line-height: 1.5em; }\n", ""]);
 
 	// exports
 

@@ -1,13 +1,13 @@
-<div class="hairStylistList">
-    <div class="hairStylistList-header">
-        <h1>HairStylists</h1>
+<div class="serviceProviderList">
+    <div class="serviceProviderList-header">
+        <h1>ServiceProviders</h1>
     </div>
     
-    <div data-ng-repeat="entity in vm.entities" class="hairStylistList-item">
-        <div class="hairStylistList-name">
+    <div data-ng-repeat="entity in vm.entities" class="serviceProviderList-item">
+        <div class="serviceProviderList-name">
             {{ entity.name }}
         </div>
-        <div class="hairStylistList-actions">
+        <div class="serviceProviderList-actions">
             <span data-ng-click="vm.edit({ entity: this.entity })">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click="vm.remove({ entity: this.entity })">remove</span>
         </div>
         <div style="clear:both;"></div>

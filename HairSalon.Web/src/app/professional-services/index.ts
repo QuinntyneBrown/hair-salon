@@ -8,7 +8,7 @@ import { ProfessionalServiceService } from "./professional-service.service";
 import *  as reducers from "./professional-service.reducers";
 import *  as actions from "./professional-service.actions";
 
-const appProfessionalServicesModule = angular.module("app.professional-services", []);
+const appProfessionalServicesModule = angular.module("app.professionalServices", []);
 
 bootstrap(appProfessionalServicesModule, {
     components: [ProfessionalServiceComponent, ProfessionalServiceEditorComponent, ProfessionalServicesContainerComponent, ProfessionalServiceListComponent],

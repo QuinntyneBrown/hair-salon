@@ -4,7 +4,7 @@ namespace HairSalon.Data
 {
     public interface IUow
     {
-        IRepository<HairStylist> HairStylists { get; }
+        IRepository<ServiceProvider> ServiceProviders { get; }
         IRepository<App> Apps { get; }
         IRepository<UI> UIs { get; }
         IRepository<Section> Sections { get; }

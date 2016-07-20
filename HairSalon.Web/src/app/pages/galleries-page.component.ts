@@ -7,5 +7,7 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GalleriesPageComponent {
-    constructor() { }
+    storeOnChange = state => {
+
+    }
 }

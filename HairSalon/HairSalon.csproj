@@ -222,9 +222,6 @@
     <Compile Include="Data\RepositoryProvider.cs" />
     <Compile Include="Data\Uow.cs" />
     <Compile Include="Dtos\CurrentUserResponseDto.cs" />
-    <Compile Include="Dtos\HairStylistAddOrUpdateRequestDto.cs" />
-    <Compile Include="Dtos\HairStylistAddOrUpdateResponseDto.cs" />
-    <Compile Include="Dtos\HairStylistDto.cs" />
     <Compile Include="Dtos\PhotoUploadResponseDto.cs" />
     <Compile Include="Dtos\RegistrationRequestDto.cs" />
     <Compile Include="Dtos\RegistrationResponseDto.cs" />
@@ -242,7 +239,6 @@
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\GalleryCategory.cs" />
     <Compile Include="Models\GalleryPhoto.cs" />
-    <Compile Include="Models\HairStylist.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Person.cs" />
@@ -253,17 +249,17 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Models\SectionProperty.cs" />
+    <Compile Include="Models\ServiceProvider.cs" />
+    <Compile Include="Models\ServiceProviderType.cs" />
     <Compile Include="Models\SocialShareItem.cs" />
     <Compile Include="Models\UI.cs" />
     <Compile Include="Models\UIProperty.cs" />
     <Compile Include="Models\UISection.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\HairStylistService.cs" />
     <Compile Include="Services\Cache.cs" />
     <Compile Include="Services\CacheProvider.cs" />
     <Compile Include="Services\EncryptionService.cs" />
-    <Compile Include="Services\IHairStylistService.cs" />
     <Compile Include="Services\ICache.cs" />
     <Compile Include="Services\ICacheProvider.cs" />
     <Compile Include="Services\IdentityService.cs" />
@@ -376,6 +372,12 @@
     <Compile Include="Services\IContactService.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ICustomerService.cs" />
+    <Compile Include="Dtos\ServiceProviderDto.cs" />
+    <Compile Include="Dtos\ServiceProviderAddOrUpdateRequestDto.cs" />
+    <Compile Include="Dtos\ServiceProviderAddOrUpdateResponseDto.cs" />
+    <Compile Include="Services\ServiceProviderService.cs" />
+    <Compile Include="Services\IServiceProviderService.cs" />
+    <Compile Include="Controllers\ServiceProviderController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

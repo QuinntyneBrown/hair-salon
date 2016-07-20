@@ -432,21 +432,6 @@
     <Content Include="src\app\galleries\gallery.component.scss">
       <DependentUpon>gallery.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\hair-stylists\hair-stylist-editor.component.html">
-      <DependentUpon>hair-stylist-editor.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\hair-stylists\hair-stylist-list.component.html">
-      <DependentUpon>hair-stylist-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\hair-stylists\hair-stylist.component.html">
-      <DependentUpon>hair-stylist.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\hair-stylists\hair-stylist.component.scss">
-      <DependentUpon>hair-stylist.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\hair-stylists\hair-stylists-container.component.html">
-      <DependentUpon>hair-stylists-container.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\app\menu-items\menu-item-editor.component.html">
       <DependentUpon>menu-item-editor.component.ts</DependentUpon>
     </Content>
@@ -528,12 +513,6 @@
     <Content Include="src\app\pages\whats-new-page.component.scss">
       <DependentUpon>whats-new-page.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\pages\whats-new.component.html">
-      <DependentUpon>whats-new.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\pages\whats-new.component.scss">
-      <DependentUpon>whats-new.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\app\photos\photo-editor.component.html">
       <DependentUpon>photo-editor.component.ts</DependentUpon>
     </Content>
@@ -582,6 +561,21 @@
     <Content Include="src\app\professional-services\professional-services-container.component.html">
       <DependentUpon>professional-services-container.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\service-providers\service-provider-editor.component.html">
+      <DependentUpon>service-provider-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\service-providers\service-provider-list.component.html">
+      <DependentUpon>service-provider-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\service-providers\service-provider.component.html">
+      <DependentUpon>service-provider.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\service-providers\service-provider.component.scss">
+      <DependentUpon>service-provider.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\service-providers\service-providers-container.component.html">
+      <DependentUpon>service-providers-container.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\social-share-items\social-share-item-editor.component.html">
       <DependentUpon>social-share-item-editor.component.ts</DependentUpon>
     </Content>
@@ -625,15 +619,6 @@
     <Content Include="src\app\content-aggregation\containers\properties-container.component.scss" />
     <Content Include="src\app\content-aggregation\containers\sections-container.component.scss" />
     <Content Include="src\app\content-aggregation\containers\uis-container.component.scss" />
-    <Content Include="src\app\hair-stylists\hair-stylist-editor.component.scss">
-      <DependentUpon>hair-stylist-editor.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\hair-stylists\hair-stylist-list.component.scss">
-      <DependentUpon>hair-stylist-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\hair-stylists\hair-stylists-container.component.scss">
-      <DependentUpon>hair-stylists-container.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\app\galleries\gallery-editor.component.scss">
       <DependentUpon>gallery-editor.component.ts</DependentUpon>
     </Content>
@@ -728,6 +713,15 @@
     <Content Include="bower_components\tinymce-dist\skins\lightgray\fonts\tinymce.woff" />
     <None Include="Properties\PublishProfiles\expohair - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\expohair - Web Deploy.pubxml" />
+    <Content Include="src\app\service-providers\service-provider-editor.component.scss">
+      <DependentUpon>service-provider-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\service-providers\service-provider-list.component.scss">
+      <DependentUpon>service-provider-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\service-providers\service-providers-container.component.scss">
+      <DependentUpon>service-providers-container.component.ts</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -810,7 +804,6 @@
     <TypeScriptCompile Include="src\app\content-aggregation\services\ui.service.ts" />
     <TypeScriptCompile Include="src\app\customers\customers.routes.ts" />
     <TypeScriptCompile Include="src\app\galleries\galleries.routes.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylists.routes.ts" />
     <TypeScriptCompile Include="src\app\menu-items\menu-items.routes.ts" />
     <TypeScriptCompile Include="src\app\menus\menu-list.component.ts" />
     <TypeScriptCompile Include="src\app\menus\menus.routes.ts" />
@@ -821,6 +814,7 @@
     <TypeScriptCompile Include="src\app\photos\photo-upload.component.ts" />
     <TypeScriptCompile Include="src\app\photos\photos.routes.ts" />
     <TypeScriptCompile Include="src\app\professional-services\professional-services.routes.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-providers.routes.ts" />
     <TypeScriptCompile Include="src\app\shared\index.ts" />
     <TypeScriptCompile Include="src\app\social-share-items\social-share-items.routes.ts" />
     <TypeScriptCompile Include="src\main.ts" />
@@ -851,16 +845,6 @@
     <TypeScriptCompile Include="src\app\social-share-items\social-share-item.service.ts" />
     <TypeScriptCompile Include="src\app\social-share-items\social-share-item-list.component.ts" />
     <TypeScriptCompile Include="src\app\social-share-items\social-share-item-editor.component.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.model.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\index.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylists-container.component.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.actions.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.action-creator.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.reducers.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.component.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist.service.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist-list.component.ts" />
-    <TypeScriptCompile Include="src\app\hair-stylists\hair-stylist-editor.component.ts" />
     <TypeScriptCompile Include="src\app\professional-services\professional-service.model.ts" />
     <TypeScriptCompile Include="src\app\professional-services\index.ts" />
     <TypeScriptCompile Include="src\app\professional-services\professional-services-container.component.ts" />
@@ -935,7 +919,16 @@
     <TypeScriptCompile Include="src\app\customers\customer.service.ts" />
     <TypeScriptCompile Include="src\app\customers\customer-list.component.ts" />
     <TypeScriptCompile Include="src\app\customers\customer-editor.component.ts" />
-    <TypeScriptCompile Include="src\app\pages\whats-new.component.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-provider.model.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\index.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-providers-container.component.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-provider.actions.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-provider.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-provider.reducers.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-provider.component.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-provider.service.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-provider-list.component.ts" />
+    <TypeScriptCompile Include="src\app\service-providers\service-provider-editor.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

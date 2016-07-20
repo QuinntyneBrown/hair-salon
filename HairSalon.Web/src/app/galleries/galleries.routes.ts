@@ -3,7 +3,7 @@ import { IRouteConfig } from "angular-rx-ui/src/components/core";
 
 export const GalleriesRoutes: Array<IRouteConfig> = [
     {
-        path: "/admin",
+        path: "/admin/galleries",
         component: GalleriesContainerComponent,
         authorizationRequired: true
     },

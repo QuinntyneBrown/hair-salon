@@ -10,6 +10,6 @@ export class ProfessionalServiceService extends BaseService {
         super($q, apiEndpoint, fetch)
     }
 
-    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/v1/professionalService"; }
+    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/professionalService"; }
 
 }

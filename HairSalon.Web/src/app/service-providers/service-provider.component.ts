@@ -1,11 +1,11 @@
 import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/src/components/core";
 
 @Component({
-    template: require("./hair-stylist.component.html"),
-    styles: [require("./hair-stylist.component.scss")],
-    selector: "hair-stylist",
+    template: require("./service-provider.component.html"),
+    styles: [require("./service-provider.component.scss")],
+    selector: "service-provider",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HairStylistComponent {
+export class ServiceProviderComponent {
     constructor() { }
 }

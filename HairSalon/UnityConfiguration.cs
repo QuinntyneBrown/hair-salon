@@ -20,7 +20,7 @@ namespace HairSalon
             container.RegisterType<ICacheProvider, CacheProvider>();
             container.RegisterType<IEncryptionService, EncryptionService>();
             container.RegisterType<ILogger, Logger>();
-            container.RegisterType<IHairStylistService, HairStylistService>();
+            container.RegisterType<IServiceProviderService, ServiceProviderService>();
             container.RegisterType<IAppService, AppService>();
             container.RegisterType<IContactService, ContactService>();
             container.RegisterType<ICustomerService, CustomerService>();

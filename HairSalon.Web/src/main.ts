@@ -6,6 +6,8 @@ require("./app/menu-items");
 require("./app/menus");
 require("./app/pages");
 require("./app/photos");
+require("./app/professional-services");
+require("./app/service-providers");
 require("./app/shared");
 require("./app/social-share-items");
 
@@ -19,6 +21,8 @@ import { MenuItemsRoutes } from "./app/menu-items";
 import { MenusRoutes } from "./app/menus";
 import { PagesRoutes } from "./app/pages";
 import { PhotosRoutes } from "./app/photos";
+import { ProfessionalServicesRoutes } from "./app/professional-services";
+import { ServiceProvidersRoutes } from "./app/service-providers";
 import { SocialShareItemsRoutes } from "./app/social-share-items";
 
 import { provide, provideRoutePromise, bootstrap } from "angular-rx-ui/src/components/core";
@@ -40,7 +44,9 @@ const appModule = angular.module("app", [
     "app.menus",
     "app.pages",
     "app.photos",
+    "app.professionalServices",
     "app.shared",
+    "app.serviceProviders",
     "app.socialShareItems"
 ]);
 
@@ -61,6 +67,8 @@ bootstrap(appModule, {
         ...MenusRoutes,
         ...PagesRoutes,
         ...PhotosRoutes,
+        ...ProfessionalServicesRoutes,
+        ...ServiceProvidersRoutes,
         ...SocialShareItemsRoutes
     ]
 });

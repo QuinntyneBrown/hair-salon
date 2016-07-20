@@ -10,6 +10,6 @@ export class MenuService extends BaseService {
         super($q, apiEndpoint, fetch)
     }
 
-    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/v1/menu"; }
+    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/menu"; }
 
 }

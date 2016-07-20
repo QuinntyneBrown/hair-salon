@@ -6,7 +6,7 @@ import { GalleriesPageComponent } from "./galleries-page.component";
 import { GalleryPageComponent } from "./gallery-page.component";
 import { LoginPageComponent } from "./login-page.component";
 import { ProfessionalServicesPageComponent } from "./professional-services-page.component";
-import { WhatsNewComponent } from "./whats-new.component";
+import { WhatsNewPageComponent } from "./whats-new-page.component";
 
 export const PagesRoutes: Array<IRouteConfig> = [
     {
@@ -39,6 +39,6 @@ export const PagesRoutes: Array<IRouteConfig> = [
     },
     {
         path: "/whats-new",
-        component: WhatsNewComponent
+        component: WhatsNewPageComponent
     }
 ];

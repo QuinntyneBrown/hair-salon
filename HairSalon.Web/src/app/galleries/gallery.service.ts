@@ -10,6 +10,6 @@ export class GalleryService extends BaseService {
         super($q, apiEndpoint, fetch)
     }
 
-    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/v1/gallery"; }
+    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/gallery"; }
 
 }
