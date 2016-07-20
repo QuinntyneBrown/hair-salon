@@ -1,0 +1,22 @@
+.contactList-name,
+.contactList-actions {
+    position:relative;
+    float:left;
+}
+
+.contactList-name {
+    min-width:200px;
+}
+
+.contactList-item {
+    height:50px;
+}
+
+.contactList-actions span {
+    cursor:pointer;
+}
+
+.contactList-actions {
+    text-transform: uppercase;
+}
+   

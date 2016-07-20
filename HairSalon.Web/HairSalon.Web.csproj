@@ -397,6 +397,9 @@
     <Content Include="src\app\professional-services\professional-services-container.component.scss">
       <DependentUpon>professional-services-container.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\shared\shared.scss" />
+    <Content Include="src\assets\scss\_variables.scss" />
+    <Content Include="src\assets\scss\_breakpoints.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -419,6 +422,36 @@
     <Content Include="src\app\photos\photo-list.component.html" />
     <Content Include="src\app\photos\photo-editor.component.css" />
     <Content Include="src\app\photos\photo-editor.component.html" />
+    <Content Include="src\app\contact\contacts-container.component.css" />
+    <Content Include="src\app\contact\contacts-container.component.html" />
+    <Content Include="src\app\contact\contact.component.scss" />
+    <Content Include="src\app\contact\contact.component.html" />
+    <Content Include="src\app\contact\contact-list.component.css" />
+    <Content Include="src\app\contact\contact-list.component.html" />
+    <Content Include="src\app\contact\contact-editor.component.css" />
+    <Content Include="src\app\contact\contact-editor.component.html" />
+    <Content Include="src\app\menu-item\menu-items-container.component.css" />
+    <Content Include="src\app\menu-item\menu-items-container.component.html" />
+    <Content Include="src\app\menu-item\menu-item.component.scss" />
+    <Content Include="src\app\menu-item\menu-item.component.html" />
+    <Content Include="src\app\menu-item\menu-item-list.component.css" />
+    <Content Include="src\app\menu-item\menu-item-list.component.html" />
+    <Content Include="src\app\menu-item\menu-item-editor.component.css" />
+    <Content Include="src\app\menu-item\menu-item-editor.component.html" />
+    <Content Include="src\app\menu\menus-container.component.css" />
+    <Content Include="src\app\menu\menus-container.component.html" />
+    <Content Include="src\app\menu\menu.component.scss" />
+    <Content Include="src\app\menu\menu.component.html" />
+    <Content Include="src\app\menu\menu-list.component.css" />
+    <Content Include="src\app\menu\menu-list.component.html" />
+    <Content Include="src\app\menu\menu-editor.component.css" />
+    <Content Include="src\app\menu\menu-editor.component.html" />
+    <Content Include="src\app\shared\admin-header\admin-header.component.scss" />
+    <Content Include="src\app\shared\admin-header\admin-header.component.html" />
+    <Content Include="src\app\shared\app-header\app-header.component.scss" />
+    <Content Include="src\app\shared\app-header\app-header.component.html" />
+    <Content Include="src\app\shared\app-footer\app-footer.component.scss" />
+    <Content Include="src\app\shared\app-footer\app-footer.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -488,6 +521,7 @@
     <TypeScriptCompile Include="src\app\content-aggregation\services\ui.service.ts" />
     <TypeScriptCompile Include="src\app\pages\index.ts" />
     <TypeScriptCompile Include="src\app\professional-services\professional-services.routes.ts" />
+    <TypeScriptCompile Include="src\app\shared\index.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="typings\globals\angular-mocks\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\angular-route\index.d.ts" />
@@ -560,6 +594,42 @@
     <TypeScriptCompile Include="src\app\galleries\gallery-editor.component.ts" />
     <TypeScriptCompile Include="src\app\pages\professional-services-page.component.ts" />
     <TypeScriptCompile Include="src\app\pages\login-page.component.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.model.ts" />
+    <TypeScriptCompile Include="src\app\contact\index.ts" />
+    <TypeScriptCompile Include="src\app\contact\contacts-container.component.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.actions.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.reducers.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.component.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.service.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact-list.component.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-item.model.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\index.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-items-container.component.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-item.actions.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-item.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-item.reducers.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-item.component.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-item.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-item.service.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-item-list.component.ts" />
+    <TypeScriptCompile Include="src\app\menu-item\menu-item-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\menu\menu.model.ts" />
+    <TypeScriptCompile Include="src\app\menu\index.ts" />
+    <TypeScriptCompile Include="src\app\menu\menus-container.component.ts" />
+    <TypeScriptCompile Include="src\app\menu\menu.actions.ts" />
+    <TypeScriptCompile Include="src\app\menu\menu.action-creator.ts" />
+    <TypeScriptCompile Include="src\app\menu\menu.reducers.ts" />
+    <TypeScriptCompile Include="src\app\menu\menu.component.ts" />
+    <TypeScriptCompile Include="src\app\menu\menu.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\menu\menu.service.ts" />
+    <TypeScriptCompile Include="src\app\menu\menu-list.component.ts" />
+    <TypeScriptCompile Include="src\app\menu\menu-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\admin-header\admin-header.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\app-header\app-header.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\app-footer\app-footer.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

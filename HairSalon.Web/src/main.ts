@@ -1,16 +1,12 @@
-﻿require("./app/articles");
-require("./app/contacts");
+﻿require("./app/contacts");
 require("./app/content-aggregation");
 require("./app/customers");
 require("./app/galleries");
 require("./app/login");
 require("./app/menu-items");
 require("./app/menus");
-require("./app/orders");
 require("./app/pages");
 require("./app/photos");
-require("./app/products");
-require("./app/quotes");
 require("./app/shared");
 require("./app/social-share-items");
 
@@ -20,7 +16,7 @@ import { ContentAggregationRoutes } from "./app/content-aggregation";
 
 import { provide, provideRoutePromise, bootstrap } from "angular-rx-ui/src/components/core";
 import { authorizationGuard } from "angular-rx-ui/src/components/routing/authorization-guard";
-import { appGuard } from "../app.guard";
+import { appGuard } from "./app/app.guard";
 import { routeChangeSuccessIsAdminReducer } from "angular-rx-ui/src/components/routing/route-change-success-is-admin.reducer";
 
 import { AppComponent } from "./app/app.component";
