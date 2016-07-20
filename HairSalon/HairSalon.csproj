@@ -267,6 +267,7 @@
     <Compile Include="Services\IEncryptionService.cs" />
     <Compile Include="Services\IIdentityService.cs" />
     <Compile Include="Services\MemoryCache.cs" />
+    <Compile Include="Services\PropertyHelper.cs" />
     <Compile Include="Trace\EventIdEnricher.cs" />
     <Compile Include="Trace\ITraceService.cs" />
     <Compile Include="Trace\LoggerExtensions.cs" />
