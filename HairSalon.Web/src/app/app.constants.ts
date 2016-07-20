@@ -9,5 +9,4 @@
     public static biography: string = "biography";
     public static contactInfomation: string = "contactInfomation";
     public static logo: string = "logo";
-
 }

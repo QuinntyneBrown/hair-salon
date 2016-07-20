@@ -8949,16 +8949,23 @@
 	};
 	var core_1 = __webpack_require__(2);
 	var LoginPageComponent = (function () {
-	    function LoginPageComponent() {
+	    function LoginPageComponent(loginRedirect) {
+	        var _this = this;
+	        this.loginRedirect = loginRedirect;
+	        this.storeOnChange = function (state) {
+	            if (state.lastTriggeredByActionType == "login.userLoggedInAction")
+	                _this.loginRedirect.redirectPreLogin();
+	        };
 	    }
 	    LoginPageComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(306),
 	            styles: [__webpack_require__(307)],
 	            selector: "login-page",
+	            viewProviders: ["loginRedirect"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
-	        __metadata('design:paramtypes', [])
+	        __metadata('design:paramtypes', [Object])
 	    ], LoginPageComponent);
 	    return LoginPageComponent;
 	}());
@@ -10232,7 +10239,7 @@
 /* 357 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"app-header\">\r\n    <h1>Hair Salon</h1>\r\n</div>\r\n"
+	module.exports = "<div class=\"app-header\">\r\n    <h1>Expo Hair</h1>\r\n</div>\r\n"
 
 /***/ },
 /* 358 */
@@ -11065,10 +11072,11 @@
 	        "appActionCreator",
 	        "store",
 	        function ($q, $route, invokeAsync, appActionCreator, store) {
-	            return invokeAsync({ action: appActionCreator.getById, params: { id: 2 } });
+	            return $q.resolve(true);
 	        }],
 	    route: "*"
 	};
+	//invokeAsync({ action: appActionCreator.getById, params: { id: 1 } }) 
 
 
 /***/ },
@@ -11125,7 +11133,7 @@
 /* 393 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"app\">\r\n    <app-header></app-header>\r\n    <h1>Wtf</h1>\r\n</div>\r\n"
+	module.exports = "<div class=\"app\">\r\n    <app-header></app-header>\r\n    <div data-ng-view></div>\r\n    <app-footer></app-footer>\r\n</div>"
 
 /***/ },
 /* 394 */
@@ -11184,6 +11192,8 @@
 	var core_1 = __webpack_require__(2);
 	var AdminAppComponent = (function () {
 	    function AdminAppComponent() {
+	        var _this = this;
+	        this.storeOnChange = function (state) { return _this.currentUser = state.currentUser; };
 	    }
 	    AdminAppComponent = __decorate([
 	        core_1.Component({
@@ -11203,7 +11213,7 @@
 /* 397 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"admin-app\">\r\n    <admin-header></admin-header>\r\n    <div class=\"admin-content-container\">\r\n        <div class=\"admin-side-nav\" data-ng-if=\"vm.currentUser\">\r\n            <ul>\r\n                <li><a href=\"/admin/hairstylists\">Hair Stylists</a></li>\r\n                <li><a href=\"/admin/apps\">Apps</a></li>\r\n                <li><a href=\"/admin/uis\">UIs</a></li>\r\n                <li><a href=\"/admin/sections\">Sections</a></li>\r\n                <li><a href=\"/admin/properties\">Properties</a></li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"admin-main-content\" data-ng-view></div>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"admin-app\">\r\n    <admin-header></admin-header>\r\n    <div class=\"admin-content-container\">\r\n        <div class=\"admin-side-nav\" data-ng-if=\"vm.currentUser\">\r\n            <ul>\r\n                <li><a href=\"/admin/photos\">Photos</a></li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"admin-main-content\" data-ng-view></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 398 */
