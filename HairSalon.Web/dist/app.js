@@ -52,17 +52,17 @@
 	__webpack_require__(238);
 	__webpack_require__(261);
 	__webpack_require__(284);
-	__webpack_require__(294);
-	__webpack_require__(325);
-	__webpack_require__(340);
-	var reducers = __webpack_require__(363);
+	__webpack_require__(314);
+	__webpack_require__(345);
+	__webpack_require__(360);
+	var reducers = __webpack_require__(383);
 	var content_aggregation_1 = __webpack_require__(81);
 	var core_1 = __webpack_require__(2);
-	var authorization_guard_1 = __webpack_require__(365);
-	var app_guard_1 = __webpack_require__(366);
-	var route_change_success_is_admin_reducer_1 = __webpack_require__(367);
-	var app_component_1 = __webpack_require__(368);
-	var admin_app_component_1 = __webpack_require__(372);
+	var authorization_guard_1 = __webpack_require__(385);
+	var app_guard_1 = __webpack_require__(386);
+	var route_change_success_is_admin_reducer_1 = __webpack_require__(387);
+	var app_component_1 = __webpack_require__(388);
+	var admin_app_component_1 = __webpack_require__(392);
 	var appModule = angular.module("app", [
 	    "components",
 	    "app.contentAggregation"
@@ -8503,15 +8503,25 @@
 	}
 	var core_1 = __webpack_require__(2);
 	var biography_page_component_1 = __webpack_require__(285);
-	var home_page_component_1 = __webpack_require__(289);
+	var contact_page_component_1 = __webpack_require__(289);
+	var home_page_component_1 = __webpack_require__(293);
+	var galleries_page_component_1 = __webpack_require__(297);
+	var gallery_page_component_1 = __webpack_require__(301);
+	var professional_services_page_component_1 = __webpack_require__(305);
+	var whats_new_component_1 = __webpack_require__(309);
 	var pagesModule = angular.module("app.pages", []);
 	core_1.bootstrap(pagesModule, {
 	    components: [
 	        biography_page_component_1.BiographyPageComponent,
-	        home_page_component_1.HomePageComponent
+	        contact_page_component_1.ContactPageComponent,
+	        galleries_page_component_1.GalleriesPageComponent,
+	        gallery_page_component_1.GalleryPageComponent,
+	        home_page_component_1.HomePageComponent,
+	        professional_services_page_component_1.ProfessionalServicesPageComponent,
+	        whats_new_component_1.WhatsNewComponent
 	    ]
 	});
-	__export(__webpack_require__(293));
+	__export(__webpack_require__(313));
 
 
 /***/ },
@@ -8607,28 +8617,28 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var HomePageComponent = (function () {
-	    function HomePageComponent() {
+	var ContactPageComponent = (function () {
+	    function ContactPageComponent() {
 	    }
-	    HomePageComponent = __decorate([
+	    ContactPageComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(290),
 	            styles: [__webpack_require__(291)],
-	            selector: "home-page",
+	            selector: "contact-page",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], HomePageComponent);
-	    return HomePageComponent;
+	    ], ContactPageComponent);
+	    return ContactPageComponent;
 	}());
-	exports.HomePageComponent = HomePageComponent;
+	exports.ContactPageComponent = ContactPageComponent;
 
 
 /***/ },
 /* 290 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"home-page\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"contact-page\">\r\n\r\n</div>\r\n"
 
 /***/ },
 /* 291 */
@@ -8646,8 +8656,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./home-page.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./home-page.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./contact-page.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./contact-page.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -8675,17 +8685,437 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var home_page_component_1 = __webpack_require__(289);
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var HomePageComponent = (function () {
+	    function HomePageComponent() {
+	    }
+	    HomePageComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(294),
+	            styles: [__webpack_require__(295)],
+	            selector: "home-page",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], HomePageComponent);
+	    return HomePageComponent;
+	}());
+	exports.HomePageComponent = HomePageComponent;
+
+
+/***/ },
+/* 294 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"home-page\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(296);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./home-page.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./home-page.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var GalleriesPageComponent = (function () {
+	    function GalleriesPageComponent() {
+	    }
+	    GalleriesPageComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(298),
+	            styles: [__webpack_require__(299)],
+	            selector: "galleries-page",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], GalleriesPageComponent);
+	    return GalleriesPageComponent;
+	}());
+	exports.GalleriesPageComponent = GalleriesPageComponent;
+
+
+/***/ },
+/* 298 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"galleries-page\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(300);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./galleries-page.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./galleries-page.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var GalleryPageComponent = (function () {
+	    function GalleryPageComponent() {
+	    }
+	    GalleryPageComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(302),
+	            styles: [__webpack_require__(303)],
+	            selector: "gallery-page",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], GalleryPageComponent);
+	    return GalleryPageComponent;
+	}());
+	exports.GalleryPageComponent = GalleryPageComponent;
+
+
+/***/ },
+/* 302 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"gallery-page\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(304);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./gallery-page.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./gallery-page.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var ProfessionalServicesPageComponent = (function () {
+	    function ProfessionalServicesPageComponent() {
+	    }
+	    ProfessionalServicesPageComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(306),
+	            styles: [__webpack_require__(307)],
+	            selector: "professional-services-page",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ProfessionalServicesPageComponent);
+	    return ProfessionalServicesPageComponent;
+	}());
+	exports.ProfessionalServicesPageComponent = ProfessionalServicesPageComponent;
+
+
+/***/ },
+/* 306 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"professional-services-page\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 307 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(308);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-services-page.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./professional-services-page.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 308 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 309 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var WhatsNewComponent = (function () {
+	    function WhatsNewComponent() {
+	    }
+	    WhatsNewComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(310),
+	            styles: [__webpack_require__(311)],
+	            selector: "whats-new",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], WhatsNewComponent);
+	    return WhatsNewComponent;
+	}());
+	exports.WhatsNewComponent = WhatsNewComponent;
+
+
+/***/ },
+/* 310 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"whats-new\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 311 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(312);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./whats-new.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./whats-new.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 312 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 313 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var biography_page_component_1 = __webpack_require__(285);
+	var contact_page_component_1 = __webpack_require__(289);
+	var home_page_component_1 = __webpack_require__(293);
+	var galleries_page_component_1 = __webpack_require__(297);
+	var gallery_page_component_1 = __webpack_require__(301);
+	var professional_services_page_component_1 = __webpack_require__(305);
+	var whats_new_component_1 = __webpack_require__(309);
 	exports.PagesRoutes = [
 	    {
 	        path: "/",
 	        component: home_page_component_1.HomePageComponent
+	    },
+	    {
+	        path: "/biography",
+	        component: biography_page_component_1.BiographyPageComponent
+	    },
+	    {
+	        path: "/contact",
+	        component: contact_page_component_1.ContactPageComponent
+	    },
+	    {
+	        path: "/services",
+	        component: professional_services_page_component_1.ProfessionalServicesPageComponent
+	    },
+	    {
+	        path: "/galleries",
+	        component: galleries_page_component_1.GalleriesPageComponent
+	    },
+	    {
+	        path: "/gallery/:slug",
+	        component: gallery_page_component_1.GalleryPageComponent
+	    },
+	    {
+	        path: "/whats-new",
+	        component: whats_new_component_1.WhatsNewComponent
 	    }
 	];
 
 
 /***/ },
-/* 294 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8693,16 +9123,16 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	var core_1 = __webpack_require__(2);
-	var photo_editor_component_1 = __webpack_require__(295);
-	var photo_list_component_1 = __webpack_require__(299);
-	var photo_component_1 = __webpack_require__(303);
-	var photos_container_component_1 = __webpack_require__(307);
-	var photo_upload_modal_component_1 = __webpack_require__(314);
-	var photo_upload_component_1 = __webpack_require__(318);
-	var photo_action_creator_1 = __webpack_require__(309);
-	var photo_service_1 = __webpack_require__(322);
-	var reducers = __webpack_require__(323);
-	var actions = __webpack_require__(308);
+	var photo_editor_component_1 = __webpack_require__(315);
+	var photo_list_component_1 = __webpack_require__(319);
+	var photo_component_1 = __webpack_require__(323);
+	var photos_container_component_1 = __webpack_require__(327);
+	var photo_upload_modal_component_1 = __webpack_require__(334);
+	var photo_upload_component_1 = __webpack_require__(338);
+	var photo_action_creator_1 = __webpack_require__(329);
+	var photo_service_1 = __webpack_require__(342);
+	var reducers = __webpack_require__(343);
+	var actions = __webpack_require__(328);
 	var appPhotosModule = angular.module("app.photos", []);
 	core_1.bootstrap(appPhotosModule, {
 	    components: [photo_component_1.PhotoComponent, photo_editor_component_1.PhotoEditorComponent, photos_container_component_1.PhotosContainerComponent, photo_list_component_1.PhotoListComponent, photo_upload_component_1.PhotoUploadComponent, photo_upload_modal_component_1.PhotoUploadModalComponent],
@@ -8710,11 +9140,11 @@
 	    reducers: reducers,
 	    actions: actions
 	});
-	__export(__webpack_require__(324));
+	__export(__webpack_require__(344));
 
 
 /***/ },
-/* 295 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8733,8 +9163,8 @@
 	    }
 	    PhotoEditorComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(296),
-	            styles: [__webpack_require__(297)],
+	            template: __webpack_require__(316),
+	            styles: [__webpack_require__(317)],
 	            selector: "photo-editor",
 	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -8747,19 +9177,19 @@
 
 
 /***/ },
-/* 296 */
+/* 316 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Photo Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 297 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(298);
+	var content = __webpack_require__(318);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8779,7 +9209,7 @@
 	}
 
 /***/ },
-/* 298 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8793,7 +9223,7 @@
 
 
 /***/ },
-/* 299 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8812,8 +9242,8 @@
 	    }
 	    PhotoListComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(300),
-	            styles: [__webpack_require__(301)],
+	            template: __webpack_require__(320),
+	            styles: [__webpack_require__(321)],
 	            selector: "photo-list",
 	            inputs: ['entities', 'edit', 'remove'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -8826,19 +9256,19 @@
 
 
 /***/ },
-/* 300 */
+/* 320 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"photoList\">\r\n    <div class=\"photoList-header\">\r\n        <h1>Photos</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"photoList-item\">\r\n        <div class=\"photoList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"photoList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 301 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(302);
+	var content = __webpack_require__(322);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8858,7 +9288,7 @@
 	}
 
 /***/ },
-/* 302 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8872,7 +9302,7 @@
 
 
 /***/ },
-/* 303 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8891,8 +9321,8 @@
 	    }
 	    PhotoComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(304),
-	            styles: [__webpack_require__(305)],
+	            template: __webpack_require__(324),
+	            styles: [__webpack_require__(325)],
 	            selector: "photo",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -8904,19 +9334,19 @@
 
 
 /***/ },
-/* 304 */
+/* 324 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"photo\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 305 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(306);
+	var content = __webpack_require__(326);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8936,7 +9366,7 @@
 	}
 
 /***/ },
-/* 306 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8950,7 +9380,7 @@
 
 
 /***/ },
-/* 307 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8964,9 +9394,9 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var actions = __webpack_require__(308);
-	var photo_action_creator_1 = __webpack_require__(309);
-	var photo_model_1 = __webpack_require__(310);
+	var actions = __webpack_require__(328);
+	var photo_action_creator_1 = __webpack_require__(329);
+	var photo_model_1 = __webpack_require__(330);
 	var PhotosContainerComponent = (function () {
 	    function PhotosContainerComponent($location, $routeParams, photoActionCreator, _invokeAsync) {
 	        var _this = this;
@@ -9017,8 +9447,8 @@
 	    PhotosContainerComponent = __decorate([
 	        core_1.Component({
 	            routes: ["/admin/photos", "/admin/photo/edit/:photoId"],
-	            template: __webpack_require__(311),
-	            styles: [__webpack_require__(312)],
+	            template: __webpack_require__(331),
+	            styles: [__webpack_require__(332)],
 	            selector: "photos-container",
 	            viewProviders: ["$location", "$routeParams", "photoActionCreator", "invokeAsync"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -9040,7 +9470,7 @@
 
 
 /***/ },
-/* 308 */
+/* 328 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -9107,7 +9537,7 @@
 
 
 /***/ },
-/* 309 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9127,7 +9557,7 @@
 	};
 	var core_1 = __webpack_require__(2);
 	var modal_action_creator_1 = __webpack_require__(72);
-	var photo_actions_1 = __webpack_require__(308);
+	var photo_actions_1 = __webpack_require__(328);
 	var PhotoActionCreator = (function (_super) {
 	    __extends(PhotoActionCreator, _super);
 	    function PhotoActionCreator($location, dispatcher, photoService, guid, invokeAsync, modalActionCreator) {
@@ -9181,7 +9611,7 @@
 
 
 /***/ },
-/* 310 */
+/* 330 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -9194,19 +9624,19 @@
 
 
 /***/ },
-/* 311 */
+/* 331 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\r\n    <photo-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></photo-editor>\r\n    <photo-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></photo-list>\r\n</div>\r\n"
 
 /***/ },
-/* 312 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(313);
+	var content = __webpack_require__(333);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9226,7 +9656,7 @@
 	}
 
 /***/ },
-/* 313 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9240,7 +9670,7 @@
 
 
 /***/ },
-/* 314 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9254,7 +9684,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var photo_actions_1 = __webpack_require__(308);
+	var photo_actions_1 = __webpack_require__(328);
 	var modal_action_creator_1 = __webpack_require__(72);
 	var PhotoUploadModalComponent = (function () {
 	    function PhotoUploadModalComponent(modalActionCreator) {
@@ -9269,8 +9699,8 @@
 	    }
 	    PhotoUploadModalComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(315),
-	            styles: __webpack_require__(316),
+	            template: __webpack_require__(335),
+	            styles: __webpack_require__(336),
 	            selector: "photo-upload-modal",
 	            viewProviders: ["modalActionCreator"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -9283,19 +9713,19 @@
 
 
 /***/ },
-/* 315 */
+/* 335 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"photo-upload-modal\">\r\n    \r\n    <modal>\r\n\r\n        <modal-title>Photo Upload</modal-title>\r\n\r\n        <modal-content>\r\n\r\n            <photo-upload></photo-upload>\r\n        \r\n        </modal-content>\r\n\r\n    </modal>\r\n\r\n</div>"
 
 /***/ },
-/* 316 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(317);
+	var content = __webpack_require__(337);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9315,7 +9745,7 @@
 	}
 
 /***/ },
-/* 317 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9329,7 +9759,7 @@
 
 
 /***/ },
-/* 318 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9343,7 +9773,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var photo_action_creator_1 = __webpack_require__(309);
+	var photo_action_creator_1 = __webpack_require__(329);
 	var PhotoUploadComponent = (function () {
 	    function PhotoUploadComponent($element, photoActionCreator) {
 	        var _this = this;
@@ -9367,8 +9797,8 @@
 	    });
 	    PhotoUploadComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(319),
-	            styles: __webpack_require__(320),
+	            template: __webpack_require__(339),
+	            styles: __webpack_require__(340),
 	            selector: "photo-upload",
 	            viewProviders: ["$element", "photoActionCreator"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -9381,19 +9811,19 @@
 
 
 /***/ },
-/* 319 */
+/* 339 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\r\n    <div class=\"drop-zone\">DROP FILES HERE TO BE UPLOADED...</div>\r\n</div>"
 
 /***/ },
-/* 320 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(321);
+	var content = __webpack_require__(341);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9413,7 +9843,7 @@
 	}
 
 /***/ },
-/* 321 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9427,7 +9857,7 @@
 
 
 /***/ },
-/* 322 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9470,11 +9900,11 @@
 
 
 /***/ },
-/* 323 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(308);
+	var actions = __webpack_require__(328);
 	var core_1 = __webpack_require__(2);
 	exports.removePhotoReducer = function (state, action) {
 	    if (action instanceof actions.RemovePhotoAction)
@@ -9511,11 +9941,11 @@
 
 
 /***/ },
-/* 324 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var photos_container_component_1 = __webpack_require__(307);
+	var photos_container_component_1 = __webpack_require__(327);
 	exports.PhotosRoutes = [
 	    {
 	        path: "/admin/photos",
@@ -9531,15 +9961,15 @@
 
 
 /***/ },
-/* 325 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	__webpack_require__(326);
+	__webpack_require__(346);
 	var core_1 = __webpack_require__(2);
-	var app_footer_component_1 = __webpack_require__(328);
-	var app_header_component_1 = __webpack_require__(332);
-	var admin_header_component_1 = __webpack_require__(336);
+	var app_footer_component_1 = __webpack_require__(348);
+	var app_header_component_1 = __webpack_require__(352);
+	var admin_header_component_1 = __webpack_require__(356);
 	var sharedModule = angular.module("quinntynebrown.shared", []);
 	core_1.bootstrap(sharedModule, {
 	    components: [app_footer_component_1.AppFooterComponent, app_header_component_1.AppHeaderComponent, admin_header_component_1.AdminHeaderComponent],
@@ -9547,13 +9977,13 @@
 
 
 /***/ },
-/* 326 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(327);
+	var content = __webpack_require__(347);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9573,7 +10003,7 @@
 	}
 
 /***/ },
-/* 327 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9587,7 +10017,7 @@
 
 
 /***/ },
-/* 328 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9606,8 +10036,8 @@
 	    }
 	    AppFooterComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(329),
-	            styles: [__webpack_require__(330)],
+	            template: __webpack_require__(349),
+	            styles: [__webpack_require__(350)],
 	            selector: "app-footer",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -9619,19 +10049,19 @@
 
 
 /***/ },
-/* 329 */
+/* 349 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"app-footer\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 330 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(331);
+	var content = __webpack_require__(351);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9651,7 +10081,7 @@
 	}
 
 /***/ },
-/* 331 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9665,7 +10095,7 @@
 
 
 /***/ },
-/* 332 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9684,8 +10114,8 @@
 	    }
 	    AppHeaderComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(333),
-	            styles: [__webpack_require__(334)],
+	            template: __webpack_require__(353),
+	            styles: [__webpack_require__(354)],
 	            selector: "app-header",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -9697,19 +10127,19 @@
 
 
 /***/ },
-/* 333 */
+/* 353 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"app-header\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 334 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(335);
+	var content = __webpack_require__(355);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9729,7 +10159,7 @@
 	}
 
 /***/ },
-/* 335 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9743,7 +10173,7 @@
 
 
 /***/ },
-/* 336 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9762,8 +10192,8 @@
 	    }
 	    AdminHeaderComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(337),
-	            styles: [__webpack_require__(338)],
+	            template: __webpack_require__(357),
+	            styles: [__webpack_require__(358)],
 	            selector: "admin-header",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -9775,19 +10205,19 @@
 
 
 /***/ },
-/* 337 */
+/* 357 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"admin-header\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 338 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(339);
+	var content = __webpack_require__(359);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9807,7 +10237,7 @@
 	}
 
 /***/ },
-/* 339 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9821,7 +10251,7 @@
 
 
 /***/ },
-/* 340 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9829,14 +10259,14 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	var core_1 = __webpack_require__(2);
-	var social_share_item_editor_component_1 = __webpack_require__(341);
-	var social_share_item_list_component_1 = __webpack_require__(345);
-	var social_share_item_component_1 = __webpack_require__(349);
-	var social_share_items_container_component_1 = __webpack_require__(353);
-	var social_share_item_action_creator_1 = __webpack_require__(355);
-	var social_share_item_service_1 = __webpack_require__(360);
-	var reducers = __webpack_require__(361);
-	var actions = __webpack_require__(354);
+	var social_share_item_editor_component_1 = __webpack_require__(361);
+	var social_share_item_list_component_1 = __webpack_require__(365);
+	var social_share_item_component_1 = __webpack_require__(369);
+	var social_share_items_container_component_1 = __webpack_require__(373);
+	var social_share_item_action_creator_1 = __webpack_require__(375);
+	var social_share_item_service_1 = __webpack_require__(380);
+	var reducers = __webpack_require__(381);
+	var actions = __webpack_require__(374);
 	var appSocialShareItemsModule = angular.module("app.social-share-items", []);
 	core_1.bootstrap(appSocialShareItemsModule, {
 	    components: [social_share_item_component_1.SocialShareItemComponent, social_share_item_editor_component_1.SocialShareItemEditorComponent, social_share_items_container_component_1.SocialShareItemsContainerComponent, social_share_item_list_component_1.SocialShareItemListComponent],
@@ -9844,11 +10274,11 @@
 	    reducers: reducers,
 	    actions: actions
 	});
-	__export(__webpack_require__(362));
+	__export(__webpack_require__(382));
 
 
 /***/ },
-/* 341 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9867,8 +10297,8 @@
 	    }
 	    SocialShareItemEditorComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(342),
-	            styles: [__webpack_require__(343)],
+	            template: __webpack_require__(362),
+	            styles: [__webpack_require__(363)],
 	            selector: "social-share-item-editor",
 	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -9881,19 +10311,19 @@
 
 
 /***/ },
-/* 342 */
+/* 362 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"socialShareItemEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Social Share Item <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Social Share Item: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"social-share-item-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Social Share Item Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 343 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(344);
+	var content = __webpack_require__(364);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9913,7 +10343,7 @@
 	}
 
 /***/ },
-/* 344 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9927,7 +10357,7 @@
 
 
 /***/ },
-/* 345 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9946,8 +10376,8 @@
 	    }
 	    SocialShareItemListComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(346),
-	            styles: [__webpack_require__(347)],
+	            template: __webpack_require__(366),
+	            styles: [__webpack_require__(367)],
 	            selector: "social-share-item-list",
 	            inputs: ['entities', 'edit', 'remove'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -9960,19 +10390,19 @@
 
 
 /***/ },
-/* 346 */
+/* 366 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"socialShareItemList\">\r\n    <div class=\"socialShareItemList-header\">\r\n        <h1>SocialShareItems</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"socialShareItemList-item\">\r\n        <div class=\"socialShareItemList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"socialShareItemList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 347 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(348);
+	var content = __webpack_require__(368);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9992,7 +10422,7 @@
 	}
 
 /***/ },
-/* 348 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -10006,7 +10436,7 @@
 
 
 /***/ },
-/* 349 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10025,8 +10455,8 @@
 	    }
 	    SocialShareItemComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(350),
-	            styles: [__webpack_require__(351)],
+	            template: __webpack_require__(370),
+	            styles: [__webpack_require__(371)],
 	            selector: "social-share-item",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -10038,19 +10468,19 @@
 
 
 /***/ },
-/* 350 */
+/* 370 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"social-share-item\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 351 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(352);
+	var content = __webpack_require__(372);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -10070,7 +10500,7 @@
 	}
 
 /***/ },
-/* 352 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -10084,7 +10514,7 @@
 
 
 /***/ },
-/* 353 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10098,9 +10528,9 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var actions = __webpack_require__(354);
-	var social_share_item_action_creator_1 = __webpack_require__(355);
-	var social_share_item_model_1 = __webpack_require__(356);
+	var actions = __webpack_require__(374);
+	var social_share_item_action_creator_1 = __webpack_require__(375);
+	var social_share_item_model_1 = __webpack_require__(376);
 	var SocialShareItemsContainerComponent = (function () {
 	    function SocialShareItemsContainerComponent($location, $routeParams, socialShareItemActionCreator, _invokeAsync) {
 	        var _this = this;
@@ -10151,8 +10581,8 @@
 	    SocialShareItemsContainerComponent = __decorate([
 	        core_1.Component({
 	            routes: ["/admin/socialshareitems", "/admin/socialshareitem/edit/:socialShareItemId"],
-	            template: __webpack_require__(357),
-	            styles: [__webpack_require__(358)],
+	            template: __webpack_require__(377),
+	            styles: [__webpack_require__(378)],
 	            selector: "social-share-items-container",
 	            viewProviders: ["$location", "$routeParams", "socialShareItemActionCreator", "invokeAsync"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -10174,7 +10604,7 @@
 
 
 /***/ },
-/* 354 */
+/* 374 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10233,7 +10663,7 @@
 
 
 /***/ },
-/* 355 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10253,7 +10683,7 @@
 	};
 	var core_1 = __webpack_require__(2);
 	var modal_action_creator_1 = __webpack_require__(72);
-	var social_share_item_actions_1 = __webpack_require__(354);
+	var social_share_item_actions_1 = __webpack_require__(374);
 	var SocialShareItemActionCreator = (function (_super) {
 	    __extends(SocialShareItemActionCreator, _super);
 	    function SocialShareItemActionCreator($location, dispatcher, socialShareItemService, guid, invokeAsync, modalActionCreator) {
@@ -10282,7 +10712,7 @@
 
 
 /***/ },
-/* 356 */
+/* 376 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10295,19 +10725,19 @@
 
 
 /***/ },
-/* 357 */
+/* 377 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\r\n    <social-share-item-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></social-share-item-editor>\r\n    <social-share-item-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></social-share-item-list>\r\n</div>\r\n"
 
 /***/ },
-/* 358 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(359);
+	var content = __webpack_require__(379);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -10327,7 +10757,7 @@
 	}
 
 /***/ },
-/* 359 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -10341,7 +10771,7 @@
 
 
 /***/ },
-/* 360 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10384,11 +10814,11 @@
 
 
 /***/ },
-/* 361 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(354);
+	var actions = __webpack_require__(374);
 	var core_1 = __webpack_require__(2);
 	exports.removeSocialShareItemReducer = function (state, action) {
 	    if (action instanceof actions.RemoveSocialShareItemAction)
@@ -10416,11 +10846,11 @@
 
 
 /***/ },
-/* 362 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var social_share_items_container_component_1 = __webpack_require__(353);
+	var social_share_items_container_component_1 = __webpack_require__(373);
 	exports.PhotosRoutes = [
 	    {
 	        path: "/admin/socialshareitems",
@@ -10436,12 +10866,12 @@
 
 
 /***/ },
-/* 363 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var app_actions_1 = __webpack_require__(84);
-	var app_constants_1 = __webpack_require__(364);
+	var app_constants_1 = __webpack_require__(384);
 	exports.allAppsReducer = function (state, action) {
 	    if (action instanceof app_actions_1.AddOrUpdateAppAction) {
 	        state.app = state.app || { properties: [] };
@@ -10471,7 +10901,7 @@
 
 
 /***/ },
-/* 364 */
+/* 384 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10493,7 +10923,7 @@
 
 
 /***/ },
-/* 365 */
+/* 385 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10517,7 +10947,7 @@
 
 
 /***/ },
-/* 366 */
+/* 386 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10536,7 +10966,7 @@
 
 
 /***/ },
-/* 367 */
+/* 387 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10554,7 +10984,7 @@
 
 
 /***/ },
-/* 368 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10573,8 +11003,8 @@
 	    }
 	    AppComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(369),
-	            styles: [__webpack_require__(370)],
+	            template: __webpack_require__(389),
+	            styles: [__webpack_require__(390)],
 	            selector: "root-app",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -10586,19 +11016,19 @@
 
 
 /***/ },
-/* 369 */
+/* 389 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"app\"></div>\r\n"
 
 /***/ },
-/* 370 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(371);
+	var content = __webpack_require__(391);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -10618,7 +11048,7 @@
 	}
 
 /***/ },
-/* 371 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -10632,7 +11062,7 @@
 
 
 /***/ },
-/* 372 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10651,8 +11081,8 @@
 	    }
 	    AdminAppComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(373),
-	            styles: [__webpack_require__(374)],
+	            template: __webpack_require__(393),
+	            styles: [__webpack_require__(394)],
 	            selector: "admin-app",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -10664,19 +11094,19 @@
 
 
 /***/ },
-/* 373 */
+/* 393 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"admin-app\">\r\n    <admin-header></admin-header>\r\n    <div class=\"admin-content-container\">\r\n        <div class=\"admin-side-nav\" data-ng-if=\"vm.currentUser\">\r\n            <ul>\r\n                <li><a href=\"/admin/hairstylists\">Hair Stylists</a></li>\r\n                <li><a href=\"/admin/apps\">Apps</a></li>\r\n                <li><a href=\"/admin/uis\">UIs</a></li>\r\n                <li><a href=\"/admin/sections\">Sections</a></li>\r\n                <li><a href=\"/admin/properties\">Properties</a></li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"admin-main-content\" data-ng-view></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 374 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(375);
+	var content = __webpack_require__(395);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -10696,7 +11126,7 @@
 	}
 
 /***/ },
-/* 375 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();

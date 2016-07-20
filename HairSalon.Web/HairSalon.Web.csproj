@@ -390,6 +390,12 @@
     <Content Include="src\app\pages\whats-new-page.component.scss">
       <DependentUpon>whats-new-page.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\pages\whats-new.component.html">
+      <DependentUpon>whats-new.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\pages\whats-new.component.scss">
+      <DependentUpon>whats-new.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\photos\photo-editor.component.html">
       <DependentUpon>photo-editor.component.ts</DependentUpon>
     </Content>
@@ -769,6 +775,7 @@
     <TypeScriptCompile Include="src\app\customers\customer.service.ts" />
     <TypeScriptCompile Include="src\app\customers\customer-list.component.ts" />
     <TypeScriptCompile Include="src\app\customers\customer-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\whats-new.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
