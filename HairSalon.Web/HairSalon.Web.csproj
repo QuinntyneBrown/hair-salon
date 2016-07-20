@@ -649,6 +649,7 @@
     <TypeScriptCompile Include="src\app\menus\menu-list.component.ts" />
     <TypeScriptCompile Include="src\app\menus\menus.routes.ts" />
     <TypeScriptCompile Include="src\app\pages\index.ts" />
+    <TypeScriptCompile Include="src\app\pages\pages.routes.ts" />
     <TypeScriptCompile Include="src\app\photos\photo-picker-modal.component.ts" />
     <TypeScriptCompile Include="src\app\photos\photo-upload-modal.component.ts" />
     <TypeScriptCompile Include="src\app\photos\photo-upload.component.ts" />

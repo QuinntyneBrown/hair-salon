@@ -224,6 +224,7 @@
     <Compile Include="Dtos\HairStylistAddOrUpdateRequestDto.cs" />
     <Compile Include="Dtos\HairStylistAddOrUpdateResponseDto.cs" />
     <Compile Include="Dtos\HairStylistDto.cs" />
+    <Compile Include="Dtos\PhotoUploadResponseDto.cs" />
     <Compile Include="Dtos\RegistrationRequestDto.cs" />
     <Compile Include="Dtos\RegistrationResponseDto.cs" />
     <Compile Include="Dtos\TokenDto.cs" />
