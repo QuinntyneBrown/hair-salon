@@ -9,8 +9,8 @@ namespace HairSalon
     {
         public static void PostStart()
         {
-            var dbMigrator = new DbMigrator(new Migrations.Configuration());
-            dbMigrator.Update();
+            //var dbMigrator = new DbMigrator(new Migrations.Configuration());
+            //dbMigrator.Update();
         }
     }
 }

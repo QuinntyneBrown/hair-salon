@@ -23,6 +23,12 @@ namespace HairSalon.Services
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
             if (entity == null) repository.Add(entity = new Property());
             entity.Name = request.Name;
+            entity.IsDynamic = request.IsDynamic;
+            entity.Key = request.Key;
+            entity.Value = request.Value;
+            entity.BaseUri = request.BaseUri;
+            entity.Uri = request.Uri;
+            entity.HtmlBody = request.HtmlBody;
             uow.SaveChanges();
             return new PropertyAddOrUpdateResponseDto(entity);
         }

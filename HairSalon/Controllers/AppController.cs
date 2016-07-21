@@ -34,6 +34,7 @@ namespace HairSalon.Controllers
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof(AppDto))]
+        [AllowAnonymous]
         public IHttpActionResult GetById(int id) { return Ok(_appService.GetById(id)); }
 
         [Route("remove")]

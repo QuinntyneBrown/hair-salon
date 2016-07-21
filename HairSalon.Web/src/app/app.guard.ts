@@ -15,9 +15,7 @@ export let appGuard: IRoutePromise = {
             invokeAsync,
             appActionCreator: AppActionCreator,
             store: Store<any>
-        ) => $q.resolve(true)],
+        ) => invokeAsync({ action: appActionCreator.getById, params: { id: 1 } })],
     route: "*"
 };
 
-
-//invokeAsync({ action: appActionCreator.getById, params: { id: 1 } })

@@ -576,6 +576,24 @@
     <Content Include="src\app\service-providers\service-providers-container.component.html">
       <DependentUpon>service-providers-container.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\shared\admin-header\admin-header.component.html">
+      <DependentUpon>admin-header.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\admin-header\admin-header.component.scss">
+      <DependentUpon>admin-header.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\app-footer\app-footer.component.html">
+      <DependentUpon>app-footer.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\app-footer\app-footer.component.scss">
+      <DependentUpon>app-footer.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\app-header\app-header.component.html">
+      <DependentUpon>app-header.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\app-header\app-header.component.scss">
+      <DependentUpon>app-header.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\social-share-items\social-share-item-editor.component.html">
       <DependentUpon>social-share-item-editor.component.ts</DependentUpon>
     </Content>
@@ -728,12 +746,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="src\app\shared\admin-header\admin-header.component.scss" />
-    <Content Include="src\app\shared\admin-header\admin-header.component.html" />
-    <Content Include="src\app\shared\app-header\app-header.component.scss" />
-    <Content Include="src\app\shared\app-header\app-header.component.html" />
-    <Content Include="src\app\shared\app-footer\app-footer.component.scss" />
-    <Content Include="src\app\shared\app-footer\app-footer.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -949,7 +961,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56622</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56623/</IISUrl>
+          <IISUrl>http://localhost:56629/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

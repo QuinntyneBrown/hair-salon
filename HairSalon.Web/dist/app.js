@@ -9152,7 +9152,7 @@
 /* 314 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"whats-new-page\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"whats-new-page\">\r\n</div>\r\n"
 
 /***/ },
 /* 315 */
@@ -9295,7 +9295,7 @@
 	            template: __webpack_require__(320),
 	            styles: [__webpack_require__(321)],
 	            selector: "photo-editor",
-	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
+	            inputs: ['entity', 'addOrUpdate', 'remove', 'create', 'upload'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
 	        __metadata('design:paramtypes', [])
@@ -9309,7 +9309,7 @@
 /* 320 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Photo Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <a data-ng-click=\"vm.upload()\" style=\"line-height:3em;cursor:pointer;\">Upload</a>\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Photo Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 321 */
@@ -9556,6 +9556,7 @@
 	                _this.entity = new photo_model_1.Photo();
 	            }
 	        };
+	        this.upload = function () { return _this.photoActionCreator.openPhotoUploadModal(); };
 	        this.edit = function (entity) { return _this.photoActionCreator.edit(entity); };
 	        this.remove = function (entity) { return _this.photoActionCreator.remove(entity); };
 	        this.create = function (entity) { return _this.photoActionCreator.create(); };
@@ -9696,11 +9697,6 @@
 	        this.modalActionCreator = modalActionCreator;
 	        this.addOrUpdateSuccess = function (options) { return _this.dispatcher.dispatch(new photo_actions_1.AddOrUpdatePhotoSuccessAction(options.entity)); };
 	        this.currentPhotoRemoved = function () { return _this.dispatcher.dispatch(new photo_actions_1.CurrentPhotoRemovedAction()); };
-	        this.openAllPhotosModal = function () {
-	            _this.invokeAsync(_this.all).then(function (results) {
-	                _this.modalActionCreator.open({ html: "<all-photo-modal></all-photo-modal>" });
-	            });
-	        };
 	        this.upload = function (dragEvent) {
 	            dragEvent.stopPropagation();
 	            dragEvent.preventDefault();
@@ -9721,6 +9717,9 @@
 	            }
 	            return newId;
 	        };
+	        this.openPhotoUploadModal = function () {
+	            _this.modalActionCreator.open({ html: "<photo-upload-modal></photo-upload-modal>" });
+	        };
 	        this.openPhotoPickerModal = function () {
 	            _this.invokeAsync(_this.all).then(function (results) {
 	                _this.modalActionCreator.open({ html: "<photo-picker-modal></photo-picker-modal>" });
@@ -9730,7 +9729,9 @@
 	    PhotoActionCreator = __decorate([
 	        core_1.Service({
 	            serviceName: "photoActionCreator",
-	            viewProviders: ["$location", "dispatcher", "photoService", "guid", "invokeAsync", "modalActionCreator"]
+	            viewProviders: [
+	                "$location", "dispatcher", "photoService", "guid", "invokeAsync", "modalActionCreator"
+	            ]
 	        }), 
 	        __metadata('design:paramtypes', [Object, Object, Object, Object, Object, modal_action_creator_1.ModalActionCreator])
 	    ], PhotoActionCreator);
@@ -9756,7 +9757,7 @@
 /* 335 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\r\n    <photo-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></photo-editor>\r\n    <photo-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></photo-list>\r\n</div>\r\n"
+	module.exports = "<div>\r\n    <photo-editor entity=\"vm.entity\"\r\n                  edit=\"vm.edit\"\r\n                  remove=\"vm.remove\"\r\n                  add-or-update=\"vm.addOrUpdate\"\r\n                  create=\"vm.create\"\r\n                  upload=\"vm.upload\"></photo-editor>\r\n    <photo-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></photo-list>\r\n</div>\r\n"
 
 /***/ },
 /* 336 */
@@ -10007,8 +10008,29 @@
 	var core_1 = __webpack_require__(2);
 	var PhotoService = (function (_super) {
 	    __extends(PhotoService, _super);
-	    function PhotoService($q, apiEndpoint, fetch) {
+	    function PhotoService($q, apiEndpoint, fetch, store) {
+	        var _this = this;
 	        _super.call(this, $q, apiEndpoint, fetch);
+	        this.store = store;
+	        this.tryToUpload = function (options) {
+	            var deferred = _this.$q.defer();
+	            var xhr = new XMLHttpRequest();
+	            var token = _this.store.getValue().token;
+	            xhr.open("POST", _this.baseUri + "/upload", true);
+	            xhr.setRequestHeader('Authorization', "Bearer " + token);
+	            xhr.onload = function (e) {
+	                if (xhr.readyState === 4) {
+	                    if (xhr.status === 200) {
+	                        deferred.resolve(JSON.parse(xhr.response));
+	                    }
+	                    else {
+	                        deferred.resolve(xhr.statusText);
+	                    }
+	                }
+	            };
+	            xhr.send(options.data);
+	            return deferred.promise;
+	        };
 	    }
 	    Object.defineProperty(PhotoService.prototype, "baseUri", {
 	        get: function () { return this.apiEndpoint.getBaseUrl() + "/photo"; },
@@ -10019,9 +10041,9 @@
 	        core_1.Injectable(),
 	        core_1.Service({
 	            serviceName: "photoService",
-	            viewProviders: ["$q", "apiEndpoint", "fetch"]
+	            viewProviders: ["$q", "apiEndpoint", "fetch", "store"]
 	        }), 
-	        __metadata('design:paramtypes', [Function, Object, Object])
+	        __metadata('design:paramtypes', [Function, Object, Object, Object])
 	    ], PhotoService);
 	    return PhotoService;
 	}(core_1.BaseService));
@@ -11470,6 +11492,11 @@
 	var core_1 = __webpack_require__(2);
 	var AppHeaderComponent = (function () {
 	    function AppHeaderComponent() {
+	        var _this = this;
+	        this.storeOnChange = function (state) {
+	            if (state.app)
+	                _this.logo = state.app.logo;
+	        };
 	    }
 	    AppHeaderComponent = __decorate([
 	        core_1.Component({
@@ -11489,7 +11516,7 @@
 /* 403 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"app-header\">\r\n    <h1>Expo Hair</h1>\r\n</div>\r\n"
+	module.exports = "<div class=\"app-header\">\r\n    <div class=\"app-header-inner\">\r\n        <img data-ng-src=\"{{::vm.logo}}\" />\r\n    </div>   \r\n    <div class=\"app-header-sub-nav\">\r\n        <a href=\"/\">Home</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"whats-new\">What's New</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/about\">About</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/contact\">Contact</a>\r\n    </div>     \r\n</div>\r\n"
 
 /***/ },
 /* 404 */
@@ -11526,7 +11553,7 @@
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".app-header {\n  width: 100%; }\n\n.app-header-inner {\n  max-width: 1280px;\n  height: 150px;\n  margin: 0 auto;\n  text-align: center;\n  margin: 50px 0px 0px 0px; }\n\n.app-header-inner img {\n  height: 100px; }\n\n.app-header-sub-nav {\n  max-width: 1280px;\n  margin: 0 auto;\n  text-align: center; }\n\n.app-header-sub-nav a {\n  text-decoration: none;\n  color: #272727; }\n", ""]);
 
 	// exports
 
@@ -12322,11 +12349,10 @@
 	        "appActionCreator",
 	        "store",
 	        function ($q, $route, invokeAsync, appActionCreator, store) {
-	            return $q.resolve(true);
+	            return invokeAsync({ action: appActionCreator.getById, params: { id: 1 } });
 	        }],
 	    route: "*"
 	};
-	//invokeAsync({ action: appActionCreator.getById, params: { id: 1 } }) 
 
 
 /***/ },

@@ -7,5 +7,9 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppHeaderComponent {
-    constructor() { }
+    storeOnChange = state => {
+        if (state.app)
+            this.logo = state.app.logo;
+    }
+    public logo: string;
 }

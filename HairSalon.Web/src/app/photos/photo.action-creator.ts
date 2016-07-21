@@ -1,25 +1,22 @@
-import { IDispatcher, BaseActionCreator, Service } from "angular-rx-ui/src/components/core";
+import { IDispatcher, Service, BaseActionCreator } from "angular-rx-ui/src/components/core";
+import { Photo } from "./photo.model";
 import { ModalActionCreator } from "angular-rx-ui/src/components/modal/modal.action-creator";
-import { AllPhotosAction, PhotoUploadAction, RemovePhotoAction, PhotosFilterAction, SetCurrentPhotoAction,AddOrUpdatePhotoAction, AddOrUpdatePhotoSuccessAction, CurrentPhotoRemovedAction } from "./photo.actions";
+import { AddOrUpdatePhotoAction, AddOrUpdatePhotoSuccessAction, CurrentPhotoRemovedAction, SetCurrentPhotoAction, RemovePhotoAction, AllPhotosAction, PhotosFilterAction, PhotoUploadAction} from "./photo.actions";
 
 @Service({
     serviceName: "photoActionCreator",
-    viewProviders: ["$location", "dispatcher", "photoService", "guid", "invokeAsync","modalActionCreator"]
+    viewProviders: [
+        "$location", "dispatcher", "photoService", "guid", "invokeAsync", "modalActionCreator"
+    ]
 })
 export class PhotoActionCreator extends BaseActionCreator {
     constructor($location: angular.ILocationService, dispatcher: IDispatcher, photoService, guid, private invokeAsync, private modalActionCreator: ModalActionCreator) {
-        super($location,photoService,dispatcher,guid,AddOrUpdatePhotoAction,AllPhotosAction,RemovePhotoAction,SetCurrentPhotoAction)
-    }    
+        super($location, photoService, dispatcher, guid, AddOrUpdatePhotoAction, AllPhotosAction, RemovePhotoAction, SetCurrentPhotoAction)
+    }
 
-	addOrUpdateSuccess = options => this.dispatcher.dispatch(new AddOrUpdatePhotoSuccessAction(options.entity));
+    addOrUpdateSuccess = options => this.dispatcher.dispatch(new AddOrUpdatePhotoSuccessAction(options.entity));
 
     currentPhotoRemoved = () => this.dispatcher.dispatch(new CurrentPhotoRemovedAction());
-
-    openAllPhotosModal = () => {
-        this.invokeAsync(this.all).then(results => {
-            this.modalActionCreator.open({ html: "<all-photo-modal></all-photo-modal>" });
-        });
-    }
 
     public upload = (dragEvent: DragEvent) => {
         dragEvent.stopPropagation();
@@ -41,13 +38,16 @@ export class PhotoActionCreator extends BaseActionCreator {
         }
         return newId;
     }
-    
+
+    openPhotoUploadModal = () => {
+        this.modalActionCreator.open({ html: "<photo-upload-modal></photo-upload-modal>" });
+    }
+
     openPhotoPickerModal = () => {
         this.invokeAsync(this.all).then(results => {
             this.modalActionCreator.open({ html: "<photo-picker-modal></photo-picker-modal>" });
         });
     }
 }
-
 
 

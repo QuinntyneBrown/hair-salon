@@ -200,7 +200,6 @@
     <Compile Include="App_Start\AppActivator.cs" />
     <Compile Include="Configuration\ITraceConfiguration.cs" />
     <Compile Include="Configuration\TraceConfiguration.cs" />
-    <Compile Include="Controllers\HairStylistController.cs" />
     <Compile Include="App_Start\WebApiUnityActionFilterProvider.cs" />
     <Compile Include="Authentication\JwtOptions.cs" />
     <Compile Include="Authentication\JwtWriterFormat.cs" />
@@ -378,6 +377,7 @@
     <Compile Include="Services\ServiceProviderService.cs" />
     <Compile Include="Services\IServiceProviderService.cs" />
     <Compile Include="Controllers\ServiceProviderController.cs" />
+    <Compile Include="Controllers\AppPropertyController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

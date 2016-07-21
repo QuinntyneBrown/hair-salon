@@ -6,6 +6,4 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
     selector: "app-footer",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppFooterComponent {
-    constructor() { }
-}
+export class AppFooterComponent { }
