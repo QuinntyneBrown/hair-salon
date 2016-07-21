@@ -8,6 +8,8 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
 })
 export class WhatsNewPageComponent {
     storeOnChange = state => {
-
+        if (state.app)
+            this.whatsNewPageHeroImageUrl = state.app.whatsNewPageHeroImageUrl;
     }
+    public whatsNewPageHeroImageUrl: string;
 }

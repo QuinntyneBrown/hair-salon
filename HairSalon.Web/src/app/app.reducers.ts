@@ -32,6 +32,15 @@ export const allAppsReducer = (state, action) => {
 
             if (action.entity.properties[i].name === appProperties.contactInfomation)
                 state.app.contactInfomation = action.entity.properties[i].htmlBody;
+
+            if (action.entity.properties[i].name === appProperties.services)
+                state.app.services = JSON.parse(action.entity.properties[i].value);
+
+            if (action.entity.properties[i].name === appProperties.socialShareItems)
+                state.app.socialShareItems = JSON.parse(action.entity.properties[i].value);
+
+            if (action.entity.properties[i].name === appProperties.menuItems)
+                state.app.menuItems = JSON.parse(action.entity.properties[i].value);
         }
     }
     return state;

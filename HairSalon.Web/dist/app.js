@@ -77,6 +77,7 @@
 	var admin_app_component_1 = __webpack_require__(442);
 	var appModule = angular.module("app", [
 	    "components",
+	    "ui.tinymce",
 	    "app.contacts",
 	    "app.contentAggregation",
 	    "app.customers",
@@ -1205,8 +1206,12 @@
 
 	"use strict";
 	exports.setElementBackgroundImage = function (augmentedJQuery, backgroundImageUrl) {
-	    if (backgroundImageUrl)
+	    if (backgroundImageUrl) {
 	        augmentedJQuery[0].style.backgroundImage = "url('" + backgroundImageUrl + "')";
+	        augmentedJQuery[0].style.backgroundSize = "cover";
+	        augmentedJQuery[0].style.backgroundRepeat = "no-repeat";
+	        augmentedJQuery[0].style.backgroundPosition = "center top";
+	    }
 	};
 	angular.module("setElementBackgroundImage", [])
 	    .value("setElementBackgroundImage", exports.setElementBackgroundImage);
@@ -3134,6 +3139,7 @@
 	__webpack_require__(181);
 	__webpack_require__(186);
 	var app = angular.module("app.contentAggregation", [
+	    "components",
 	    "app.contentAggregation.action-creators",
 	    "app.contentAggregation.actions",
 	    "app.contentAggregation.components",
@@ -8566,7 +8572,10 @@
 	var core_1 = __webpack_require__(2);
 	var BiographyPageComponent = (function () {
 	    function BiographyPageComponent() {
+	        var _this = this;
 	        this.storeOnChange = function (state) {
+	            if (state.app)
+	                _this.biographyPageHeroImageUrl = state.app.biographyPageHeroImageUrl;
 	        };
 	    }
 	    BiographyPageComponent = __decorate([
@@ -8646,7 +8655,10 @@
 	var core_1 = __webpack_require__(2);
 	var ContactPageComponent = (function () {
 	    function ContactPageComponent() {
+	        var _this = this;
 	        this.storeOnChange = function (state) {
+	            if (state.app)
+	                _this.contactPageHeroImageUrl = state.app.contactPageHeroImageUrl;
 	        };
 	    }
 	    ContactPageComponent = __decorate([
@@ -8726,7 +8738,10 @@
 	var core_1 = __webpack_require__(2);
 	var HomePageComponent = (function () {
 	    function HomePageComponent() {
+	        var _this = this;
 	        this.storeOnChange = function (state) {
+	            if (state.app)
+	                _this.homePageHeroImageUrl = state.app.homePageHeroImageUrl;
 	        };
 	    }
 	    HomePageComponent = __decorate([
@@ -8806,7 +8821,10 @@
 	var core_1 = __webpack_require__(2);
 	var GalleriesPageComponent = (function () {
 	    function GalleriesPageComponent() {
+	        var _this = this;
 	        this.storeOnChange = function (state) {
+	            if (state.app)
+	                _this.galleriesPageHeroImageUrl = state.app.galleriesPageHeroImageUrl;
 	        };
 	    }
 	    GalleriesPageComponent = __decorate([
@@ -9051,7 +9069,10 @@
 	var core_1 = __webpack_require__(2);
 	var ProfessionalServicesPageComponent = (function () {
 	    function ProfessionalServicesPageComponent() {
+	        var _this = this;
 	        this.storeOnChange = function (state) {
+	            if (state.app)
+	                _this.servicesPageHeroImageUrl = state.app.servicesPageHeroImageUrl;
 	        };
 	    }
 	    ProfessionalServicesPageComponent = __decorate([
@@ -9131,7 +9152,10 @@
 	var core_1 = __webpack_require__(2);
 	var WhatsNewPageComponent = (function () {
 	    function WhatsNewPageComponent() {
+	        var _this = this;
 	        this.storeOnChange = function (state) {
+	            if (state.app)
+	                _this.whatsNewPageHeroImageUrl = state.app.whatsNewPageHeroImageUrl;
 	        };
 	    }
 	    WhatsNewPageComponent = __decorate([
@@ -9152,7 +9176,7 @@
 /* 314 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"whats-new-page\">\r\n</div>\r\n"
+	module.exports = "<div class=\"whats-new-page\">    \r\n    <hero hero-image-url=\"{{ ::vm.whatsNewPageHeroImageUrl }}\" width=\"100%\" height=\"400px\"></hero>\r\n</div>\r\n"
 
 /***/ },
 /* 315 */
@@ -9309,7 +9333,7 @@
 /* 320 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <a data-ng-click=\"vm.upload()\" style=\"line-height:3em;cursor:pointer;\">Upload</a>\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Photo Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <a data-ng-click=\"vm.upload()\" style=\"line-height:3em;cursor:pointer;\">Upload</a>\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"FIle Name\" data-ng-model=\"vm.entity.fileName\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 321 */
@@ -9388,7 +9412,7 @@
 /* 324 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"photoList\">\r\n    <div class=\"photoList-header\">\r\n        <h1>Photos</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"photoList-item\">\r\n        <div class=\"photoList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"photoList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"photoList\">\r\n    <div class=\"photoList-header\">\r\n        <h1>Photos</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"photoList-item\">\r\n        <div class=\"photoList-name\">\r\n            {{ entity.fileName }}\r\n        </div>\r\n        <div class=\"photoList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 325 */
@@ -10175,7 +10199,7 @@
 /* 351 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"professionalServiceEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Professional Service <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Professional Service: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"professional-service-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Professional Service Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"professionalServiceEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Service <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Service: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"professional-service-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Service Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 352 */
@@ -10254,7 +10278,7 @@
 /* 355 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"professionalServiceList\">\r\n    <div class=\"professionalServiceList-header\">\r\n        <h1>ProfessionalServices</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"professionalServiceList-item\">\r\n        <div class=\"professionalServiceList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"professionalServiceList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"professionalServiceList\">\r\n    <div class=\"professionalServiceList-header\">\r\n        <h1>Services</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"professionalServiceList-item\">\r\n        <div class=\"professionalServiceList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"professionalServiceList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 356 */
@@ -11516,7 +11540,7 @@
 /* 403 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"app-header\">\r\n    <div class=\"app-header-inner\">\r\n        <img data-ng-src=\"{{::vm.logo}}\" />\r\n    </div>   \r\n    <div class=\"app-header-sub-nav\">\r\n        <a href=\"/\">Home</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"whats-new\">What's New</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/about\">About</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/contact\">Contact</a>\r\n    </div>     \r\n</div>\r\n"
+	module.exports = "<div class=\"app-header\">\r\n    <div class=\"app-header-inner\">\r\n        <img data-ng-src=\"{{::vm.logo}}\" />\r\n    </div>   \r\n    <div class=\"app-header-sub-nav\">\r\n        <a href=\"/\">Home</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/galleries\">Galleries</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"whats-new\">What's New</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/about\">About</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/services\">Services</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/contact\">Contact</a>\r\n    </div>     \r\n</div>\r\n"
 
 /***/ },
 /* 404 */
@@ -11553,7 +11577,7 @@
 
 
 	// module
-	exports.push([module.id, ".app-header {\n  width: 100%; }\n\n.app-header-inner {\n  max-width: 1280px;\n  height: 150px;\n  margin: 0 auto;\n  text-align: center;\n  margin: 50px 0px 0px 0px; }\n\n.app-header-inner img {\n  height: 100px; }\n\n.app-header-sub-nav {\n  max-width: 1280px;\n  margin: 0 auto;\n  text-align: center; }\n\n.app-header-sub-nav a {\n  text-decoration: none;\n  color: #272727; }\n", ""]);
+	exports.push([module.id, ".app-header {\n  width: 100%; }\n\n.app-header-inner {\n  max-width: 1280px;\n  height: 150px;\n  margin: 50px auto 0px auto; }\n\n.app-header-inner img {\n  display: block;\n  height: 100px;\n  width: 152.5px;\n  margin: 0 auto; }\n\n.app-header-sub-nav {\n  max-width: 1280px;\n  margin: 0 auto;\n  text-align: center; }\n\n.app-header-sub-nav a {\n  text-decoration: none;\n  color: #272727; }\n", ""]);
 
 	// exports
 
@@ -11704,7 +11728,7 @@
 /* 412 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"socialShareItemEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Social Share Item <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Social Share Item: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"social-share-item-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Social Share Item Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"socialShareItemEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Social Share Item <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Social Share Item: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"social-share-item-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Social Share Item Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 413 */
@@ -12186,7 +12210,7 @@
 	        _super.call(this, $q, apiEndpoint, fetch);
 	    }
 	    Object.defineProperty(SocialShareItemService.prototype, "baseUri", {
-	        get: function () { return this.apiEndpoint.getBaseUrl() + "/v1/socialShareItem"; },
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/socialShareItem"; },
 	        enumerable: true,
 	        configurable: true
 	    });
@@ -12284,6 +12308,12 @@
 	                state.app.biography = action.entity.properties[i].htmlBody;
 	            if (action.entity.properties[i].name === app_constants_1.appProperties.contactInfomation)
 	                state.app.contactInfomation = action.entity.properties[i].htmlBody;
+	            if (action.entity.properties[i].name === app_constants_1.appProperties.services)
+	                state.app.services = JSON.parse(action.entity.properties[i].value);
+	            if (action.entity.properties[i].name === app_constants_1.appProperties.socialShareItems)
+	                state.app.socialShareItems = JSON.parse(action.entity.properties[i].value);
+	            if (action.entity.properties[i].name === app_constants_1.appProperties.menuItems)
+	                state.app.menuItems = JSON.parse(action.entity.properties[i].value);
 	        }
 	    }
 	    return state;
@@ -12307,6 +12337,9 @@
 	    appProperties.biography = "biography";
 	    appProperties.contactInfomation = "contactInfomation";
 	    appProperties.logo = "logo";
+	    appProperties.services = "services";
+	    appProperties.socialShareItems = "socialShareItems";
+	    appProperties.menuItems = "menuItems";
 	    return appProperties;
 	}());
 	exports.appProperties = appProperties;
@@ -12489,7 +12522,7 @@
 /* 443 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"admin-app\">\r\n    <admin-header></admin-header>\r\n    <div class=\"admin-content-container\">\r\n        <div class=\"admin-side-nav\" data-ng-if=\"vm.currentUser\">\r\n            <ul>\r\n                <li><a href=\"/admin/photos\">Photos</a></li>\r\n                <li><a href=\"/admin/galleries\">Galleries</a></li>\r\n                <li><a href=\"/admin/professionalservices\">Services</a></li>\r\n                <li><a href=\"/admin/properties\">Properties</a></li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"admin-main-content\" data-ng-view></div>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"admin-app\">\r\n    <admin-header></admin-header>\r\n    <div class=\"admin-content-container\">\r\n        <div class=\"admin-side-nav\" data-ng-if=\"vm.currentUser\">\r\n            <ul>\r\n                <li><a href=\"/admin/apps\">Apps</a></li>\r\n                <li><a href=\"/admin/photos\">Photos</a></li>\r\n                <li><a href=\"/admin/galleries\">Galleries</a></li>\r\n                <li><a href=\"/admin/socialshareitems\">Social Share Items</a></li>\r\n                <li><a href=\"/admin/professionalservices\">Services</a></li>\r\n                <li><a href=\"/admin/properties\">Properties</a></li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"admin-main-content\" data-ng-view></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 444 */

@@ -5,13 +5,14 @@
 .app-header-inner {
     max-width:1280px;
     height:150px;
-    margin: 0 auto;
-    text-align:center;
-    margin: 50px 0px 0px 0px;
+    margin: 50px auto 0px auto;    
 }
 
 .app-header-inner img {
+    display:block;
    height:100px;
+   width:152.5px;
+   margin:0 auto;
 }
 
 .app-header-sub-nav {

@@ -7,6 +7,8 @@ require("./reducers");
 require("./services");
 
 var app = (<any>angular.module("app.contentAggregation", [
+    "components",
+
     "app.contentAggregation.action-creators",
     "app.contentAggregation.actions",
     "app.contentAggregation.components",

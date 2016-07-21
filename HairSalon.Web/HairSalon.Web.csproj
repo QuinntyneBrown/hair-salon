@@ -740,6 +740,8 @@
     <Content Include="src\app\service-providers\service-providers-container.component.scss">
       <DependentUpon>service-providers-container.component.ts</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\expohairdev - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\expohairdev - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

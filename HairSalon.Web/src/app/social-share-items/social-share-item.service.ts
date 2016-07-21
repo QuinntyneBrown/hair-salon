@@ -10,6 +10,6 @@ export class SocialShareItemService extends BaseService {
         super($q, apiEndpoint, fetch)
     }
 
-    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/v1/socialShareItem"; }
+    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/socialShareItem"; }
 
 }

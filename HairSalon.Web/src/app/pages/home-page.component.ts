@@ -8,6 +8,8 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
 })
 export class HomePageComponent {
     storeOnChange = state => {
-
+        if (state.app)
+            this.homePageHeroImageUrl = state.app.homePageHeroImageUrl;
     }
+    public homePageHeroImageUrl: string;
 }

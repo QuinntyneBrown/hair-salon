@@ -8,6 +8,8 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
 })
 export class ContactPageComponent {
     storeOnChange = state => {
-
+        if (state.app)
+            this.contactPageHeroImageUrl = state.app.contactPageHeroImageUrl;
     }
+    public contactPageHeroImageUrl: string;
 }

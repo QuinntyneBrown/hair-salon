@@ -35,6 +35,7 @@ import { AdminAppComponent } from "./app/admin-app.component";
 
 const appModule = angular.module("app", [
     "components",
+    "ui.tinymce",
 
     "app.contacts",
     "app.contentAggregation",
