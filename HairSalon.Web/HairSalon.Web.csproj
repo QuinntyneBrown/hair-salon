@@ -384,20 +384,90 @@
     <Content Include="src\app\contacts\contacts-container.component.html">
       <DependentUpon>contacts-container.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\content-aggregation\components\app-editor.component.html" />
-    <Content Include="src\app\content-aggregation\components\app-list.component.html" />
-    <Content Include="src\app\content-aggregation\components\app.component.html" />
-    <Content Include="src\app\content-aggregation\components\property-editor.component.html" />
-    <Content Include="src\app\content-aggregation\components\property-list.component.html" />
-    <Content Include="src\app\content-aggregation\components\property-paged-list.component.html" />
-    <Content Include="src\app\content-aggregation\components\property-picker-modal.component.html" />
-    <Content Include="src\app\content-aggregation\components\property.component.html" />
-    <Content Include="src\app\content-aggregation\components\section-editor.component.html" />
-    <Content Include="src\app\content-aggregation\components\section-list.component.html" />
-    <Content Include="src\app\content-aggregation\components\section.component.html" />
-    <Content Include="src\app\content-aggregation\components\ui-editor.component.html" />
-    <Content Include="src\app\content-aggregation\components\ui-list.component.html" />
-    <Content Include="src\app\content-aggregation\components\ui.component.html" />
+    <Content Include="src\app\content-aggregation\components\app-editor.component.html">
+      <DependentUpon>app-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\app-editor.component.scss">
+      <DependentUpon>app-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\app-list.component.html">
+      <DependentUpon>app-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\app-list.component.scss">
+      <DependentUpon>app-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\app.component.html">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\app.component.scss">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property-editor.component.html">
+      <DependentUpon>property-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property-editor.component.scss">
+      <DependentUpon>property-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property-list.component.html">
+      <DependentUpon>property-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property-list.component.scss">
+      <DependentUpon>property-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property-paged-list.component.html">
+      <DependentUpon>property-paged-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property-paged-list.component.scss">
+      <DependentUpon>property-paged-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property-picker-modal.component.html">
+      <DependentUpon>property-picker-modal.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property-picker-modal.component.scss">
+      <DependentUpon>property-picker-modal.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property.component.html">
+      <DependentUpon>property.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\property.component.scss">
+      <DependentUpon>property.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\section-editor.component.html">
+      <DependentUpon>section-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\section-editor.component.scss">
+      <DependentUpon>section-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\section-list.component.html">
+      <DependentUpon>section-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\section-list.component.scss">
+      <DependentUpon>section-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\section.component.html">
+      <DependentUpon>section.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\section.component.scss">
+      <DependentUpon>section.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\ui-editor.component.html">
+      <DependentUpon>ui-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\ui-editor.component.scss">
+      <DependentUpon>ui-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\ui-list.component.html">
+      <DependentUpon>ui-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\ui-list.component.scss">
+      <DependentUpon>ui-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\ui.component.html">
+      <DependentUpon>ui.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\content-aggregation\components\ui.component.scss">
+      <DependentUpon>ui.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\content-aggregation\containers\apps-container.component.html" />
     <Content Include="src\app\content-aggregation\containers\properties-container.component.html" />
     <Content Include="src\app\content-aggregation\containers\sections-container.component.html" />
@@ -619,20 +689,6 @@
     <Content Include="typings\globals\jasmine\typings.json" />
     <Content Include="typings\globals\jquery\typings.json" />
     <Content Include="typings\globals\require\typings.json" />
-    <Content Include="src\app\content-aggregation\components\app-editor.component.scss" />
-    <Content Include="src\app\content-aggregation\components\app-list.component.scss" />
-    <Content Include="src\app\content-aggregation\components\app.component.scss" />
-    <Content Include="src\app\content-aggregation\components\property-editor.component.scss" />
-    <Content Include="src\app\content-aggregation\components\property-list.component.scss" />
-    <Content Include="src\app\content-aggregation\components\property-paged-list.component.scss" />
-    <Content Include="src\app\content-aggregation\components\property-picker-modal.component.scss" />
-    <Content Include="src\app\content-aggregation\components\property.component.scss" />
-    <Content Include="src\app\content-aggregation\components\section-editor.component.scss" />
-    <Content Include="src\app\content-aggregation\components\section-list.component.scss" />
-    <Content Include="src\app\content-aggregation\components\section.component.scss" />
-    <Content Include="src\app\content-aggregation\components\ui-editor.component.scss" />
-    <Content Include="src\app\content-aggregation\components\ui-list.component.scss" />
-    <Content Include="src\app\content-aggregation\components\ui.component.scss" />
     <Content Include="src\app\content-aggregation\containers\apps-container.component.scss" />
     <Content Include="src\app\content-aggregation\containers\properties-container.component.scss" />
     <Content Include="src\app\content-aggregation\containers\sections-container.component.scss" />

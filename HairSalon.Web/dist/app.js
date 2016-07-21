@@ -7285,7 +7285,7 @@
 	        authorizationRequired: true
 	    },
 	    {
-	        path: "/admin/gallery/:galleryid",
+	        path: "/admin/gallery/edit/:galleryId",
 	        component: galleries_container_component_1.GalleriesContainerComponent,
 	        authorizationRequired: true
 	    }
@@ -9333,7 +9333,7 @@
 /* 320 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <a data-ng-click=\"vm.upload()\" style=\"line-height:3em;cursor:pointer;\">Upload</a>\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"FIle Name\" data-ng-model=\"vm.entity.fileName\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <a data-ng-click=\"vm.upload()\" style=\"line-height:3em;cursor:pointer;\">Upload</a>\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"File Name\" data-ng-model=\"vm.entity.fileName\" />\r\n            </div>\r\n            <div>\r\n                <textarea data-ng-model=\"vm.entity.description\"></textarea>\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 321 */
@@ -10128,7 +10128,7 @@
 	        authorizationRequired: true
 	    },
 	    {
-	        path: "/admin/product/edit/:photoId",
+	        path: "/admin/photo/edit/:photoId",
 	        component: photos_container_component_1.PhotosContainerComponent,
 	        authorizationRequired: true
 	    }

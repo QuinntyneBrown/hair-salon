@@ -8,7 +8,7 @@ export const PhotosRoutes: Array<IRouteConfig> = [
         authorizationRequired: true
     },
     {
-        path: "/admin/product/edit/:photoId",
+        path: "/admin/photo/edit/:photoId",
         component: PhotosContainerComponent,
         authorizationRequired: true
     }

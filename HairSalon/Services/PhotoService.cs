@@ -23,6 +23,7 @@ namespace HairSalon.Services
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
             if (entity == null) repository.Add(entity = new Photo());
             entity.Name = request.Name;
+            entity.Description = request.Description;
             uow.SaveChanges();
             return new PhotoAddOrUpdateResponseDto(entity);
         }

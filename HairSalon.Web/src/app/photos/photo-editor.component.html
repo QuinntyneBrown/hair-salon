@@ -13,7 +13,13 @@
                 <a data-ng-click="vm.upload()" style="line-height:3em;cursor:pointer;">Upload</a>
             </div>
             <div>
-                <input class="inputField" type="text" placeholder="FIle Name" data-ng-model="vm.entity.fileName" />
+                <input class="inputField" type="text" placeholder="Name" data-ng-model="vm.entity.name" />
+            </div>
+            <div>
+                <input class="inputField" type="text" placeholder="File Name" data-ng-model="vm.entity.fileName" />
+            </div>
+            <div>
+                <textarea data-ng-model="vm.entity.description"></textarea>
             </div>
         </tab-content>
 

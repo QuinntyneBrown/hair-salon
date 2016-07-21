@@ -8,7 +8,7 @@ export const GalleriesRoutes: Array<IRouteConfig> = [
         authorizationRequired: true
     },
     {
-        path: "/admin/gallery/:galleryid",
+        path: "/admin/gallery/edit/:galleryId",
         component: GalleriesContainerComponent,
         authorizationRequired: true
     }
