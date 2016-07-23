@@ -8974,8 +8974,10 @@
 	    function GalleriesPageComponent() {
 	        var _this = this;
 	        this.storeOnChange = function (state) {
-	            if (state.app)
+	            if (state.app) {
 	                _this.galleriesPageHeroImageUrl = state.app.galleriesPageHeroImageUrl;
+	                _this.mainGallery = state.app.mainGallery;
+	            }
 	        };
 	    }
 	    GalleriesPageComponent = __decorate([
@@ -8996,7 +8998,7 @@
 /* 300 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"galleries-page\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"galleries-page\">\r\n    <div class=\"galleries-page-photo-list\" data-ng-repeat=\"photo in vm.mainGallery.photos\">\r\n        <img data-ng-src=\"{{photo.relativePath}}\" />\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 301 */
@@ -9033,7 +9035,7 @@
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".galleries-page-photo-list img {\n  max-width: 500px;\n  width: 100%; }\n\n@media (min-width: 992px) {\n  .gallery-page .simple-carousel {\n    display: inherit; }\n  .gallery-page .galleries-page-photo-list {\n    display: none; } }\n", ""]);
 
 	// exports
 
@@ -11587,7 +11589,7 @@
 
 
 	// module
-	exports.push([module.id, ".app-header {\n  width: 100%; }\n\n.app-header-inner {\n  max-width: 1280px;\n  height: 150px;\n  margin: 50px auto 0px auto; }\n\n.app-header-inner img {\n  display: block;\n  height: 100px;\n  width: 152.5px;\n  margin: 0 auto; }\n\n.app-header-sub-nav {\n  max-width: 1280px;\n  margin: 0 auto;\n  text-align: center; }\n\n.app-header-sub-nav a {\n  text-decoration: none;\n  color: #272727; }\n", ""]);
+	exports.push([module.id, ".app-header {\n  width: 100%; }\n\n.app-header-inner {\n  max-width: 1280px;\n  height: 150px;\n  margin: 50px auto 0px auto; }\n\n.app-header-inner img {\n  display: block;\n  height: 100px;\n  width: 152.5px;\n  margin: 0 auto; }\n\n.app-header-sub-nav {\n  max-width: 1280px;\n  margin: 0 auto;\n  text-align: center; }\n\n.app-header-sub-nav {\n  font-family: Roboto;\n  font-weight: 400; }\n\n.app-header-sub-nav a {\n  text-decoration: none;\n  color: #272727; }\n\n.app-header {\n  margin-bottom: 30px; }\n", ""]);
 
 	// exports
 
@@ -12324,6 +12326,8 @@
 	                state.app.socialShareItems = JSON.parse(action.entity.properties[i].value);
 	            if (action.entity.properties[i].name === app_constants_1.appProperties.menuItems)
 	                state.app.menuItems = JSON.parse(action.entity.properties[i].value);
+	            if (action.entity.properties[i].name === app_constants_1.appProperties.mainGallery)
+	                state.app.mainGallery = JSON.parse(action.entity.properties[i].value);
 	        }
 	    }
 	    return state;
@@ -12350,6 +12354,7 @@
 	    appProperties.services = "services";
 	    appProperties.socialShareItems = "socialShareItems";
 	    appProperties.menuItems = "menuItems";
+	    appProperties.mainGallery = "mainGallery";
 	    return appProperties;
 	}());
 	exports.appProperties = appProperties;

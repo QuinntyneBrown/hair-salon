@@ -12,33 +12,39 @@ namespace HairSalon.Services
     {
         public ProfessionalServiceService(IUow uow, ICacheProvider cacheProvider)
         {
-            this.uow = uow;
-            this.repository = uow.ProfessionalServices;
-            this.cache = cacheProvider.GetCache();
+            this._uow = uow;
+            this._repository = uow.ProfessionalServices;
+            this._cache = cacheProvider.GetCache();
         }
 
         public ProfessionalServiceAddOrUpdateResponseDto AddOrUpdate(ProfessionalServiceAddOrUpdateRequestDto request)
         {
-            var entity = repository.GetAll()
+            var entity = _repository.GetAll()
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
-            if (entity == null) repository.Add(entity = new ProfessionalService());
+            if (entity == null) _repository.Add(entity = new ProfessionalService());
             entity.Name = request.Name;
-            uow.SaveChanges();
+            entity.ProfessionalServicePhotos.Clear();
+
+            foreach (var photo in request.Photos)
+            {
+                entity.ProfessionalServicePhotos.Add(new ProfessionalServicePhoto() { Photo = _uow.Photos.GetById(photo.Id) });
+            }
+            _uow.SaveChanges();
             return new ProfessionalServiceAddOrUpdateResponseDto(entity);
         }
 
         public dynamic Remove(int id)
         {
-            var entity = repository.GetById(id);
+            var entity = _repository.GetById(id);
             entity.IsDeleted = true;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return id;
         }
 
         public ICollection<ProfessionalServiceDto> Get()
         {
             ICollection<ProfessionalServiceDto> response = new HashSet<ProfessionalServiceDto>();
-            var entities = repository.GetAll().Where(x => x.IsDeleted == false).ToList();
+            var entities = GetAll().Where(x => x.IsDeleted == false).ToList();
             foreach(var entity in entities) { response.Add(new ProfessionalServiceDto(entity)); }    
             return response;
         }
@@ -46,11 +52,15 @@ namespace HairSalon.Services
 
         public ProfessionalServiceDto GetById(int id)
         {
-            return new ProfessionalServiceDto(repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
+            return new ProfessionalServiceDto(GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
 
-        protected readonly IUow uow;
-        protected readonly IRepository<ProfessionalService> repository;
-        protected readonly ICache cache;
+        public IQueryable<ProfessionalService> GetAll() => _repository.GetAll()
+            .Include(x => x.ProfessionalServicePhotos)
+            .Include("ProfessionalServicePhotos.Photo");
+
+        protected readonly IUow _uow;
+        protected readonly IRepository<ProfessionalService> _repository;
+        protected readonly ICache _cache;
     }
 }

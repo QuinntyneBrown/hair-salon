@@ -11,9 +11,9 @@ namespace HairSalon.Services
     {
         public IdentityService(IUow uow, IEncryptionService encryptionService, ICacheProvider cacheProvider)
         {
-            this._cache = cacheProvider.GetCache();
-            this._encryptionService = encryptionService;
-            this._uow = uow;
+            _cache = cacheProvider.GetCache();
+            _encryptionService = encryptionService;
+            _uow = uow;
         }
 
         public Dtos.TokenDto TryToRegister(Dtos.RegistrationRequestDto registrationRequestDto)

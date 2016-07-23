@@ -9,6 +9,7 @@ require("./app/photos");
 require("./app/professional-services");
 require("./app/service-providers");
 require("./app/shared");
+require("./app/simple-carousel");
 require("./app/social-share-items");
 
 import * as reducers from "./app/app.reducers";
@@ -47,6 +48,7 @@ const appModule = angular.module("app", [
     "app.photos",
     "app.professionalServices",
     "app.shared",
+    "app.simpleCarousel",
     "app.serviceProviders",
     "app.socialShareItems"
 ]);

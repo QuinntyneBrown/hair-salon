@@ -1,0 +1,18 @@
+@import "../../assets/scss/breakpoints";
+
+.galleries-page-photo-list img {
+    max-width:500px;
+    width:100%;
+}
+
+@media (min-width: $screen-md-min) {  
+    .gallery-page {
+        .simple-carousel {
+            display:inherit
+        }
+
+        .galleries-page-photo-list {
+            display:none;
+        }
+    }
+}

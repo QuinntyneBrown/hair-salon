@@ -33,6 +33,7 @@ namespace HairSalon.Controllers
 
         [Route("getById")]
         [HttpGet]
+        [AllowAnonymous]
         [ResponseType(typeof(GalleryDto))]
         public IHttpActionResult GetById(int id) { return Ok(_galleryService.GetById(id)); }
 

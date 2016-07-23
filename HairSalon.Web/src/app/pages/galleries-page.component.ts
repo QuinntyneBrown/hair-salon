@@ -8,8 +8,11 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
 })
 export class GalleriesPageComponent {
     storeOnChange = state => {
-        if (state.app)
+        if (state.app) {
             this.galleriesPageHeroImageUrl = state.app.galleriesPageHeroImageUrl;
+            this.mainGallery = state.app.mainGallery;
+        }
     }
     public galleriesPageHeroImageUrl: string;
+    public mainGallery: any;
 }

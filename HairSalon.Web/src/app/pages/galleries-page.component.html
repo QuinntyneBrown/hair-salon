@@ -1,3 +1,5 @@
 <div class="galleries-page">
-
+    <div class="galleries-page-photo-list" data-ng-repeat="photo in vm.mainGallery.photos">
+        <img data-ng-src="{{photo.relativePath}}" />
+    </div>
 </div>

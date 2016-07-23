@@ -41,6 +41,9 @@ export const allAppsReducer = (state, action) => {
 
             if (action.entity.properties[i].name === appProperties.menuItems)
                 state.app.menuItems = JSON.parse(action.entity.properties[i].value);
+
+            if (action.entity.properties[i].name === appProperties.mainGallery)
+                state.app.mainGallery = JSON.parse(action.entity.properties[i].value);
         }
     }
     return state;

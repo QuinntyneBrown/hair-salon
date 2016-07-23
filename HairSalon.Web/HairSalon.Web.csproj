@@ -804,6 +804,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="src\app\simple-carousel\simple-carousel.component.scss" />
+    <Content Include="src\app\simple-carousel\simple-carousel.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -999,6 +1001,8 @@
     <TypeScriptCompile Include="src\app\service-providers\service-provider.service.ts" />
     <TypeScriptCompile Include="src\app\service-providers\service-provider-list.component.ts" />
     <TypeScriptCompile Include="src\app\service-providers\service-provider-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\simple-carousel\index.ts" />
+    <TypeScriptCompile Include="src\app\simple-carousel\simple-carousel.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

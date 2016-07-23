@@ -13,4 +13,5 @@
     public static services: string = "services";
     public static socialShareItems: string = "socialShareItems";
     public static menuItems: string = "menuItems";
+    public static mainGallery: string = "mainGallery";
 }
