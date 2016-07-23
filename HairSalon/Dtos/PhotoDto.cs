@@ -5,7 +5,7 @@ namespace HairSalon.Dtos
 {
     public class PhotoDto
     {
-        public PhotoDto(HairSalon.Models.Photo entity)
+        public PhotoDto(HairSalon.Models.Photo entity, bool includeRelatedEntities = false)
         {
             Id = entity.Id;
             Name = entity.Name;
@@ -17,7 +17,11 @@ namespace HairSalon.Dtos
             ContentType = entity.ContentType;
             RelativePath = entity.RelativePath;
 
-            Galleries = entity.GalleryPhotos.Select(x => new GalleryDto(x.Gallery)).ToList();
+            if (includeRelatedEntities)
+            {
+                Galleries = entity.GalleryPhotos.Select(x => new GalleryDto(x.Gallery)).ToList();
+            }
+            
         }
 
         public PhotoDto()

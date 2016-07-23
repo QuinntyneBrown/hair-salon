@@ -4,7 +4,7 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
     template: require("./gallery-editor.component.html"),
     styles: [require("./gallery-editor.component.scss")],
     selector: "gallery-editor",
-    inputs: ['entity','addOrUpdate','remove','create'],
+    inputs: ['entity','addOrUpdate','remove','create','upload'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GalleryEditorComponent {}

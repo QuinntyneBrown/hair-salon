@@ -49,10 +49,10 @@
 	__webpack_require__(81);
 	__webpack_require__(192);
 	__webpack_require__(215);
-	__webpack_require__(238);
-	__webpack_require__(261);
-	__webpack_require__(284);
-	__webpack_require__(318);
+	__webpack_require__(240);
+	__webpack_require__(263);
+	__webpack_require__(286);
+	__webpack_require__(320);
 	__webpack_require__(349);
 	__webpack_require__(372);
 	__webpack_require__(395);
@@ -62,10 +62,10 @@
 	var content_aggregation_1 = __webpack_require__(81);
 	var customers_1 = __webpack_require__(192);
 	var galleries_1 = __webpack_require__(215);
-	var menu_items_1 = __webpack_require__(238);
-	var menus_1 = __webpack_require__(261);
-	var pages_1 = __webpack_require__(284);
-	var photos_1 = __webpack_require__(318);
+	var menu_items_1 = __webpack_require__(240);
+	var menus_1 = __webpack_require__(263);
+	var pages_1 = __webpack_require__(286);
+	var photos_1 = __webpack_require__(320);
 	var professional_services_1 = __webpack_require__(349);
 	var service_providers_1 = __webpack_require__(372);
 	var social_share_items_1 = __webpack_require__(410);
@@ -6691,8 +6691,8 @@
 	var gallery_component_1 = __webpack_require__(224);
 	var galleries_container_component_1 = __webpack_require__(228);
 	var gallery_action_creator_1 = __webpack_require__(230);
-	var gallery_service_1 = __webpack_require__(235);
-	var reducers = __webpack_require__(236);
+	var gallery_service_1 = __webpack_require__(237);
+	var reducers = __webpack_require__(238);
 	var actions = __webpack_require__(229);
 	var appGallerysModule = angular.module("app.galleries", []);
 	core_1.bootstrap(appGallerysModule, {
@@ -6701,7 +6701,7 @@
 	    reducers: reducers,
 	    actions: actions
 	});
-	__export(__webpack_require__(237));
+	__export(__webpack_require__(239));
 
 
 /***/ },
@@ -6727,7 +6727,7 @@
 	            template: __webpack_require__(217),
 	            styles: [__webpack_require__(218)],
 	            selector: "gallery-editor",
-	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
+	            inputs: ['entity', 'addOrUpdate', 'remove', 'create', 'upload'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
 	        __metadata('design:paramtypes', [])
@@ -6741,7 +6741,7 @@
 /* 217 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"galleryEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Gallery <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Gallery: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"gallery-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Gallery Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"galleryEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Gallery <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Gallery: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"gallery-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <a data-ng-click=\"vm.upload()\" style=\"line-height:3em;cursor:pointer;\">Upload</a>\r\n            </div>\r\n\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Gallery Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n        <tab-title>Photos <span data-ng-if=\"vm.entity.id\">( {{vm.entity.photos.length}})</span></tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n</tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 218 */
@@ -6958,13 +6958,16 @@
 	var actions = __webpack_require__(229);
 	var gallery_action_creator_1 = __webpack_require__(230);
 	var gallery_model_1 = __webpack_require__(231);
+	var photo_action_creator_1 = __webpack_require__(232);
+	var photo_actions_1 = __webpack_require__(233);
 	var GalleriesContainerComponent = (function () {
-	    function GalleriesContainerComponent($location, $routeParams, galleryActionCreator, _invokeAsync) {
+	    function GalleriesContainerComponent($location, $routeParams, galleryActionCreator, _invokeAsync, _photoActionCreator) {
 	        var _this = this;
 	        this.$location = $location;
 	        this.$routeParams = $routeParams;
 	        this.galleryActionCreator = galleryActionCreator;
 	        this._invokeAsync = _invokeAsync;
+	        this._photoActionCreator = _photoActionCreator;
 	        this.storeOnChange = function (state) {
 	            _this.entities = state.gallerys;
 	            if (state.lastTriggeredByAction instanceof actions.SetCurrentGalleryAction && !state.lastTriggeredByAction.entity)
@@ -6977,6 +6980,11 @@
 	                _this.entity = core_1.pluck({ value: Number(_this.$routeParams["galleryId"]), items: _this.entities });
 	                if (Object.keys(_this.entity).length === 0) {
 	                    _this.$location.path("/admin/galleries");
+	                }
+	            }
+	            if (state.lastTriggeredByAction instanceof photo_actions_1.PhotoUploadAction) {
+	                for (var i = 0; i < state.lastTriggeredByAction.entities.length; i++) {
+	                    _this.entity.photos.push(state.lastTriggeredByAction.entities[i]);
 	                }
 	            }
 	        };
@@ -7004,14 +7012,15 @@
 	                }
 	            });
 	        };
+	        this.upload = function () { return _this._photoActionCreator.openPhotoUploadModal(); };
 	    }
 	    GalleriesContainerComponent = __decorate([
 	        core_1.Component({
 	            routes: ["/admin/galleries", "/admin/gallery/edit/:galleryId"],
-	            template: __webpack_require__(232),
-	            styles: [__webpack_require__(233)],
+	            template: __webpack_require__(234),
+	            styles: [__webpack_require__(235)],
 	            selector: "galleries-container",
-	            viewProviders: ["$location", "$routeParams", "galleryActionCreator", "invokeAsync"],
+	            viewProviders: ["$location", "$routeParams", "galleryActionCreator", "invokeAsync", "photoActionCreator"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }),
 	        core_1.CanActivate(["$q", "$route", "invokeAsync", "galleryActionCreator", function ($q, $route, invokeAsync, galleryActionCreator) {
@@ -7023,7 +7032,7 @@
 	                ;
 	                return $q.all(promises);
 	            }]), 
-	        __metadata('design:paramtypes', [Object, Object, gallery_action_creator_1.GalleryActionCreator, Object])
+	        __metadata('design:paramtypes', [Object, Object, gallery_action_creator_1.GalleryActionCreator, Object, photo_action_creator_1.PhotoActionCreator])
 	    ], GalleriesContainerComponent);
 	    return GalleriesContainerComponent;
 	}());
@@ -7145,6 +7154,7 @@
 	"use strict";
 	var Gallery = (function () {
 	    function Gallery() {
+	        this.photos = [];
 	    }
 	    return Gallery;
 	}());
@@ -7153,18 +7163,159 @@
 
 /***/ },
 /* 232 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div>\r\n    <gallery-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></gallery-editor>\r\n    <gallery-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></gallery-list>\r\n</div>\r\n"
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var modal_action_creator_1 = __webpack_require__(72);
+	var photo_actions_1 = __webpack_require__(233);
+	var PhotoActionCreator = (function (_super) {
+	    __extends(PhotoActionCreator, _super);
+	    function PhotoActionCreator($location, dispatcher, photoService, guid, invokeAsync, modalActionCreator) {
+	        var _this = this;
+	        _super.call(this, $location, photoService, dispatcher, guid, photo_actions_1.AddOrUpdatePhotoAction, photo_actions_1.AllPhotosAction, photo_actions_1.RemovePhotoAction, photo_actions_1.SetCurrentPhotoAction);
+	        this.invokeAsync = invokeAsync;
+	        this.modalActionCreator = modalActionCreator;
+	        this.addOrUpdateSuccess = function (options) { return _this.dispatcher.dispatch(new photo_actions_1.AddOrUpdatePhotoSuccessAction(options.entity)); };
+	        this.currentPhotoRemoved = function () { return _this.dispatcher.dispatch(new photo_actions_1.CurrentPhotoRemovedAction()); };
+	        this.upload = function (dragEvent) {
+	            dragEvent.stopPropagation();
+	            dragEvent.preventDefault();
+	            var newId = _this.guid();
+	            if (dragEvent.dataTransfer && dragEvent.dataTransfer.files) {
+	                var packageFiles = function (fileList) {
+	                    var formData = new FormData();
+	                    for (var i = 0; i < fileList.length; i++) {
+	                        formData.append(fileList[i].name, fileList[i]);
+	                    }
+	                    return formData;
+	                };
+	                _this.service
+	                    .tryToUpload({ data: packageFiles(dragEvent.dataTransfer.files) })
+	                    .then(function (response) {
+	                    _this.dispatcher.dispatch(new photo_actions_1.PhotoUploadAction(newId, response.files));
+	                });
+	            }
+	            return newId;
+	        };
+	        this.openPhotoUploadModal = function () {
+	            _this.modalActionCreator.open({ html: "<photo-upload-modal></photo-upload-modal>" });
+	        };
+	        this.openPhotoPickerModal = function () {
+	            _this.invokeAsync(_this.all).then(function (results) {
+	                _this.modalActionCreator.open({ html: "<photo-picker-modal></photo-picker-modal>" });
+	            });
+	        };
+	    }
+	    PhotoActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "photoActionCreator",
+	            viewProviders: [
+	                "$location", "dispatcher", "photoService", "guid", "invokeAsync", "modalActionCreator"
+	            ]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, Object, Object, Object, modal_action_creator_1.ModalActionCreator])
+	    ], PhotoActionCreator);
+	    return PhotoActionCreator;
+	}(core_1.BaseActionCreator));
+	exports.PhotoActionCreator = PhotoActionCreator;
+
 
 /***/ },
 /* 233 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var AddOrUpdatePhotoAction = (function () {
+	    function AddOrUpdatePhotoAction(id, entity) {
+	        this.id = id;
+	        this.entity = entity;
+	    }
+	    return AddOrUpdatePhotoAction;
+	}());
+	exports.AddOrUpdatePhotoAction = AddOrUpdatePhotoAction;
+	var AllPhotosAction = (function () {
+	    function AllPhotosAction(id, entities) {
+	        this.id = id;
+	        this.entities = entities;
+	    }
+	    return AllPhotosAction;
+	}());
+	exports.AllPhotosAction = AllPhotosAction;
+	var RemovePhotoAction = (function () {
+	    function RemovePhotoAction(id, entity) {
+	        this.id = id;
+	        this.entity = entity;
+	    }
+	    return RemovePhotoAction;
+	}());
+	exports.RemovePhotoAction = RemovePhotoAction;
+	var PhotosFilterAction = (function () {
+	    function PhotosFilterAction(id, term) {
+	        this.id = id;
+	        this.term = term;
+	    }
+	    return PhotosFilterAction;
+	}());
+	exports.PhotosFilterAction = PhotosFilterAction;
+	var SetCurrentPhotoAction = (function () {
+	    function SetCurrentPhotoAction(entity) {
+	        this.entity = entity;
+	    }
+	    return SetCurrentPhotoAction;
+	}());
+	exports.SetCurrentPhotoAction = SetCurrentPhotoAction;
+	var AddOrUpdatePhotoSuccessAction = (function () {
+	    function AddOrUpdatePhotoSuccessAction(entity) {
+	        this.entity = entity;
+	    }
+	    return AddOrUpdatePhotoSuccessAction;
+	}());
+	exports.AddOrUpdatePhotoSuccessAction = AddOrUpdatePhotoSuccessAction;
+	var CurrentPhotoRemovedAction = (function () {
+	    function CurrentPhotoRemovedAction() {
+	    }
+	    return CurrentPhotoRemovedAction;
+	}());
+	exports.CurrentPhotoRemovedAction = CurrentPhotoRemovedAction;
+	var PhotoUploadAction = (function () {
+	    function PhotoUploadAction(id, entities) {
+	        this.id = id;
+	        this.entities = entities;
+	    }
+	    return PhotoUploadAction;
+	}());
+	exports.PhotoUploadAction = PhotoUploadAction;
+
+
+/***/ },
+/* 234 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>\r\n    <gallery-editor entity=\"vm.entity\" \r\n                    edit=\"vm.edit\" \r\n                    remove=\"vm.remove\" \r\n                    add-or-update=\"vm.addOrUpdate\" \r\n                    create=\"vm.create\"\r\n                    upload=\"vm.upload\"></gallery-editor>\r\n    <gallery-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></gallery-list>\r\n</div>\r\n"
+
+/***/ },
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(234);
+	var content = __webpack_require__(236);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -7184,7 +7335,7 @@
 	}
 
 /***/ },
-/* 234 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -7198,7 +7349,7 @@
 
 
 /***/ },
-/* 235 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7241,7 +7392,7 @@
 
 
 /***/ },
-/* 236 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7273,7 +7424,7 @@
 
 
 /***/ },
-/* 237 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7293,7 +7444,7 @@
 
 
 /***/ },
-/* 238 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7301,14 +7452,14 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	var core_1 = __webpack_require__(2);
-	var menu_item_editor_component_1 = __webpack_require__(239);
-	var menu_item_list_component_1 = __webpack_require__(243);
-	var menu_item_component_1 = __webpack_require__(247);
-	var menu_items_container_component_1 = __webpack_require__(251);
-	var menu_item_action_creator_1 = __webpack_require__(253);
-	var menu_item_service_1 = __webpack_require__(258);
-	var reducers = __webpack_require__(259);
-	var actions = __webpack_require__(252);
+	var menu_item_editor_component_1 = __webpack_require__(241);
+	var menu_item_list_component_1 = __webpack_require__(245);
+	var menu_item_component_1 = __webpack_require__(249);
+	var menu_items_container_component_1 = __webpack_require__(253);
+	var menu_item_action_creator_1 = __webpack_require__(255);
+	var menu_item_service_1 = __webpack_require__(260);
+	var reducers = __webpack_require__(261);
+	var actions = __webpack_require__(254);
 	var appMenuItemsModule = angular.module("app.menuItems", []);
 	core_1.bootstrap(appMenuItemsModule, {
 	    components: [menu_item_component_1.MenuItemComponent, menu_item_editor_component_1.MenuItemEditorComponent, menu_items_container_component_1.MenuItemsContainerComponent, menu_item_list_component_1.MenuItemListComponent],
@@ -7316,11 +7467,11 @@
 	    reducers: reducers,
 	    actions: actions
 	});
-	__export(__webpack_require__(260));
+	__export(__webpack_require__(262));
 
 
 /***/ },
-/* 239 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7339,8 +7490,8 @@
 	    }
 	    MenuItemEditorComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(240),
-	            styles: [__webpack_require__(241)],
+	            template: __webpack_require__(242),
+	            styles: [__webpack_require__(243)],
 	            selector: "menu-item-editor",
 	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -7353,19 +7504,19 @@
 
 
 /***/ },
-/* 240 */
+/* 242 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"menuItemEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Menu Item <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Menu Item: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"menu-item-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Menu Item Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 241 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(242);
+	var content = __webpack_require__(244);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -7385,7 +7536,7 @@
 	}
 
 /***/ },
-/* 242 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -7399,7 +7550,7 @@
 
 
 /***/ },
-/* 243 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7418,8 +7569,8 @@
 	    }
 	    MenuItemListComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(244),
-	            styles: [__webpack_require__(245)],
+	            template: __webpack_require__(246),
+	            styles: [__webpack_require__(247)],
 	            selector: "menu-item-list",
 	            inputs: ['entities', 'edit', 'remove'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -7432,19 +7583,19 @@
 
 
 /***/ },
-/* 244 */
+/* 246 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"menuItemList\">\r\n    <div class=\"menuItemList-header\">\r\n        <h1>MenuItems</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"menuItemList-item\">\r\n        <div class=\"menuItemList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"menuItemList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 245 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(246);
+	var content = __webpack_require__(248);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -7464,7 +7615,7 @@
 	}
 
 /***/ },
-/* 246 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -7478,7 +7629,7 @@
 
 
 /***/ },
-/* 247 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7497,8 +7648,8 @@
 	    }
 	    MenuItemComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(248),
-	            styles: [__webpack_require__(249)],
+	            template: __webpack_require__(250),
+	            styles: [__webpack_require__(251)],
 	            selector: "menu-item",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -7510,19 +7661,19 @@
 
 
 /***/ },
-/* 248 */
+/* 250 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"menu-item\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 249 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(250);
+	var content = __webpack_require__(252);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -7542,7 +7693,7 @@
 	}
 
 /***/ },
-/* 250 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -7556,7 +7707,7 @@
 
 
 /***/ },
-/* 251 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7570,9 +7721,9 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var actions = __webpack_require__(252);
-	var menu_item_action_creator_1 = __webpack_require__(253);
-	var menu_item_model_1 = __webpack_require__(254);
+	var actions = __webpack_require__(254);
+	var menu_item_action_creator_1 = __webpack_require__(255);
+	var menu_item_model_1 = __webpack_require__(256);
 	var MenuItemsContainerComponent = (function () {
 	    function MenuItemsContainerComponent($location, $routeParams, menuItemActionCreator, _invokeAsync) {
 	        var _this = this;
@@ -7623,8 +7774,8 @@
 	    MenuItemsContainerComponent = __decorate([
 	        core_1.Component({
 	            routes: ["/admin/menuitems", "/admin/menuitem/edit/:menuItemId"],
-	            template: __webpack_require__(255),
-	            styles: [__webpack_require__(256)],
+	            template: __webpack_require__(257),
+	            styles: [__webpack_require__(258)],
 	            selector: "menu-items-container",
 	            viewProviders: ["$location", "$routeParams", "menuItemActionCreator", "invokeAsync"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -7646,7 +7797,7 @@
 
 
 /***/ },
-/* 252 */
+/* 254 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -7705,7 +7856,7 @@
 
 
 /***/ },
-/* 253 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7725,7 +7876,7 @@
 	};
 	var core_1 = __webpack_require__(2);
 	var modal_action_creator_1 = __webpack_require__(72);
-	var menu_item_actions_1 = __webpack_require__(252);
+	var menu_item_actions_1 = __webpack_require__(254);
 	var MenuItemActionCreator = (function (_super) {
 	    __extends(MenuItemActionCreator, _super);
 	    function MenuItemActionCreator($location, dispatcher, menuItemService, guid, invokeAsync, modalActionCreator) {
@@ -7754,7 +7905,7 @@
 
 
 /***/ },
-/* 254 */
+/* 256 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -7767,19 +7918,19 @@
 
 
 /***/ },
-/* 255 */
+/* 257 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\r\n    <menu-item-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></menu-item-editor>\r\n    <menu-item-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></menu-item-list>\r\n</div>\r\n"
 
 /***/ },
-/* 256 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(257);
+	var content = __webpack_require__(259);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -7799,7 +7950,7 @@
 	}
 
 /***/ },
-/* 257 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -7813,7 +7964,7 @@
 
 
 /***/ },
-/* 258 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7856,11 +8007,11 @@
 
 
 /***/ },
-/* 259 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(252);
+	var actions = __webpack_require__(254);
 	var core_1 = __webpack_require__(2);
 	exports.removeMenuItemReducer = function (state, action) {
 	    if (action instanceof actions.RemoveMenuItemAction)
@@ -7888,11 +8039,11 @@
 
 
 /***/ },
-/* 260 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var menu_items_container_component_1 = __webpack_require__(251);
+	var menu_items_container_component_1 = __webpack_require__(253);
 	exports.MenuItemsRoutes = [
 	    {
 	        path: "/admin/menuitems",
@@ -7908,7 +8059,7 @@
 
 
 /***/ },
-/* 261 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7916,14 +8067,14 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	var core_1 = __webpack_require__(2);
-	var menu_editor_component_1 = __webpack_require__(262);
-	var menu_list_component_1 = __webpack_require__(266);
-	var menu_component_1 = __webpack_require__(270);
-	var menus_container_component_1 = __webpack_require__(274);
-	var menu_action_creator_1 = __webpack_require__(276);
-	var menu_service_1 = __webpack_require__(281);
-	var reducers = __webpack_require__(282);
-	var actions = __webpack_require__(275);
+	var menu_editor_component_1 = __webpack_require__(264);
+	var menu_list_component_1 = __webpack_require__(268);
+	var menu_component_1 = __webpack_require__(272);
+	var menus_container_component_1 = __webpack_require__(276);
+	var menu_action_creator_1 = __webpack_require__(278);
+	var menu_service_1 = __webpack_require__(283);
+	var reducers = __webpack_require__(284);
+	var actions = __webpack_require__(277);
 	var appMenusModule = angular.module("app.menus", []);
 	core_1.bootstrap(appMenusModule, {
 	    components: [menu_component_1.MenuComponent, menu_editor_component_1.MenuEditorComponent, menus_container_component_1.MenusContainerComponent, menu_list_component_1.MenuListComponent],
@@ -7931,11 +8082,11 @@
 	    reducers: reducers,
 	    actions: actions
 	});
-	__export(__webpack_require__(283));
+	__export(__webpack_require__(285));
 
 
 /***/ },
-/* 262 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7954,8 +8105,8 @@
 	    }
 	    MenuEditorComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(263),
-	            styles: [__webpack_require__(264)],
+	            template: __webpack_require__(265),
+	            styles: [__webpack_require__(266)],
 	            selector: "menu-editor",
 	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -7968,19 +8119,19 @@
 
 
 /***/ },
-/* 263 */
+/* 265 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"menuEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Menu <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Menu: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"menu-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Menu Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 264 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(265);
+	var content = __webpack_require__(267);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8000,7 +8151,7 @@
 	}
 
 /***/ },
-/* 265 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8014,7 +8165,7 @@
 
 
 /***/ },
-/* 266 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8033,8 +8184,8 @@
 	    }
 	    MenuListComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(267),
-	            styles: [__webpack_require__(268)],
+	            template: __webpack_require__(269),
+	            styles: [__webpack_require__(270)],
 	            selector: "menu-list",
 	            inputs: ['entities', 'edit', 'remove'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -8047,19 +8198,19 @@
 
 
 /***/ },
-/* 267 */
+/* 269 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"menuList\">\r\n    <div class=\"menuList-header\">\r\n        <h1>Menus</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"menuList-item\">\r\n        <div class=\"menuList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"menuList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 268 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(269);
+	var content = __webpack_require__(271);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8079,7 +8230,7 @@
 	}
 
 /***/ },
-/* 269 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8093,7 +8244,7 @@
 
 
 /***/ },
-/* 270 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8112,8 +8263,8 @@
 	    }
 	    MenuComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(271),
-	            styles: [__webpack_require__(272)],
+	            template: __webpack_require__(273),
+	            styles: [__webpack_require__(274)],
 	            selector: "menu",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -8125,19 +8276,19 @@
 
 
 /***/ },
-/* 271 */
+/* 273 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"menu\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 272 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(273);
+	var content = __webpack_require__(275);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8157,7 +8308,7 @@
 	}
 
 /***/ },
-/* 273 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8171,7 +8322,7 @@
 
 
 /***/ },
-/* 274 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8185,9 +8336,9 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var actions = __webpack_require__(275);
-	var menu_action_creator_1 = __webpack_require__(276);
-	var menu_model_1 = __webpack_require__(277);
+	var actions = __webpack_require__(277);
+	var menu_action_creator_1 = __webpack_require__(278);
+	var menu_model_1 = __webpack_require__(279);
 	var MenusContainerComponent = (function () {
 	    function MenusContainerComponent($location, $routeParams, menuActionCreator, _invokeAsync) {
 	        var _this = this;
@@ -8238,8 +8389,8 @@
 	    MenusContainerComponent = __decorate([
 	        core_1.Component({
 	            routes: ["/admin/menus", "/admin/menu/edit/:menuId"],
-	            template: __webpack_require__(278),
-	            styles: [__webpack_require__(279)],
+	            template: __webpack_require__(280),
+	            styles: [__webpack_require__(281)],
 	            selector: "menus-container",
 	            viewProviders: ["$location", "$routeParams", "menuActionCreator", "invokeAsync"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -8261,7 +8412,7 @@
 
 
 /***/ },
-/* 275 */
+/* 277 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -8320,7 +8471,7 @@
 
 
 /***/ },
-/* 276 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8340,7 +8491,7 @@
 	};
 	var core_1 = __webpack_require__(2);
 	var modal_action_creator_1 = __webpack_require__(72);
-	var menu_actions_1 = __webpack_require__(275);
+	var menu_actions_1 = __webpack_require__(277);
 	var MenuActionCreator = (function (_super) {
 	    __extends(MenuActionCreator, _super);
 	    function MenuActionCreator($location, dispatcher, menuService, guid, invokeAsync, modalActionCreator) {
@@ -8369,7 +8520,7 @@
 
 
 /***/ },
-/* 277 */
+/* 279 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -8382,19 +8533,19 @@
 
 
 /***/ },
-/* 278 */
+/* 280 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\r\n    <menu-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></menu-editor>\r\n    <menu-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></menu-list>\r\n</div>\r\n"
 
 /***/ },
-/* 279 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(280);
+	var content = __webpack_require__(282);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8414,7 +8565,7 @@
 	}
 
 /***/ },
-/* 280 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8428,7 +8579,7 @@
 
 
 /***/ },
-/* 281 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8471,11 +8622,11 @@
 
 
 /***/ },
-/* 282 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(275);
+	var actions = __webpack_require__(277);
 	var core_1 = __webpack_require__(2);
 	exports.removeMenuReducer = function (state, action) {
 	    if (action instanceof actions.RemoveMenuAction)
@@ -8503,11 +8654,11 @@
 
 
 /***/ },
-/* 283 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var menus_container_component_1 = __webpack_require__(274);
+	var menus_container_component_1 = __webpack_require__(276);
 	exports.MenusRoutes = [
 	    {
 	        path: "/admin/menus",
@@ -8523,7 +8674,7 @@
 
 
 /***/ },
-/* 284 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8531,14 +8682,14 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	var core_1 = __webpack_require__(2);
-	var biography_page_component_1 = __webpack_require__(285);
-	var contact_page_component_1 = __webpack_require__(289);
-	var home_page_component_1 = __webpack_require__(293);
-	var galleries_page_component_1 = __webpack_require__(297);
-	var gallery_page_component_1 = __webpack_require__(301);
-	var login_page_component_1 = __webpack_require__(305);
-	var professional_services_page_component_1 = __webpack_require__(309);
-	var whats_new_page_component_1 = __webpack_require__(313);
+	var biography_page_component_1 = __webpack_require__(287);
+	var contact_page_component_1 = __webpack_require__(291);
+	var home_page_component_1 = __webpack_require__(295);
+	var galleries_page_component_1 = __webpack_require__(299);
+	var gallery_page_component_1 = __webpack_require__(303);
+	var login_page_component_1 = __webpack_require__(307);
+	var professional_services_page_component_1 = __webpack_require__(311);
+	var whats_new_page_component_1 = __webpack_require__(315);
 	var pagesModule = angular.module("app.pages", []);
 	core_1.bootstrap(pagesModule, {
 	    components: [
@@ -8552,11 +8703,11 @@
 	        whats_new_page_component_1.WhatsNewPageComponent
 	    ]
 	});
-	__export(__webpack_require__(317));
+	__export(__webpack_require__(319));
 
 
 /***/ },
-/* 285 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8580,8 +8731,8 @@
 	    }
 	    BiographyPageComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(286),
-	            styles: [__webpack_require__(287)],
+	            template: __webpack_require__(288),
+	            styles: [__webpack_require__(289)],
 	            selector: "biography-page",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -8593,19 +8744,19 @@
 
 
 /***/ },
-/* 286 */
+/* 288 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"biography-page\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 287 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(288);
+	var content = __webpack_require__(290);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8625,7 +8776,7 @@
 	}
 
 /***/ },
-/* 288 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8639,7 +8790,7 @@
 
 
 /***/ },
-/* 289 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8663,8 +8814,8 @@
 	    }
 	    ContactPageComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(290),
-	            styles: [__webpack_require__(291)],
+	            template: __webpack_require__(292),
+	            styles: [__webpack_require__(293)],
 	            selector: "contact-page",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -8676,19 +8827,19 @@
 
 
 /***/ },
-/* 290 */
+/* 292 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"contact-page\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 291 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(292);
+	var content = __webpack_require__(294);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8708,7 +8859,7 @@
 	}
 
 /***/ },
-/* 292 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8722,7 +8873,7 @@
 
 
 /***/ },
-/* 293 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8746,8 +8897,8 @@
 	    }
 	    HomePageComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(294),
-	            styles: [__webpack_require__(295)],
+	            template: __webpack_require__(296),
+	            styles: [__webpack_require__(297)],
 	            selector: "home-page",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -8759,19 +8910,19 @@
 
 
 /***/ },
-/* 294 */
+/* 296 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"home-page\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 295 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(296);
+	var content = __webpack_require__(298);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8791,7 +8942,7 @@
 	}
 
 /***/ },
-/* 296 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8805,7 +8956,7 @@
 
 
 /***/ },
-/* 297 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8829,8 +8980,8 @@
 	    }
 	    GalleriesPageComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(298),
-	            styles: [__webpack_require__(299)],
+	            template: __webpack_require__(300),
+	            styles: [__webpack_require__(301)],
 	            selector: "galleries-page",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -8842,19 +8993,19 @@
 
 
 /***/ },
-/* 298 */
+/* 300 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"galleries-page\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 299 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(300);
+	var content = __webpack_require__(302);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8874,7 +9025,7 @@
 	}
 
 /***/ },
-/* 300 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8888,7 +9039,7 @@
 
 
 /***/ },
-/* 301 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8909,8 +9060,8 @@
 	    }
 	    GalleryPageComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(302),
-	            styles: [__webpack_require__(303)],
+	            template: __webpack_require__(304),
+	            styles: [__webpack_require__(305)],
 	            selector: "gallery-page",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -8922,19 +9073,19 @@
 
 
 /***/ },
-/* 302 */
+/* 304 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"gallery-page\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 303 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(304);
+	var content = __webpack_require__(306);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -8954,7 +9105,7 @@
 	}
 
 /***/ },
-/* 304 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -8968,7 +9119,7 @@
 
 
 /***/ },
-/* 305 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8993,8 +9144,8 @@
 	    }
 	    LoginPageComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(306),
-	            styles: [__webpack_require__(307)],
+	            template: __webpack_require__(308),
+	            styles: [__webpack_require__(309)],
 	            selector: "login-page",
 	            viewProviders: ["loginRedirect"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -9007,19 +9158,19 @@
 
 
 /***/ },
-/* 306 */
+/* 308 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"login-page\">\r\n    <login></login>\r\n</div>\r\n"
 
 /***/ },
-/* 307 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(308);
+	var content = __webpack_require__(310);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9039,7 +9190,7 @@
 	}
 
 /***/ },
-/* 308 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9053,7 +9204,7 @@
 
 
 /***/ },
-/* 309 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9077,8 +9228,8 @@
 	    }
 	    ProfessionalServicesPageComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(310),
-	            styles: [__webpack_require__(311)],
+	            template: __webpack_require__(312),
+	            styles: [__webpack_require__(313)],
 	            selector: "professional-services-page",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -9090,19 +9241,19 @@
 
 
 /***/ },
-/* 310 */
+/* 312 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"professional-services-page\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 311 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(312);
+	var content = __webpack_require__(314);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9122,7 +9273,7 @@
 	}
 
 /***/ },
-/* 312 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9136,7 +9287,7 @@
 
 
 /***/ },
-/* 313 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9160,8 +9311,8 @@
 	    }
 	    WhatsNewPageComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(314),
-	            styles: [__webpack_require__(315)],
+	            template: __webpack_require__(316),
+	            styles: [__webpack_require__(317)],
 	            selector: "whats-new-page",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -9173,19 +9324,19 @@
 
 
 /***/ },
-/* 314 */
+/* 316 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"whats-new-page\">    \r\n    <hero hero-image-url=\"{{ ::vm.whatsNewPageHeroImageUrl }}\" width=\"100%\" height=\"400px\"></hero>\r\n</div>\r\n"
 
 /***/ },
-/* 315 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(316);
+	var content = __webpack_require__(318);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9205,7 +9356,7 @@
 	}
 
 /***/ },
-/* 316 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9219,18 +9370,18 @@
 
 
 /***/ },
-/* 317 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var biography_page_component_1 = __webpack_require__(285);
-	var contact_page_component_1 = __webpack_require__(289);
-	var home_page_component_1 = __webpack_require__(293);
-	var galleries_page_component_1 = __webpack_require__(297);
-	var gallery_page_component_1 = __webpack_require__(301);
-	var login_page_component_1 = __webpack_require__(305);
-	var professional_services_page_component_1 = __webpack_require__(309);
-	var whats_new_page_component_1 = __webpack_require__(313);
+	var biography_page_component_1 = __webpack_require__(287);
+	var contact_page_component_1 = __webpack_require__(291);
+	var home_page_component_1 = __webpack_require__(295);
+	var galleries_page_component_1 = __webpack_require__(299);
+	var gallery_page_component_1 = __webpack_require__(303);
+	var login_page_component_1 = __webpack_require__(307);
+	var professional_services_page_component_1 = __webpack_require__(311);
+	var whats_new_page_component_1 = __webpack_require__(315);
 	exports.PagesRoutes = [
 	    {
 	        path: "/",
@@ -9268,7 +9419,7 @@
 
 
 /***/ },
-/* 318 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9276,16 +9427,16 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	var core_1 = __webpack_require__(2);
-	var photo_editor_component_1 = __webpack_require__(319);
-	var photo_list_component_1 = __webpack_require__(323);
-	var photo_component_1 = __webpack_require__(327);
-	var photos_container_component_1 = __webpack_require__(331);
+	var photo_editor_component_1 = __webpack_require__(321);
+	var photo_list_component_1 = __webpack_require__(325);
+	var photo_component_1 = __webpack_require__(329);
+	var photos_container_component_1 = __webpack_require__(333);
 	var photo_upload_modal_component_1 = __webpack_require__(338);
 	var photo_upload_component_1 = __webpack_require__(342);
-	var photo_action_creator_1 = __webpack_require__(333);
+	var photo_action_creator_1 = __webpack_require__(232);
 	var photo_service_1 = __webpack_require__(346);
 	var reducers = __webpack_require__(347);
-	var actions = __webpack_require__(332);
+	var actions = __webpack_require__(233);
 	var appPhotosModule = angular.module("app.photos", []);
 	core_1.bootstrap(appPhotosModule, {
 	    components: [photo_component_1.PhotoComponent, photo_editor_component_1.PhotoEditorComponent, photos_container_component_1.PhotosContainerComponent, photo_list_component_1.PhotoListComponent, photo_upload_component_1.PhotoUploadComponent, photo_upload_modal_component_1.PhotoUploadModalComponent],
@@ -9297,7 +9448,7 @@
 
 
 /***/ },
-/* 319 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9316,8 +9467,8 @@
 	    }
 	    PhotoEditorComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(320),
-	            styles: [__webpack_require__(321)],
+	            template: __webpack_require__(322),
+	            styles: [__webpack_require__(323)],
 	            selector: "photo-editor",
 	            inputs: ['entity', 'addOrUpdate', 'remove', 'create', 'upload'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -9330,19 +9481,19 @@
 
 
 /***/ },
-/* 320 */
+/* 322 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"photoEditor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Photo <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Photo: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"photo-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <a data-ng-click=\"vm.upload()\" style=\"line-height:3em;cursor:pointer;\">Upload</a>\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"File Name\" data-ng-model=\"vm.entity.fileName\" />\r\n            </div>\r\n            <div>\r\n                <textarea data-ng-model=\"vm.entity.description\"></textarea>\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 321 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(322);
+	var content = __webpack_require__(324);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9362,7 +9513,7 @@
 	}
 
 /***/ },
-/* 322 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9376,7 +9527,7 @@
 
 
 /***/ },
-/* 323 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9395,8 +9546,8 @@
 	    }
 	    PhotoListComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(324),
-	            styles: [__webpack_require__(325)],
+	            template: __webpack_require__(326),
+	            styles: [__webpack_require__(327)],
 	            selector: "photo-list",
 	            inputs: ['entities', 'edit', 'remove'],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -9409,19 +9560,19 @@
 
 
 /***/ },
-/* 324 */
+/* 326 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"photoList\">\r\n    <div class=\"photoList-header\">\r\n        <h1>Photos</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"photoList-item\">\r\n        <div class=\"photoList-name\">\r\n            {{ entity.fileName }}\r\n        </div>\r\n        <div class=\"photoList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 325 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(326);
+	var content = __webpack_require__(328);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9441,7 +9592,7 @@
 	}
 
 /***/ },
-/* 326 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9455,7 +9606,7 @@
 
 
 /***/ },
-/* 327 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9474,8 +9625,8 @@
 	    }
 	    PhotoComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(328),
-	            styles: [__webpack_require__(329)],
+	            template: __webpack_require__(330),
+	            styles: [__webpack_require__(331)],
 	            selector: "photo",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -9487,19 +9638,19 @@
 
 
 /***/ },
-/* 328 */
+/* 330 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"photo\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 329 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(330);
+	var content = __webpack_require__(332);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -9519,7 +9670,7 @@
 	}
 
 /***/ },
-/* 330 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -9533,7 +9684,7 @@
 
 
 /***/ },
-/* 331 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9547,8 +9698,8 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var actions = __webpack_require__(332);
-	var photo_action_creator_1 = __webpack_require__(333);
+	var actions = __webpack_require__(233);
+	var photo_action_creator_1 = __webpack_require__(232);
 	var photo_model_1 = __webpack_require__(334);
 	var PhotosContainerComponent = (function () {
 	    function PhotosContainerComponent($location, $routeParams, photoActionCreator, _invokeAsync) {
@@ -9621,147 +9772,6 @@
 	    return PhotosContainerComponent;
 	}());
 	exports.PhotosContainerComponent = PhotosContainerComponent;
-
-
-/***/ },
-/* 332 */
-/***/ function(module, exports) {
-
-	"use strict";
-	var AddOrUpdatePhotoAction = (function () {
-	    function AddOrUpdatePhotoAction(id, entity) {
-	        this.id = id;
-	        this.entity = entity;
-	    }
-	    return AddOrUpdatePhotoAction;
-	}());
-	exports.AddOrUpdatePhotoAction = AddOrUpdatePhotoAction;
-	var AllPhotosAction = (function () {
-	    function AllPhotosAction(id, entities) {
-	        this.id = id;
-	        this.entities = entities;
-	    }
-	    return AllPhotosAction;
-	}());
-	exports.AllPhotosAction = AllPhotosAction;
-	var RemovePhotoAction = (function () {
-	    function RemovePhotoAction(id, entity) {
-	        this.id = id;
-	        this.entity = entity;
-	    }
-	    return RemovePhotoAction;
-	}());
-	exports.RemovePhotoAction = RemovePhotoAction;
-	var PhotosFilterAction = (function () {
-	    function PhotosFilterAction(id, term) {
-	        this.id = id;
-	        this.term = term;
-	    }
-	    return PhotosFilterAction;
-	}());
-	exports.PhotosFilterAction = PhotosFilterAction;
-	var SetCurrentPhotoAction = (function () {
-	    function SetCurrentPhotoAction(entity) {
-	        this.entity = entity;
-	    }
-	    return SetCurrentPhotoAction;
-	}());
-	exports.SetCurrentPhotoAction = SetCurrentPhotoAction;
-	var AddOrUpdatePhotoSuccessAction = (function () {
-	    function AddOrUpdatePhotoSuccessAction(entity) {
-	        this.entity = entity;
-	    }
-	    return AddOrUpdatePhotoSuccessAction;
-	}());
-	exports.AddOrUpdatePhotoSuccessAction = AddOrUpdatePhotoSuccessAction;
-	var CurrentPhotoRemovedAction = (function () {
-	    function CurrentPhotoRemovedAction() {
-	    }
-	    return CurrentPhotoRemovedAction;
-	}());
-	exports.CurrentPhotoRemovedAction = CurrentPhotoRemovedAction;
-	var PhotoUploadAction = (function () {
-	    function PhotoUploadAction(id, entities) {
-	        this.id = id;
-	        this.entities = entities;
-	    }
-	    return PhotoUploadAction;
-	}());
-	exports.PhotoUploadAction = PhotoUploadAction;
-
-
-/***/ },
-/* 333 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(72);
-	var photo_actions_1 = __webpack_require__(332);
-	var PhotoActionCreator = (function (_super) {
-	    __extends(PhotoActionCreator, _super);
-	    function PhotoActionCreator($location, dispatcher, photoService, guid, invokeAsync, modalActionCreator) {
-	        var _this = this;
-	        _super.call(this, $location, photoService, dispatcher, guid, photo_actions_1.AddOrUpdatePhotoAction, photo_actions_1.AllPhotosAction, photo_actions_1.RemovePhotoAction, photo_actions_1.SetCurrentPhotoAction);
-	        this.invokeAsync = invokeAsync;
-	        this.modalActionCreator = modalActionCreator;
-	        this.addOrUpdateSuccess = function (options) { return _this.dispatcher.dispatch(new photo_actions_1.AddOrUpdatePhotoSuccessAction(options.entity)); };
-	        this.currentPhotoRemoved = function () { return _this.dispatcher.dispatch(new photo_actions_1.CurrentPhotoRemovedAction()); };
-	        this.upload = function (dragEvent) {
-	            dragEvent.stopPropagation();
-	            dragEvent.preventDefault();
-	            var newId = _this.guid();
-	            if (dragEvent.dataTransfer && dragEvent.dataTransfer.files) {
-	                var packageFiles = function (fileList) {
-	                    var formData = new FormData();
-	                    for (var i = 0; i < fileList.length; i++) {
-	                        formData.append(fileList[i].name, fileList[i]);
-	                    }
-	                    return formData;
-	                };
-	                _this.service
-	                    .tryToUpload({ data: packageFiles(dragEvent.dataTransfer.files) })
-	                    .then(function (response) {
-	                    _this.dispatcher.dispatch(new photo_actions_1.PhotoUploadAction(newId, response.files));
-	                });
-	            }
-	            return newId;
-	        };
-	        this.openPhotoUploadModal = function () {
-	            _this.modalActionCreator.open({ html: "<photo-upload-modal></photo-upload-modal>" });
-	        };
-	        this.openPhotoPickerModal = function () {
-	            _this.invokeAsync(_this.all).then(function (results) {
-	                _this.modalActionCreator.open({ html: "<photo-picker-modal></photo-picker-modal>" });
-	            });
-	        };
-	    }
-	    PhotoActionCreator = __decorate([
-	        core_1.Service({
-	            serviceName: "photoActionCreator",
-	            viewProviders: [
-	                "$location", "dispatcher", "photoService", "guid", "invokeAsync", "modalActionCreator"
-	            ]
-	        }), 
-	        __metadata('design:paramtypes', [Object, Object, Object, Object, Object, modal_action_creator_1.ModalActionCreator])
-	    ], PhotoActionCreator);
-	    return PhotoActionCreator;
-	}(core_1.BaseActionCreator));
-	exports.PhotoActionCreator = PhotoActionCreator;
 
 
 /***/ },
@@ -9838,7 +9848,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var photo_actions_1 = __webpack_require__(332);
+	var photo_actions_1 = __webpack_require__(233);
 	var modal_action_creator_1 = __webpack_require__(72);
 	var PhotoUploadModalComponent = (function () {
 	    function PhotoUploadModalComponent(modalActionCreator) {
@@ -9927,7 +9937,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var photo_action_creator_1 = __webpack_require__(333);
+	var photo_action_creator_1 = __webpack_require__(232);
 	var PhotoUploadComponent = (function () {
 	    function PhotoUploadComponent($element, photoActionCreator) {
 	        var _this = this;
@@ -10079,7 +10089,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(332);
+	var actions = __webpack_require__(233);
 	var core_1 = __webpack_require__(2);
 	exports.removePhotoReducer = function (state, action) {
 	    if (action instanceof actions.RemovePhotoAction)
@@ -10120,7 +10130,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var photos_container_component_1 = __webpack_require__(331);
+	var photos_container_component_1 = __webpack_require__(333);
 	exports.PhotosRoutes = [
 	    {
 	        path: "/admin/photos",

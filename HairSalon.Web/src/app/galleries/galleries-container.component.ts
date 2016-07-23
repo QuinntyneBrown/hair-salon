@@ -2,13 +2,15 @@ import { CanActivate, ChangeDetectionStrategy, Component, pluck } from "angular-
 import * as actions from "./gallery.actions";
 import { GalleryActionCreator } from "./gallery.action-creator";
 import { Gallery } from "./gallery.model";
+import { PhotoActionCreator } from "../photos/photo.action-creator";
+import { PhotoUploadAction } from "../photos/photo.actions";
 
 @Component({
     routes: ["/admin/galleries","/admin/gallery/edit/:galleryId"],
     template: require("./galleries-container.component.html"),
     styles: [require("./galleries-container.component.scss")],
     selector: "galleries-container",
-    viewProviders: ["$location","$routeParams","galleryActionCreator","invokeAsync"],
+    viewProviders: ["$location","$routeParams","galleryActionCreator","invokeAsync","photoActionCreator"],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 @CanActivate(["$q", "$route", "invokeAsync", "galleryActionCreator", ($q: angular.IQService, $route: angular.route.IRouteService, invokeAsync, galleryActionCreator: GalleryActionCreator) => {
@@ -18,7 +20,7 @@ import { Gallery } from "./gallery.model";
     return $q.all(promises);
 }])
 export class GalleriesContainerComponent { 
-    constructor(private $location: angular.ILocationService, private $routeParams: angular.route.IRouteParamsService, private galleryActionCreator: GalleryActionCreator, private _invokeAsync) { }
+    constructor(private $location: angular.ILocationService, private $routeParams: angular.route.IRouteParamsService, private galleryActionCreator: GalleryActionCreator, private _invokeAsync, private _photoActionCreator: PhotoActionCreator) { }
     storeOnChange = state => {        
         this.entities = state.gallerys;
 
@@ -34,6 +36,12 @@ export class GalleriesContainerComponent {
         if (state.lastTriggeredByAction instanceof actions.RemoveGalleryAction && this.entity && this.entity.id) {
             this.entity = pluck({ value: Number(this.$routeParams["galleryId"]), items: this.entities }) as Gallery;
             if (Object.keys(this.entity).length === 0) { this.$location.path("/admin/galleries"); }
+        }
+
+        if (state.lastTriggeredByAction instanceof PhotoUploadAction) {
+            for (var i = 0; i < state.lastTriggeredByAction.entities.length; i++) {
+                this.entity.photos.push(state.lastTriggeredByAction.entities[i]);
+            }
         }
     }
 
@@ -60,6 +68,8 @@ export class GalleriesContainerComponent {
             }
         });        
     };
+
+    upload = () => this._photoActionCreator.openPhotoUploadModal();
     entity: Gallery;
     entities: Array<Gallery>;
 }

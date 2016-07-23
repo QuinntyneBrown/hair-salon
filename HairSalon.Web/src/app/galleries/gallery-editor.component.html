@@ -10,11 +10,20 @@
 
         <tab-content>
             <div>
+                <a data-ng-click="vm.upload()" style="line-height:3em;cursor:pointer;">Upload</a>
+            </div>
+
+            <div>
                 <input class="inputField" type="text" placeholder="Gallery Name" data-ng-model="vm.entity.name" />
             </div>
         </tab-content>
 
-    </tabs>
+        <tab-title>Photos <span data-ng-if="vm.entity.id">( {{vm.entity.photos.length}})</span></tab-title>
+
+        <tab-content>
+
+        </tab-content>
+</tabs>
 
     <div>
         <calypso-button on-click="vm.addOrUpdate({ data: vm.entity })" caption="Save"></calypso-button>
