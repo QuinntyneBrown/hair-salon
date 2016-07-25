@@ -5,14 +5,16 @@
     width:100%;
 }
 
-@media (min-width: $screen-md-min) {  
-    .gallery-page {
-        .simple-carousel {
-            display:inherit
-        }
+.simple-carousel {
+    display:none;
+}
 
-        .galleries-page-photo-list {
-            display:none;
-        }
+@media (min-width: $screen-md-min) {  
+    .simple-carousel {
+        display:block;
     }
+
+    .galleries-page-photo-list {
+        display:none;
+    }    
 }

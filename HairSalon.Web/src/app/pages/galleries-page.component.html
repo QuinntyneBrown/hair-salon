@@ -1,5 +1,16 @@
 <div class="galleries-page">
-    <div class="galleries-page-photo-list" data-ng-repeat="photo in vm.mainGallery.photos">
-        <img data-ng-src="{{photo.relativePath}}" />
+
+    <div class="galleries-page-photo-list">
+        <div data-ng-repeat="photo in vm.mainGallery.photos">
+            <img style="max-height:750px;" data-ng-src="{{ photo.relativePath }}" />
+        </div>
+    </div>
+
+    <div class="simple-carousel">
+        <div>
+            <span data-ng-click="vm.previous()" class="gallery-page-previous">previous</span>
+            <span data-ng-click="vm.next()" class="gallery-page-next">next</span>
+        </div>
+        <img style="max-height:750px; max-width:750px;" data-ng-src="{{ vm.pagedList.data[0].relativePath }}" />
     </div>
 </div>

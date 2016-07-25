@@ -57,7 +57,8 @@
 	__webpack_require__(372);
 	__webpack_require__(395);
 	__webpack_require__(410);
-	var reducers = __webpack_require__(433);
+	__webpack_require__(423);
+	var reducers = __webpack_require__(446);
 	var contacts_1 = __webpack_require__(1);
 	var content_aggregation_1 = __webpack_require__(81);
 	var customers_1 = __webpack_require__(192);
@@ -68,13 +69,13 @@
 	var photos_1 = __webpack_require__(320);
 	var professional_services_1 = __webpack_require__(349);
 	var service_providers_1 = __webpack_require__(372);
-	var social_share_items_1 = __webpack_require__(410);
+	var social_share_items_1 = __webpack_require__(423);
 	var core_1 = __webpack_require__(2);
-	var authorization_guard_1 = __webpack_require__(435);
-	var app_guard_1 = __webpack_require__(436);
-	var route_change_success_is_admin_reducer_1 = __webpack_require__(437);
-	var app_component_1 = __webpack_require__(438);
-	var admin_app_component_1 = __webpack_require__(442);
+	var authorization_guard_1 = __webpack_require__(448);
+	var app_guard_1 = __webpack_require__(449);
+	var route_change_success_is_admin_reducer_1 = __webpack_require__(450);
+	var app_component_1 = __webpack_require__(451);
+	var admin_app_component_1 = __webpack_require__(455);
 	var appModule = angular.module("app", [
 	    "components",
 	    "ui.tinymce",
@@ -88,6 +89,7 @@
 	    "app.photos",
 	    "app.professionalServices",
 	    "app.shared",
+	    "app.simpleCarousel",
 	    "app.serviceProviders",
 	    "app.socialShareItems"
 	]);
@@ -8970,6 +8972,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
+	var to_paged_list_from_in_memory_1 = __webpack_require__(126);
 	var GalleriesPageComponent = (function () {
 	    function GalleriesPageComponent() {
 	        var _this = this;
@@ -8978,6 +8981,29 @@
 	                _this.galleriesPageHeroImageUrl = state.app.galleriesPageHeroImageUrl;
 	                _this.mainGallery = state.app.mainGallery;
 	            }
+	        };
+	        this.ngOnInit = function () {
+	            _this.pagedList = to_paged_list_from_in_memory_1.toPageListFromInMemory(_this.mainGallery.photos, _this.pageNumber, _this.pageSize);
+	        };
+	        this.pageNumber = 1;
+	        this.pageSize = 1;
+	        this.next = function () {
+	            if (_this.pageNumber == _this.pagedList.totalPages) {
+	                _this.pageNumber = 1;
+	            }
+	            else {
+	                _this.pageNumber = _this.pageNumber + 1;
+	            }
+	            _this.ngOnInit();
+	        };
+	        this.previous = function () {
+	            if (_this.pageNumber == 1) {
+	                _this.pageNumber = _this.pagedList.totalPages;
+	            }
+	            else {
+	                _this.pageNumber = _this.pageNumber - 1;
+	            }
+	            _this.ngOnInit();
 	        };
 	    }
 	    GalleriesPageComponent = __decorate([
@@ -8998,7 +9024,7 @@
 /* 300 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"galleries-page\">\r\n    <div class=\"galleries-page-photo-list\" data-ng-repeat=\"photo in vm.mainGallery.photos\">\r\n        <img data-ng-src=\"{{photo.relativePath}}\" />\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"galleries-page\">\r\n\r\n    <div class=\"galleries-page-photo-list\">\r\n        <div data-ng-repeat=\"photo in vm.mainGallery.photos\">\r\n            <img style=\"max-height:750px;\" data-ng-src=\"{{ photo.relativePath }}\" />\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"simple-carousel\">\r\n        <div>\r\n            <span data-ng-click=\"vm.previous()\" class=\"gallery-page-previous\">previous</span>\r\n            <span data-ng-click=\"vm.next()\" class=\"gallery-page-next\">next</span>\r\n        </div>\r\n        <img style=\"max-height:750px; max-width:750px;\" data-ng-src=\"{{ vm.pagedList.data[0].relativePath }}\" />\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 301 */
@@ -9035,7 +9061,7 @@
 
 
 	// module
-	exports.push([module.id, ".galleries-page-photo-list img {\n  max-width: 500px;\n  width: 100%; }\n\n@media (min-width: 992px) {\n  .gallery-page .simple-carousel {\n    display: inherit; }\n  .gallery-page .galleries-page-photo-list {\n    display: none; } }\n", ""]);
+	exports.push([module.id, ".galleries-page-photo-list img {\n  max-width: 500px;\n  width: 100%; }\n\n.simple-carousel {\n  display: none; }\n\n@media (min-width: 992px) {\n  .simple-carousel {\n    display: block; }\n  .galleries-page-photo-list {\n    display: none; } }\n", ""]);
 
 	// exports
 
@@ -11552,7 +11578,7 @@
 /* 403 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"app-header\">\r\n    <div class=\"app-header-inner\">\r\n        <img data-ng-src=\"{{::vm.logo}}\" />\r\n    </div>   \r\n    <div class=\"app-header-sub-nav\">\r\n        <a href=\"/\">Home</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/galleries\">Galleries</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"whats-new\">What's New</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/about\">About</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/services\">Services</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/contact\">Contact</a>\r\n    </div>     \r\n</div>\r\n"
+	module.exports = "<div class=\"app-header\">\r\n    <div class=\"app-header-inner\">\r\n        <img data-ng-src=\"{{::vm.logo}}\" />\r\n    </div>   \r\n    <div class=\"app-header-sub-nav\">\r\n        <a href=\"/\">Home</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/galleries\">Gallery</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"whats-new\">What's New</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/about\">About</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/services\">Services</a>\r\n        &nbsp;&nbsp;|&nbsp;&nbsp;\r\n        <a href=\"/contact\">Contact</a>\r\n    </div>     \r\n</div>\r\n"
 
 /***/ },
 /* 404 */
@@ -11681,26 +11707,16 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	var core_1 = __webpack_require__(2);
-	var social_share_item_editor_component_1 = __webpack_require__(411);
-	var social_share_item_list_component_1 = __webpack_require__(415);
-	var social_share_item_component_1 = __webpack_require__(419);
-	var social_share_items_container_component_1 = __webpack_require__(423);
-	var social_share_item_action_creator_1 = __webpack_require__(425);
-	var social_share_item_service_1 = __webpack_require__(430);
-	var reducers = __webpack_require__(431);
-	var actions = __webpack_require__(424);
-	var appSocialShareItemsModule = angular.module("app.socialShareItems", []);
-	core_1.bootstrap(appSocialShareItemsModule, {
-	    components: [social_share_item_component_1.SocialShareItemComponent, social_share_item_editor_component_1.SocialShareItemEditorComponent, social_share_items_container_component_1.SocialShareItemsContainerComponent, social_share_item_list_component_1.SocialShareItemListComponent],
-	    providers: [social_share_item_action_creator_1.SocialShareItemActionCreator, social_share_item_service_1.SocialShareItemService],
-	    reducers: reducers,
-	    actions: actions
+	var simple_carousel_component_1 = __webpack_require__(411);
+	var simple_carousel_slide_component_1 = __webpack_require__(415);
+	var simple_carousel_title_component_1 = __webpack_require__(419);
+	var app = angular.module("app.simpleCarousel", [
+	    "app.core"
+	]);
+	core_1.bootstrap(app, {
+	    components: [simple_carousel_component_1.SimpleCarouselComponent, simple_carousel_slide_component_1.SimpleCarouselSlideComponent, simple_carousel_title_component_1.SimpleCarouselTitleComponent]
 	});
-	__export(__webpack_require__(432));
 
 
 /***/ },
@@ -11718,29 +11734,32 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var SocialShareItemEditorComponent = (function () {
-	    function SocialShareItemEditorComponent() {
+	var SimpleCarouselComponent = (function () {
+	    function SimpleCarouselComponent() {
 	    }
-	    SocialShareItemEditorComponent = __decorate([
+	    SimpleCarouselComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(412),
 	            styles: [__webpack_require__(413)],
-	            selector: "social-share-item-editor",
-	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
+	            selector: "simple-carousel",
+	            transclude: {
+	                'title': '?simpleCarouselTitle',
+	                'content': '?simpleCarouselSlide'
+	            },
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], SocialShareItemEditorComponent);
-	    return SocialShareItemEditorComponent;
+	    ], SimpleCarouselComponent);
+	    return SimpleCarouselComponent;
 	}());
-	exports.SocialShareItemEditorComponent = SocialShareItemEditorComponent;
+	exports.SimpleCarouselComponent = SimpleCarouselComponent;
 
 
 /***/ },
 /* 412 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"socialShareItemEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Social Share Item <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Social Share Item: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"social-share-item-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Social Share Item Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"simple-carousel\">\r\n\r\n</div>\r\n"
 
 /***/ },
 /* 413 */
@@ -11758,8 +11777,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-editor.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-editor.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./simple-carousel.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./simple-carousel.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11797,29 +11816,29 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var SocialShareItemListComponent = (function () {
-	    function SocialShareItemListComponent() {
+	var SimpleCarouselSlideComponent = (function () {
+	    function SimpleCarouselSlideComponent() {
 	    }
-	    SocialShareItemListComponent = __decorate([
+	    SimpleCarouselSlideComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(416),
 	            styles: [__webpack_require__(417)],
-	            selector: "social-share-item-list",
-	            inputs: ['entities', 'edit', 'remove'],
+	            selector: "simple-carousel-slide",
+	            transclude: true,
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], SocialShareItemListComponent);
-	    return SocialShareItemListComponent;
+	    ], SimpleCarouselSlideComponent);
+	    return SimpleCarouselSlideComponent;
 	}());
-	exports.SocialShareItemListComponent = SocialShareItemListComponent;
+	exports.SimpleCarouselSlideComponent = SimpleCarouselSlideComponent;
 
 
 /***/ },
 /* 416 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"socialShareItemList\">\r\n    <div class=\"socialShareItemList-header\">\r\n        <h1>SocialShareItems</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"socialShareItemList-item\">\r\n        <div class=\"socialShareItemList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"socialShareItemList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"simple-carousel-slide\">\r\n    <ng-transclude></ng-transclude>\r\n</div>\r\n"
 
 /***/ },
 /* 417 */
@@ -11837,8 +11856,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-list.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-list.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./simple-carousel-slide.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./simple-carousel-slide.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11856,7 +11875,7 @@
 
 
 	// module
-	exports.push([module.id, ".socialShareItemList-name,\n.socialShareItemList-actions {\n  position: relative;\n  float: left; }\n\n.socialShareItemList-name {\n  min-width: 200px; }\n\n.socialShareItemList-item {\n  height: 50px; }\n\n.socialShareItemList-actions span {\n  cursor: pointer; }\n\n.socialShareItemList-actions {\n  text-transform: uppercase; }\n", ""]);
+	exports.push([module.id, "", ""]);
 
 	// exports
 
@@ -11876,28 +11895,29 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var SocialShareItemComponent = (function () {
-	    function SocialShareItemComponent() {
+	var SimpleCarouselTitleComponent = (function () {
+	    function SimpleCarouselTitleComponent() {
 	    }
-	    SocialShareItemComponent = __decorate([
+	    SimpleCarouselTitleComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(420),
 	            styles: [__webpack_require__(421)],
-	            selector: "social-share-item",
+	            selector: "simple-carousel-title",
+	            transclude: true,
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], SocialShareItemComponent);
-	    return SocialShareItemComponent;
+	    ], SimpleCarouselTitleComponent);
+	    return SimpleCarouselTitleComponent;
 	}());
-	exports.SocialShareItemComponent = SocialShareItemComponent;
+	exports.SimpleCarouselTitleComponent = SimpleCarouselTitleComponent;
 
 
 /***/ },
 /* 420 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"social-share-item\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"simple-carousel-title\">\r\n    <ng-transclude></ng-transclude>\r\n</div>\r\n"
 
 /***/ },
 /* 421 */
@@ -11915,8 +11935,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./simple-carousel-title.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./simple-carousel-title.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11944,6 +11964,33 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	var core_1 = __webpack_require__(2);
+	var social_share_item_editor_component_1 = __webpack_require__(424);
+	var social_share_item_list_component_1 = __webpack_require__(428);
+	var social_share_item_component_1 = __webpack_require__(432);
+	var social_share_items_container_component_1 = __webpack_require__(436);
+	var social_share_item_action_creator_1 = __webpack_require__(438);
+	var social_share_item_service_1 = __webpack_require__(443);
+	var reducers = __webpack_require__(444);
+	var actions = __webpack_require__(437);
+	var appSocialShareItemsModule = angular.module("app.socialShareItems", []);
+	core_1.bootstrap(appSocialShareItemsModule, {
+	    components: [social_share_item_component_1.SocialShareItemComponent, social_share_item_editor_component_1.SocialShareItemEditorComponent, social_share_items_container_component_1.SocialShareItemsContainerComponent, social_share_item_list_component_1.SocialShareItemListComponent],
+	    providers: [social_share_item_action_creator_1.SocialShareItemActionCreator, social_share_item_service_1.SocialShareItemService],
+	    reducers: reducers,
+	    actions: actions
+	});
+	__export(__webpack_require__(445));
+
+
+/***/ },
+/* 424 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11954,9 +12001,245 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var actions = __webpack_require__(424);
-	var social_share_item_action_creator_1 = __webpack_require__(425);
-	var social_share_item_model_1 = __webpack_require__(426);
+	var SocialShareItemEditorComponent = (function () {
+	    function SocialShareItemEditorComponent() {
+	    }
+	    SocialShareItemEditorComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(425),
+	            styles: [__webpack_require__(426)],
+	            selector: "social-share-item-editor",
+	            inputs: ['entity', 'addOrUpdate', 'remove', 'create'],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], SocialShareItemEditorComponent);
+	    return SocialShareItemEditorComponent;
+	}());
+	exports.SocialShareItemEditorComponent = SocialShareItemEditorComponent;
+
+
+/***/ },
+/* 425 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"socialShareItemEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Social Share Item <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Social Share Item: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"social-share-item-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Social Share Item Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+
+/***/ },
+/* 426 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(427);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-editor.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-editor.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 427 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 428 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var SocialShareItemListComponent = (function () {
+	    function SocialShareItemListComponent() {
+	    }
+	    SocialShareItemListComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(429),
+	            styles: [__webpack_require__(430)],
+	            selector: "social-share-item-list",
+	            inputs: ['entities', 'edit', 'remove'],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], SocialShareItemListComponent);
+	    return SocialShareItemListComponent;
+	}());
+	exports.SocialShareItemListComponent = SocialShareItemListComponent;
+
+
+/***/ },
+/* 429 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"socialShareItemList\">\r\n    <div class=\"socialShareItemList-header\">\r\n        <h1>SocialShareItems</h1>\r\n    </div>\r\n    \r\n    <div data-ng-repeat=\"entity in vm.entities\" class=\"socialShareItemList-item\">\r\n        <div class=\"socialShareItemList-name\">\r\n            {{ entity.name }}\r\n        </div>\r\n        <div class=\"socialShareItemList-actions\">\r\n            <span data-ng-click=\"vm.edit({ entity: this.entity })\">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click=\"vm.remove({ entity: this.entity })\">remove</span>\r\n        </div>\r\n        <div style=\"clear:both;\"></div>\r\n    </div>\r\n</div>\r\n"
+
+/***/ },
+/* 430 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(431);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-list.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item-list.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 431 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".socialShareItemList-name,\n.socialShareItemList-actions {\n  position: relative;\n  float: left; }\n\n.socialShareItemList-name {\n  min-width: 200px; }\n\n.socialShareItemList-item {\n  height: 50px; }\n\n.socialShareItemList-actions span {\n  cursor: pointer; }\n\n.socialShareItemList-actions {\n  text-transform: uppercase; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 432 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var SocialShareItemComponent = (function () {
+	    function SocialShareItemComponent() {
+	    }
+	    SocialShareItemComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(433),
+	            styles: [__webpack_require__(434)],
+	            selector: "social-share-item",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], SocialShareItemComponent);
+	    return SocialShareItemComponent;
+	}());
+	exports.SocialShareItemComponent = SocialShareItemComponent;
+
+
+/***/ },
+/* 433 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"social-share-item\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 434 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(435);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(60)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./social-share-item.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 435 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(59)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 436 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var actions = __webpack_require__(437);
+	var social_share_item_action_creator_1 = __webpack_require__(438);
+	var social_share_item_model_1 = __webpack_require__(439);
 	var SocialShareItemsContainerComponent = (function () {
 	    function SocialShareItemsContainerComponent($location, $routeParams, socialShareItemActionCreator, _invokeAsync) {
 	        var _this = this;
@@ -12007,8 +12290,8 @@
 	    SocialShareItemsContainerComponent = __decorate([
 	        core_1.Component({
 	            routes: ["/admin/socialshareitems", "/admin/socialshareitem/edit/:socialShareItemId"],
-	            template: __webpack_require__(427),
-	            styles: [__webpack_require__(428)],
+	            template: __webpack_require__(440),
+	            styles: [__webpack_require__(441)],
 	            selector: "social-share-items-container",
 	            viewProviders: ["$location", "$routeParams", "socialShareItemActionCreator", "invokeAsync"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -12030,7 +12313,7 @@
 
 
 /***/ },
-/* 424 */
+/* 437 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12089,7 +12372,7 @@
 
 
 /***/ },
-/* 425 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12109,7 +12392,7 @@
 	};
 	var core_1 = __webpack_require__(2);
 	var modal_action_creator_1 = __webpack_require__(72);
-	var social_share_item_actions_1 = __webpack_require__(424);
+	var social_share_item_actions_1 = __webpack_require__(437);
 	var SocialShareItemActionCreator = (function (_super) {
 	    __extends(SocialShareItemActionCreator, _super);
 	    function SocialShareItemActionCreator($location, dispatcher, socialShareItemService, guid, invokeAsync, modalActionCreator) {
@@ -12138,7 +12421,7 @@
 
 
 /***/ },
-/* 426 */
+/* 439 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12151,19 +12434,19 @@
 
 
 /***/ },
-/* 427 */
+/* 440 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\r\n    <social-share-item-editor entity=\"vm.entity\" edit=\"vm.edit\" remove=\"vm.remove\" add-or-update=\"vm.addOrUpdate\" create=\"vm.create\"></social-share-item-editor>\r\n    <social-share-item-list entities=\"vm.entities\" edit=\"vm.edit\" remove=\"vm.remove\"></social-share-item-list>\r\n</div>\r\n"
 
 /***/ },
-/* 428 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(429);
+	var content = __webpack_require__(442);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -12183,7 +12466,7 @@
 	}
 
 /***/ },
-/* 429 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -12197,7 +12480,7 @@
 
 
 /***/ },
-/* 430 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12240,11 +12523,11 @@
 
 
 /***/ },
-/* 431 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(424);
+	var actions = __webpack_require__(437);
 	var core_1 = __webpack_require__(2);
 	exports.removeSocialShareItemReducer = function (state, action) {
 	    if (action instanceof actions.RemoveSocialShareItemAction)
@@ -12272,11 +12555,11 @@
 
 
 /***/ },
-/* 432 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var social_share_items_container_component_1 = __webpack_require__(423);
+	var social_share_items_container_component_1 = __webpack_require__(436);
 	exports.SocialShareItemsRoutes = [
 	    {
 	        path: "/admin/socialshareitems",
@@ -12292,12 +12575,12 @@
 
 
 /***/ },
-/* 433 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var app_actions_1 = __webpack_require__(84);
-	var app_constants_1 = __webpack_require__(434);
+	var app_constants_1 = __webpack_require__(447);
 	exports.allAppsReducer = function (state, action) {
 	    if (action instanceof app_actions_1.AddOrUpdateAppAction) {
 	        state.app = state.app || { properties: [] };
@@ -12335,7 +12618,7 @@
 
 
 /***/ },
-/* 434 */
+/* 447 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12361,7 +12644,7 @@
 
 
 /***/ },
-/* 435 */
+/* 448 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12385,7 +12668,7 @@
 
 
 /***/ },
-/* 436 */
+/* 449 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12404,7 +12687,7 @@
 
 
 /***/ },
-/* 437 */
+/* 450 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12422,7 +12705,7 @@
 
 
 /***/ },
-/* 438 */
+/* 451 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12441,8 +12724,8 @@
 	    }
 	    AppComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(439),
-	            styles: [__webpack_require__(440)],
+	            template: __webpack_require__(452),
+	            styles: [__webpack_require__(453)],
 	            selector: "root-app",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -12454,19 +12737,19 @@
 
 
 /***/ },
-/* 439 */
+/* 452 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"app\">\r\n    <app-header></app-header>\r\n    <div data-ng-view></div>\r\n    <app-footer></app-footer>\r\n</div>"
 
 /***/ },
-/* 440 */
+/* 453 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(441);
+	var content = __webpack_require__(454);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -12486,7 +12769,7 @@
 	}
 
 /***/ },
-/* 441 */
+/* 454 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
@@ -12500,7 +12783,7 @@
 
 
 /***/ },
-/* 442 */
+/* 455 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12521,8 +12804,8 @@
 	    }
 	    AdminAppComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(443),
-	            styles: [__webpack_require__(444)],
+	            template: __webpack_require__(456),
+	            styles: [__webpack_require__(457)],
 	            selector: "admin-app",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -12534,19 +12817,19 @@
 
 
 /***/ },
-/* 443 */
+/* 456 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"admin-app\">\r\n    <admin-header></admin-header>\r\n    <div class=\"admin-content-container\">\r\n        <div class=\"admin-side-nav\" data-ng-if=\"vm.currentUser\">\r\n            <ul>\r\n                <li><a href=\"/admin/apps\">Apps</a></li>\r\n                <li><a href=\"/admin/photos\">Photos</a></li>\r\n                <li><a href=\"/admin/galleries\">Galleries</a></li>\r\n                <li><a href=\"/admin/socialshareitems\">Social Share Items</a></li>\r\n                <li><a href=\"/admin/professionalservices\">Services</a></li>\r\n                <li><a href=\"/admin/properties\">Properties</a></li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"admin-main-content\" data-ng-view></div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 444 */
+/* 457 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(445);
+	var content = __webpack_require__(458);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(60)(content, {});
@@ -12566,7 +12849,7 @@
 	}
 
 /***/ },
-/* 445 */
+/* 458 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(59)();
