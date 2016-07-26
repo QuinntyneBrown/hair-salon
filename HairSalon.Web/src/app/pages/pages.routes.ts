@@ -14,7 +14,7 @@ export const PagesRoutes: Array<IRouteConfig> = [
         component: HomePageComponent
     },
     {
-        path: "/biography",
+        path: "/about",
         component: BiographyPageComponent
     },
     {

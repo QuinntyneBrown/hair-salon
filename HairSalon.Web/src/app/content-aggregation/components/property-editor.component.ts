@@ -7,6 +7,11 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
     inputs: ['entity','addOrUpdate','remove','create'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PropertyEditorComponent {}
+export class PropertyEditorComponent {
+    tinymceOptions = {
+        height: "500px",
+        width: "800px"
+    };
+}
 
 

@@ -3931,6 +3931,10 @@
 	var core_1 = __webpack_require__(2);
 	var PropertyEditorComponent = (function () {
 	    function PropertyEditorComponent() {
+	        this.tinymceOptions = {
+	            height: "500px",
+	            width: "800px"
+	        };
 	    }
 	    PropertyEditorComponent = __decorate([
 	        core_1.Component({
@@ -3951,7 +3955,7 @@
 /* 106 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"propertyEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Property <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Property: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"property-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Key\" data-ng-model=\"vm.entity.key\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Value\" data-ng-model=\"vm.entity.value\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Base Uri\" data-ng-model=\"vm.entity.baseUri\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Uri\" data-ng-model=\"vm.entity.uri\" />\r\n            </div>\r\n            <div>\r\n                <textarea ui-tinymce ng-model=\"vm.entity.htmlBody\"></textarea>\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"propertyEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Property <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Property: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"property-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Key\" data-ng-model=\"vm.entity.key\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Value\" data-ng-model=\"vm.entity.value\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Base Uri\" data-ng-model=\"vm.entity.baseUri\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Uri\" data-ng-model=\"vm.entity.uri\" />\r\n            </div>\r\n            <div class=\"property-text-area\">\r\n                <textarea ui-tinymce=\"vm.tinymceOptions\" ng-model=\"vm.entity.htmlBody\"></textarea>\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"Create\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 107 */
@@ -8727,8 +8731,10 @@
 	    function BiographyPageComponent() {
 	        var _this = this;
 	        this.storeOnChange = function (state) {
-	            if (state.app)
+	            if (state.app) {
 	                _this.biographyPageHeroImageUrl = state.app.biographyPageHeroImageUrl;
+	                _this.biography = state.app.biography;
+	            }
 	        };
 	    }
 	    BiographyPageComponent = __decorate([
@@ -8749,7 +8755,7 @@
 /* 288 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"biography-page\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"biography-page\">\r\n    <hero hero-image-url=\"{{ ::vm.biographyPageHeroImageUrl }}\" width=\"100%\" height=\"400px\"></hero>\r\n    <div class=\"biography-page-content\">\r\n        <div data-ng-bind-html=\"vm.biography\">\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 289 */
@@ -8786,7 +8792,7 @@
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".biography-page-content {\n  max-width: 1280px;\n  margin: 0px 20px 0px 20px; }\n\n@media (min-width: 992px) {\n  .biography-page-content {\n    margin: 0 auto; } }\n", ""]);
 
 	// exports
 
@@ -9416,7 +9422,7 @@
 	        component: home_page_component_1.HomePageComponent
 	    },
 	    {
-	        path: "/biography",
+	        path: "/about",
 	        component: biography_page_component_1.BiographyPageComponent
 	    },
 	    {
@@ -12595,6 +12601,8 @@
 	                state.app.whatsNewPageHeroImageUrl = action.entity.properties[i].value;
 	            if (action.entity.properties[i].name === app_constants_1.appProperties.galleriesPageHeroImageUrl)
 	                state.app.galleriesPageHeroImageUrl = action.entity.properties[i].value;
+	            if (action.entity.properties[i].name === app_constants_1.appProperties.biographyPageHeroImageUrl)
+	                state.app.biographyPageHeroImageUrl = action.entity.properties[i].value;
 	            if (action.entity.properties[i].name === app_constants_1.appProperties.logo)
 	                state.app.logo = action.entity.properties[i].value;
 	            if (action.entity.properties[i].name === app_constants_1.appProperties.whatsNew)
@@ -12630,6 +12638,7 @@
 	    appProperties.servicesPageHeroImageUrl = "servicesPageHeroImageUrl";
 	    appProperties.whatsNewPageHeroImageUrl = "whatsNewPageHeroImageUrl";
 	    appProperties.galleriesPageHeroImageUrl = "galleriesPageHeroImageUrl";
+	    appProperties.biographyPageHeroImageUrl = "biographyPageHeroImageUrl";
 	    appProperties.whatsNew = "whatsNew";
 	    appProperties.biography = "biography";
 	    appProperties.contactInfomation = "contactInfomation";

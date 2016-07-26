@@ -21,6 +21,9 @@ export const allAppsReducer = (state, action) => {
             if (action.entity.properties[i].name === appProperties.galleriesPageHeroImageUrl)
                 state.app.galleriesPageHeroImageUrl = action.entity.properties[i].value;
 
+            if (action.entity.properties[i].name === appProperties.biographyPageHeroImageUrl)
+                state.app.biographyPageHeroImageUrl = action.entity.properties[i].value;
+
             if (action.entity.properties[i].name === appProperties.logo)
                 state.app.logo = action.entity.properties[i].value;
 

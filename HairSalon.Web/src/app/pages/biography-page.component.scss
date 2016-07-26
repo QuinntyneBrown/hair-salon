@@ -1,6 +1,12 @@
 @import "../../assets/scss/breakpoints";
 
+.biography-page-content {
+    max-width:1280px;
+    margin: 0px 20px 0px 20px;
+}
 
 @media (min-width: $screen-md-min) {  
-
+    .biography-page-content {
+        margin: 0 auto;
+    }
 }

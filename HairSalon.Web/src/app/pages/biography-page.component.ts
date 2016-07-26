@@ -8,8 +8,11 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/s
 })
 export class BiographyPageComponent {
     storeOnChange = state => {
-        if (state.app)
+        if (state.app) {
             this.biographyPageHeroImageUrl = state.app.biographyPageHeroImageUrl;
+            this.biography = state.app.biography;
+        }
     }
     public biographyPageHeroImageUrl: string;
+    public biography: string;
 }

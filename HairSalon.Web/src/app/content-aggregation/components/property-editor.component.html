@@ -24,8 +24,8 @@
             <div>
                 <input class="inputField" type="text" placeholder="Uri" data-ng-model="vm.entity.uri" />
             </div>
-            <div>
-                <textarea ui-tinymce ng-model="vm.entity.htmlBody"></textarea>
+            <div class="property-text-area">
+                <textarea ui-tinymce="vm.tinymceOptions" ng-model="vm.entity.htmlBody"></textarea>
             </div>
         </tab-content>
 

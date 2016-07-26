@@ -4,6 +4,7 @@
     public static servicesPageHeroImageUrl: string = "servicesPageHeroImageUrl";
     public static whatsNewPageHeroImageUrl: string = "whatsNewPageHeroImageUrl";
     public static galleriesPageHeroImageUrl: string = "galleriesPageHeroImageUrl";
+    public static biographyPageHeroImageUrl: string = "biographyPageHeroImageUrl";
 
     public static whatsNew: string = "whatsNew";
     public static biography: string = "biography";
