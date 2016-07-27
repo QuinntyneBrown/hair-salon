@@ -10,3 +10,9 @@
         margin: 0 auto;
     }
 }
+
+@media (min-width: $screen-lg-min) {  
+    .biography-page-content {
+        width:66.666667%;
+    }
+}

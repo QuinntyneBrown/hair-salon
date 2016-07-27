@@ -8792,7 +8792,7 @@
 
 
 	// module
-	exports.push([module.id, ".biography-page-content {\n  max-width: 1280px;\n  margin: 0px 20px 0px 20px; }\n\n@media (min-width: 992px) {\n  .biography-page-content {\n    margin: 0 auto; } }\n", ""]);
+	exports.push([module.id, ".biography-page-content {\n  max-width: 1280px;\n  margin: 0px 20px 0px 20px; }\n\n@media (min-width: 992px) {\n  .biography-page-content {\n    margin: 0 auto; } }\n\n@media (min-width: 1200px) {\n  .biography-page-content {\n    width: 66.666667%; } }\n", ""]);
 
 	// exports
 
@@ -9278,7 +9278,7 @@
 /* 312 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"professional-services-page\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"professional-services-page\">\r\n    <hero hero-image-url=\"{{ ::vm.servicesPageHeroImageUrl }}\" width=\"100%\" height=\"400px\"></hero>\r\n</div>\r\n"
 
 /***/ },
 /* 313 */
