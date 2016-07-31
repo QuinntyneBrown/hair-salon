@@ -5,6 +5,7 @@ require("./app/galleries");
 require("./app/menu-items");
 require("./app/menus");
 require("./app/pages");
+require("./app/photo-gallery");
 require("./app/photos");
 require("./app/professional-services");
 require("./app/service-providers");
@@ -45,6 +46,7 @@ const appModule = angular.module("app", [
     "app.menuItems",
     "app.menus",
     "app.pages",
+    "app.photoGallery",
     "app.photos",
     "app.professionalServices",
     "app.shared",

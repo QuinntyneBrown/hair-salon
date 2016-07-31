@@ -1,0 +1,3 @@
+<div class="photo-gallery">
+
+</div>
