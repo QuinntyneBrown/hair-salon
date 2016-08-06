@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 namespace HairSalon.Dtos
 {
-    public class PhotoDto
+    public class DigitalAssetDto
     {
-        public PhotoDto(HairSalon.Models.Photo entity, bool includeRelatedEntities = false)
+        public DigitalAssetDto(HairSalon.Models.DigitalAsset entity, bool includeRelatedEntities = false)
         {
             Id = entity.Id;
             Name = entity.Name;
@@ -19,12 +19,12 @@ namespace HairSalon.Dtos
 
             if (includeRelatedEntities)
             {
-                Galleries = entity.GalleryPhotos.Select(x => new GalleryDto(x.Gallery)).ToList();
+                Galleries = entity.GalleryDigitalAssets.Select(x => new GalleryDto(x.Gallery)).ToList();
             }
             
         }
 
-        public PhotoDto()
+        public DigitalAssetDto()
         {
 
         }

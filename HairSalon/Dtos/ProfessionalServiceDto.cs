@@ -9,7 +9,7 @@ namespace HairSalon.Dtos
         {
             Id = entity.Id;
             Name = entity.Name;
-            Photos = entity.ProfessionalServicePhotos.Select(x => new PhotoDto(x.Photo)).ToList();
+            Photos = entity.ProfessionalServicePhotos.Select(x => new DigitalAssetDto(x.DigitalAsset)).ToList();
         }
 
         public ProfessionalServiceDto()
@@ -19,6 +19,6 @@ namespace HairSalon.Dtos
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<PhotoDto> Photos { get; set; } = new HashSet<PhotoDto>();
+        public ICollection<DigitalAssetDto> Photos { get; set; } = new HashSet<DigitalAssetDto>();
     }
 }

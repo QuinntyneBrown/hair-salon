@@ -9,7 +9,7 @@ namespace HairSalon.Data
         IRepository<UI> UIs { get; }
         IRepository<Section> Sections { get; }
         IRepository<Property> Properties { get; }
-        IRepository<Photo> Photos { get; }
+        IRepository<DigitalAsset> Photos { get; }
         IRepository<Gallery> Galleries { get; }
         IRepository<User> Users { get; }
         IRepository<Role> Roles { get; }

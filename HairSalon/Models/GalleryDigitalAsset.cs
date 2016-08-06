@@ -2,14 +2,14 @@
 
 namespace HairSalon.Models
 {
-    public class GalleryPhoto
+    public class GalleryDigitalAsset
     {
         public int Id { get; set; }
         [ForeignKey("Gallery")]
         public int? GalleryId { get; set; }
-        [ForeignKey("Photo")]
-        public int? PhotoId { get; set; }
+        [ForeignKey("DigitalAsset")]
+        public int? DigitalAssetId { get; set; }
         public Gallery Gallery { get; set; }
-        public Photo Photo { get; set; }
+        public DigitalAsset DigitalAsset { get; set; }
     }
 }

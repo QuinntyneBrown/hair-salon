@@ -31,7 +31,7 @@ namespace HairSalon.Data
         public IRepository<UI> UIs { get { return GetStandardRepo<UI>(); } }
         public IRepository<Section> Sections { get { return GetStandardRepo<Section>(); } }
         public IRepository<Property> Properties { get { return GetStandardRepo<Property>(); } }        
-        public IRepository<Photo> Photos { get { return GetStandardRepo<Photo>(); } }
+        public IRepository<DigitalAsset> Photos { get { return GetStandardRepo<DigitalAsset>(); } }
         public IRepository<Gallery> Galleries { get { return GetStandardRepo<Gallery>(); } }
         public IRepository<User> Users { get { return GetStandardRepo<User>(); } }
         public IRepository<Role> Roles { get { return GetStandardRepo<Role>(); } }

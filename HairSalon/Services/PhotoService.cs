@@ -8,7 +8,7 @@ using HairSalon.Models;
 
 namespace HairSalon.Services
 {
-    public class PhotoService : IPhotoService
+    public class PhotoService : IDigitalAssetService
     {
         public PhotoService(IUow uow, ICacheProvider cacheProvider)
         {
@@ -17,15 +17,15 @@ namespace HairSalon.Services
             this.cache = cacheProvider.GetCache();
         }
 
-        public PhotoAddOrUpdateResponseDto AddOrUpdate(PhotoAddOrUpdateRequestDto request)
+        public DigitalAssetAddOrUpdateResponseDto AddOrUpdate(DigitalAssetAddOrUpdateRequestDto request)
         {
             var entity = repository.GetAll()
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
-            if (entity == null) repository.Add(entity = new Photo());
+            if (entity == null) repository.Add(entity = new DigitalAsset());
             entity.Name = request.Name;
             entity.Description = request.Description;
             uow.SaveChanges();
-            return new PhotoAddOrUpdateResponseDto(entity);
+            return new DigitalAssetAddOrUpdateResponseDto(entity);
         }
 
         public dynamic Remove(int id)
@@ -36,22 +36,22 @@ namespace HairSalon.Services
             return id;
         }
 
-        public ICollection<PhotoDto> Get()
+        public ICollection<DigitalAssetDto> Get()
         {
-            ICollection<PhotoDto> response = new HashSet<PhotoDto>();
+            ICollection<DigitalAssetDto> response = new HashSet<DigitalAssetDto>();
             var entities = repository.GetAll().Where(x => x.IsDeleted == false).ToList();
-            foreach(var entity in entities) { response.Add(new PhotoDto(entity)); }    
+            foreach(var entity in entities) { response.Add(new DigitalAssetDto(entity)); }    
             return response;
         }
 
 
-        public PhotoDto GetById(int id)
+        public DigitalAssetDto GetById(int id)
         {
-            return new PhotoDto(repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
+            return new DigitalAssetDto(repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
 
         protected readonly IUow uow;
-        protected readonly IRepository<Photo> repository;
+        protected readonly IRepository<DigitalAsset> repository;
         protected readonly ICache cache;
     }
 }

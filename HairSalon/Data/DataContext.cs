@@ -18,7 +18,7 @@ namespace HairSalon.Data
         public DbSet<UI> UIs { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Property> Properties { get; set; }
-        public DbSet<Photo> Photos { get; set; }
+        public DbSet<DigitalAsset> Photos { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }

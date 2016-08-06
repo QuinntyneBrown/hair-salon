@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HairSalon.Models
 {
-    public class Photo
+    public class DigitalAsset
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -13,10 +13,10 @@ namespace HairSalon.Models
         public DateTime? FileModified { get; set; }
         public long? Size { get; set; }
         public string ContentType { get; set; }
-        public string RelativePath { get { return $"api/photo/serve?uniqueid={UniqueId}"; } }
+        public string RelativePath { get { return $"api/digitalasset/serve?uniqueid={UniqueId}"; } }
         public Byte[] Bytes { get; set; } = new byte[0];
         public Guid? UniqueId { get; set; } = Guid.NewGuid();
         public bool IsDeleted { get; set; }
-        public ICollection<GalleryPhoto> GalleryPhotos { get; set; } = new HashSet<GalleryPhoto>();
+        public ICollection<GalleryDigitalAsset> GalleryDigitalAssets { get; set; } = new HashSet<GalleryDigitalAsset>();
     }
 }

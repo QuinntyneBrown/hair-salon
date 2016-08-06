@@ -27,7 +27,7 @@ namespace HairSalon.Services
 
             foreach(var photo in request.Photos)
             {
-                entity.GalleryPhotos.Add(new GalleryPhoto() { Photo = uow.Photos.GetById(photo.Id) });                
+                entity.GalleryPhotos.Add(new GalleryDigitalAsset() { DigitalAsset = uow.Photos.GetById(photo.Id) });                
             }
 
             uow.SaveChanges();

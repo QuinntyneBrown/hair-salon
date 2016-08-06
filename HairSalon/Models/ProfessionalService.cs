@@ -6,7 +6,7 @@ namespace HairSalon.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<ProfessionalServicePhoto> ProfessionalServicePhotos = new HashSet<ProfessionalServicePhoto>();
+        public ICollection<ProfessionalServiceDigitalAsset> ProfessionalServicePhotos = new HashSet<ProfessionalServiceDigitalAsset>();
         public bool IsDeleted { get; set; }
     }
 }

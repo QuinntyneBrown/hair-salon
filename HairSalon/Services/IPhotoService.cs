@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace HairSalon.Services
 {
-    public interface IPhotoService
+    public interface IDigitalAssetService
     {
-        PhotoAddOrUpdateResponseDto AddOrUpdate(PhotoAddOrUpdateRequestDto request);
-        ICollection<PhotoDto> Get();
-        PhotoDto GetById(int id);
+        DigitalAssetAddOrUpdateResponseDto AddOrUpdate(DigitalAssetAddOrUpdateRequestDto request);
+        ICollection<DigitalAssetDto> Get();
+        DigitalAssetDto GetById(int id);
         dynamic Remove(int id);
     }
 }

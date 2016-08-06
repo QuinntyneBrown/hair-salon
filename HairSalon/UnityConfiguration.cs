@@ -27,7 +27,7 @@ namespace HairSalon
             container.RegisterType<IUIService, UIService>();
             container.RegisterType<ISectionService, SectionService>();
             container.RegisterType<IPropertyService, PropertyService>();
-            container.RegisterType<IPhotoService, PhotoService>();
+            container.RegisterType<IDigitalAssetService, PhotoService>();
             container.RegisterType<IGalleryService, GalleryService>();
             container.RegisterType<IUserService, UserService>();            
             container.RegisterType<ISocialShareItemService, SocialShareItemService>();
