@@ -381,6 +381,9 @@
       <DependentUpon>home.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\home\home.routing.ts" />
+    <TypeScriptCompile Include="src\app\routing\app.routing.ts" />
+    <TypeScriptCompile Include="src\app\routing\can-activate-auth.service.ts" />
+    <TypeScriptCompile Include="src\app\routing\index.ts" />
     <TypeScriptCompile Include="src\app\services\services.component.spec.ts">
       <DependentUpon>services.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -392,6 +395,7 @@
     <TypeScriptCompile Include="src\app\shared\nav.component.spec.ts">
       <DependentUpon>nav.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\shared\user-profile.service.ts" />
     <TypeScriptCompile Include="src\app\whats-new\whats-new.component.spec.ts">
       <DependentUpon>whats-new.component.ts</DependentUpon>
     </TypeScriptCompile>
