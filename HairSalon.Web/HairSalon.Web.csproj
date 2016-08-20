@@ -7,7 +7,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{658DA84D-AD6C-414A-9333-B89232911187}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -22,7 +23,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -218,6 +220,66 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="src\app\about\about.component.html">
+      <DependentUpon>about.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\about\about.component.scss">
+      <DependentUpon>about.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\admin\admin.component.html">
+      <DependentUpon>admin.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\admin\admin.component.scss">
+      <DependentUpon>admin.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\app.component.html">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\app.component.scss">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\contact\contact.component.html">
+      <DependentUpon>contact.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\contact\contact.component.scss">
+      <DependentUpon>contact.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\gallery\gallery.component.html">
+      <DependentUpon>gallery.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\gallery\gallery.component.scss">
+      <DependentUpon>gallery.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\home\home.component.html">
+      <DependentUpon>home.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\home\home.component.scss">
+      <DependentUpon>home.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\services\services.component.html">
+      <DependentUpon>services.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\services\services.component.scss">
+      <DependentUpon>services.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\header.component.html">
+      <DependentUpon>header.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\header.component.scss">
+      <DependentUpon>header.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\nav.component.html">
+      <DependentUpon>nav.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\nav.component.scss">
+      <DependentUpon>nav.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\whats-new\whats-new.component.html">
+      <DependentUpon>whats-new.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\whats-new\whats-new.component.scss">
+      <DependentUpon>whats-new.component.ts</DependentUpon>
+    </Content>
     <Content Include="webpack.config.js" />
     <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\expohair - FTP.pubxml" />
@@ -233,24 +295,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="src\app\about\about.component.scss" />
-    <Content Include="src\app\about\about.component.html" />
-    <Content Include="src\app\admin\admin.component.scss" />
-    <Content Include="src\app\admin\admin.component.html" />
-    <Content Include="src\app\services\services.component.scss" />
-    <Content Include="src\app\services\services.component.html" />
-    <Content Include="src\app\whats-new\whats-new.component.scss" />
-    <Content Include="src\app\whats-new\whats-new.component.html" />
-    <Content Include="src\app\gallery\gallery.component.scss" />
-    <Content Include="src\app\gallery\gallery.component.html" />
-    <Content Include="src\app\contact\contact.component.scss" />
-    <Content Include="src\app\contact\contact.component.html" />
-    <Content Include="src\app\home\home.component.scss" />
-    <Content Include="src\app\home\home.component.html" />
-    <Content Include="src\app\shared\nav.component.scss" />
-    <Content Include="src\app\shared\nav.component.html" />
-    <Content Include="src\app\shared\header.component.scss" />
-    <Content Include="src\app\shared\header.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -266,14 +310,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app\about\" />
-    <Folder Include="src\app\admin\" />
-    <Folder Include="src\app\contact\" />
-    <Folder Include="src\app\gallery\" />
-    <Folder Include="src\app\home\" />
-    <Folder Include="src\app\services\" />
-    <Folder Include="src\app\shared\" />
-    <Folder Include="src\app\whats-new\" />
     <Folder Include="src\assets\" />
   </ItemGroup>
   <ItemGroup>
@@ -298,7 +334,8 @@
           <IISUrl>http://localhost:56629/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -319,24 +356,64 @@
   </Target>
   -->
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\about\about.component.spec.ts">
+      <DependentUpon>about.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\about\about.component.ts" />
-    <TypeScriptCompile Include="src\app\about\about.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\about\about.routing.ts" />
+    <TypeScriptCompile Include="src\app\admin\admin.component.spec.ts">
+      <DependentUpon>admin.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\admin\admin.component.ts" />
-    <TypeScriptCompile Include="src\app\admin\admin.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\admin\admin.routing.ts" />
+    <TypeScriptCompile Include="src\app\app.component.spec.ts">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\contact\contact.component.spec.ts">
+      <DependentUpon>contact.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\contact\contact.routing.ts" />
+    <TypeScriptCompile Include="src\app\gallery\gallery.component.spec.ts">
+      <DependentUpon>gallery.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\gallery\gallery.routing.ts" />
+    <TypeScriptCompile Include="src\app\home\home.component.spec.ts">
+      <DependentUpon>home.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\home\home.routing.ts" />
+    <TypeScriptCompile Include="src\app\services\services.component.spec.ts">
+      <DependentUpon>services.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\services\services.component.ts" />
-    <TypeScriptCompile Include="src\app\services\services.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\services\services.routing.ts" />
+    <TypeScriptCompile Include="src\app\shared\header.component.spec.ts">
+      <DependentUpon>header.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\shared\nav.component.spec.ts">
+      <DependentUpon>nav.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\whats-new\whats-new.component.spec.ts">
+      <DependentUpon>whats-new.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\whats-new\whats-new.component.ts" />
-    <TypeScriptCompile Include="src\app\whats-new\whats-new.component.spec.ts" />
     <TypeScriptCompile Include="src\app\gallery\gallery.component.ts" />
-    <TypeScriptCompile Include="src\app\gallery\gallery.component.spec.ts" />
     <TypeScriptCompile Include="src\app\contact\contact.component.ts" />
-    <TypeScriptCompile Include="src\app\contact\contact.component.spec.ts" />
     <TypeScriptCompile Include="src\app\home\home.component.ts" />
-    <TypeScriptCompile Include="src\app\home\home.component.spec.ts" />
     <TypeScriptCompile Include="src\app\shared\nav.component.ts" />
-    <TypeScriptCompile Include="src\app\shared\nav.component.spec.ts" />
     <TypeScriptCompile Include="src\app\shared\header.component.ts" />
-    <TypeScriptCompile Include="src\app\shared\header.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\whats-new\whats-new.routing.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\polyfills.ts" />
+    <TypeScriptCompile Include="src\vendors.ts" />
+    <TypeScriptCompile Include="src\app\whats-new\whats-new.module.ts" />
+    <TypeScriptCompile Include="src\app\services\services.module.ts" />
+    <TypeScriptCompile Include="src\app\home\home.module.ts" />
+    <TypeScriptCompile Include="src\app\gallery\gallery.module.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.module.ts" />
+    <TypeScriptCompile Include="src\app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="src\app\about\about.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\shared.module.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
