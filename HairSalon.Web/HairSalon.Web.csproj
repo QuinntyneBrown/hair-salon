@@ -256,6 +256,12 @@
     <Content Include="src\app\home\home.component.scss">
       <DependentUpon>home.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\login\login.component.html">
+      <DependentUpon>login.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\login\login.component.scss">
+      <DependentUpon>login.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\services\services.component.html">
       <DependentUpon>services.component.ts</DependentUpon>
     </Content>
@@ -381,6 +387,11 @@
       <DependentUpon>home.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\home\home.routing.ts" />
+    <TypeScriptCompile Include="src\app\login\login.component.spec.ts">
+      <DependentUpon>login.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\login\login.routing.ts" />
+    <TypeScriptCompile Include="src\app\login\login.service.ts" />
     <TypeScriptCompile Include="src\app\routing\app.routing.ts" />
     <TypeScriptCompile Include="src\app\routing\can-activate-auth.service.ts" />
     <TypeScriptCompile Include="src\app\routing\index.ts" />
@@ -392,9 +403,11 @@
     <TypeScriptCompile Include="src\app\shared\header.component.spec.ts">
       <DependentUpon>header.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\shared\index.ts" />
     <TypeScriptCompile Include="src\app\shared\nav.component.spec.ts">
       <DependentUpon>nav.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\shared\rxjs-extensions.ts" />
     <TypeScriptCompile Include="src\app\shared\user-profile.service.ts" />
     <TypeScriptCompile Include="src\app\whats-new\whats-new.component.spec.ts">
       <DependentUpon>whats-new.component.ts</DependentUpon>
@@ -418,6 +431,8 @@
     <TypeScriptCompile Include="src\app\about\about.module.ts" />
     <TypeScriptCompile Include="src\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\login\login.module.ts" />
+    <TypeScriptCompile Include="src\app\login\login.component.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
