@@ -217,6 +217,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\about.js" />
+    <Content Include="dist\admin.js" />
+    <Content Include="dist\app.js" />
+    <Content Include="dist\contact.js" />
+    <Content Include="dist\gallery.js" />
+    <Content Include="dist\home.js" />
+    <Content Include="dist\login.js" />
+    <Content Include="dist\polyfills.js" />
+    <Content Include="dist\services.js" />
+    <Content Include="dist\vendor.js" />
+    <Content Include="dist\whats-new.js" />
+    <Content Include="index.html" />
+    <Content Include="lib\jquery.min.js" />
+    <Content Include="lib\slick.min.js" />
     <Content Include="packages.config" />
     <Content Include="src\app\about\about.component.html">
       <DependentUpon>about.component.ts</DependentUpon>
@@ -293,6 +307,10 @@
     <Content Include="tsconfig.json" />
     <Content Include="typedoc.json" />
     <Content Include="typings.json" />
+    <Content Include="src\assets\index.scss" />
+    <Content Include="src\assets\_breakpoints.scss" />
+    <Content Include="src\assets\_normalize.scss" />
+    <Content Include="src\assets\_varibles.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -313,9 +331,7 @@
       <Name>HairSalon</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\assets\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
@@ -411,13 +427,7 @@
     <TypeScriptCompile Include="src\app\shared\header.component.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\polyfills.ts" />
-    <TypeScriptCompile Include="src\vendors.ts" />
-    <TypeScriptCompile Include="src\app\whats-new\whats-new.module.ts" />
-    <TypeScriptCompile Include="src\app\services\services.module.ts" />
-    <TypeScriptCompile Include="src\app\home\home.module.ts" />
-    <TypeScriptCompile Include="src\app\gallery\gallery.module.ts" />
-    <TypeScriptCompile Include="src\app\contact\contact.module.ts" />
-    <TypeScriptCompile Include="src\app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="src\vendor.ts" />
     <TypeScriptCompile Include="src\app\about\about.module.ts" />
     <TypeScriptCompile Include="src\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
@@ -430,6 +440,13 @@
     <TypeScriptCompile Include="src\app\home\home.routing.ts" />
     <TypeScriptCompile Include="src\app\services\services.routing.ts" />
     <TypeScriptCompile Include="src\app\whats-new\whats-new.routing.ts" />
+    <TypeScriptCompile Include="src\app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.module.ts" />
+    <TypeScriptCompile Include="src\app\gallery\gallery.module.ts" />
+    <TypeScriptCompile Include="src\app\home\home.module.ts" />
+    <TypeScriptCompile Include="src\app\services\services.module.ts" />
+    <TypeScriptCompile Include="src\app\whats-new\whats-new.module.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

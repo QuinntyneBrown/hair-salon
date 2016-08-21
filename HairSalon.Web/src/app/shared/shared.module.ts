@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NavComponent } from './nav.component';
 import { HeaderComponent } from './header.component';
 
-const declarables = [NavComponent, HeaderComponent]];
+const declarables = [NavComponent, HeaderComponent];
 
 const providers = [];
 
@@ -21,4 +21,4 @@ export class SharedModule {
             providers: [providers]
         };
     }
-}}
+}

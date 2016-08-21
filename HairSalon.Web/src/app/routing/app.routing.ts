@@ -28,7 +28,7 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        loadChildren: 'app/home/home.module'
+        loadChildren: 'dist/home.js'
     },
     {
         path: 'services',
@@ -43,6 +43,6 @@ export const routes: Routes = [
 export const routing = RouterModule.forRoot(routes);
 
 routing.providers.push([
-    CanActivateAuthGuard,    
-    UserProfileService
+    //CanActivateAuthGuard,    
+    //UserProfileService
 ]);
