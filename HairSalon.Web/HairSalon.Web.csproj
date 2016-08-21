@@ -7,8 +7,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
+    <ProductVersion></ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{658DA84D-AD6C-414A-9333-B89232911187}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -23,8 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -340,8 +338,7 @@
           <IISUrl>http://localhost:56629/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl></CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -366,27 +363,22 @@
       <DependentUpon>about.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\about\about.component.ts" />
-    <TypeScriptCompile Include="src\app\about\about.routing.ts" />
     <TypeScriptCompile Include="src\app\admin\admin.component.spec.ts">
       <DependentUpon>admin.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\admin\admin.component.ts" />
-    <TypeScriptCompile Include="src\app\admin\admin.routing.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts">
       <DependentUpon>app.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\contact\contact.component.spec.ts">
       <DependentUpon>contact.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\contact\contact.routing.ts" />
     <TypeScriptCompile Include="src\app\gallery\gallery.component.spec.ts">
       <DependentUpon>gallery.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\gallery\gallery.routing.ts" />
     <TypeScriptCompile Include="src\app\home\home.component.spec.ts">
       <DependentUpon>home.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\home\home.routing.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.spec.ts">
       <DependentUpon>login.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -399,7 +391,6 @@
       <DependentUpon>services.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\services\services.component.ts" />
-    <TypeScriptCompile Include="src\app\services\services.routing.ts" />
     <TypeScriptCompile Include="src\app\shared\header.component.spec.ts">
       <DependentUpon>header.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -418,7 +409,6 @@
     <TypeScriptCompile Include="src\app\home\home.component.ts" />
     <TypeScriptCompile Include="src\app\shared\nav.component.ts" />
     <TypeScriptCompile Include="src\app\shared\header.component.ts" />
-    <TypeScriptCompile Include="src\app\whats-new\whats-new.routing.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\polyfills.ts" />
     <TypeScriptCompile Include="src\vendors.ts" />
@@ -433,6 +423,13 @@
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\login\login.module.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\about\about.routing.ts" />
+    <TypeScriptCompile Include="src\app\admin\admin.routing.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.routing.ts" />
+    <TypeScriptCompile Include="src\app\gallery\gallery.routing.ts" />
+    <TypeScriptCompile Include="src\app\home\home.routing.ts" />
+    <TypeScriptCompile Include="src\app\services\services.routing.ts" />
+    <TypeScriptCompile Include="src\app\whats-new\whats-new.routing.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
