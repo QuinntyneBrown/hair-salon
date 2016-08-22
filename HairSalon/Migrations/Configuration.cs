@@ -13,8 +13,10 @@ namespace HairSalon.Migrations
         protected override void Seed(HairSalon.Data.DataContext context)
         {
             UserConfiguration.Seed(context);
-            AppConfiguration.Seed(context);
             DigitalAssetConfiguration.Seed(context);
+            PropertyConfiguration.Seed(context);
+            UIConfiguration.Seed(context);
+            AppConfiguration.Seed(context);            
         }
     }
 }

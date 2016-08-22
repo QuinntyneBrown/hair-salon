@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, OnDestroy } from "@angular/core";
 import { LoginService } from "./login.service";
+import { LoginRedirectService } from "./login-redirect.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { UserProfileService } from "../shared";
@@ -16,32 +17,33 @@ export class LoginComponent implements OnDestroy {
     private _loginSubscription: Subscription;
 
     constructor(
-        private loginService: LoginService,
-        private route: ActivatedRoute,
-        private router: Router,
-        private userProfileService: UserProfileService) {
+        private _loginService: LoginService,
+        private _loginRedirectService: LoginRedirectService,
+        private _route: ActivatedRoute,
+        private _router: Router,
+        private _userProfileService: UserProfileService) {
     }
 
     login() {
-        let queryParams = this.router.routerState.queryParams;
+        let queryParams = this._router.routerState.queryParams;
 
-        this._loginSubscription = this.loginService
+        this._loginSubscription = this._loginService
             .login()
             .mergeMap(loginResult => queryParams)
             .map(qp => qp['redirectTo'])
             .subscribe(redirectTo => {                
-                if (this.userProfileService.isLoggedIn) {
+                if (this._userProfileService.isLoggedIn) {
                     let url = redirectTo ? [redirectTo] : ['/'];
-                    this.router.navigate(url);
+                    this._router.navigate(url);
                 }
             });
     }
 
     public get isLoggedIn(): boolean {
-        return this.userProfileService.isLoggedIn;
+        return this._userProfileService.isLoggedIn;
     }
 
-    logout() { this.loginService.logout(); }
+    logout() { this._loginService.logout(); }
 
     public ngOnDestroy = () => {
         if (this._loginSubscription) {
