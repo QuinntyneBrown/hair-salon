@@ -270,6 +270,12 @@
     <Content Include="src\app\home\home.component.scss">
       <DependentUpon>home.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\login\login-form.component.html">
+      <DependentUpon>login-form.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\login\login-form.component.scss">
+      <DependentUpon>login-form.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\login\login.component.html">
       <DependentUpon>login.component.ts</DependentUpon>
     </Content>
@@ -398,6 +404,10 @@
     <TypeScriptCompile Include="src\app\home\home.component.spec.ts">
       <DependentUpon>home.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\login\login-form.component.spec.ts">
+      <DependentUpon>login-form.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\login\login-redirect.service.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.spec.ts">
       <DependentUpon>login.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -409,14 +419,18 @@
       <DependentUpon>services.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\services\services.component.ts" />
+    <TypeScriptCompile Include="src\app\login\form-encode.ts" />
     <TypeScriptCompile Include="src\app\shared\header.component.spec.ts">
       <DependentUpon>header.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\shared\http-client.ts" />
     <TypeScriptCompile Include="src\app\shared\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\local-storage-manager.service.ts" />
     <TypeScriptCompile Include="src\app\shared\nav.component.spec.ts">
       <DependentUpon>nav.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\shared\rxjs-extensions.ts" />
+    <TypeScriptCompile Include="src\app\shared\ui.service.ts" />
     <TypeScriptCompile Include="src\app\shared\user-profile.service.ts" />
     <TypeScriptCompile Include="src\app\whats-new\whats-new.component.spec.ts">
       <DependentUpon>whats-new.component.ts</DependentUpon>
@@ -449,6 +463,7 @@
     <TypeScriptCompile Include="src\app\services\services.module.ts" />
     <TypeScriptCompile Include="src\app\whats-new\whats-new.module.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\login\login-form.component.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

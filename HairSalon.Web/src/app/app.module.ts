@@ -27,7 +27,7 @@ import { WhatsNewModule } from "./whats-new/whats-new.module";
         ContactModule,
         GalleryModule,
         HomeModule,
-        LoginModule,
+        LoginModule.forRoot(),
         ServicesModule,
         SharedModule.forRoot(),
         WhatsNewModule,

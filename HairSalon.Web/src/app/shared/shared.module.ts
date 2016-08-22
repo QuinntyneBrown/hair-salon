@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NavComponent } from './nav.component';
 import { HeaderComponent } from './header.component';
+import { UserProfileService } from "./user-profile.service";
 
 const declarables = [NavComponent, HeaderComponent];
 
-const providers = [];
+const providers = [UserProfileService];
 
 @NgModule({
     imports: [CommonModule, FormsModule, RouterModule],

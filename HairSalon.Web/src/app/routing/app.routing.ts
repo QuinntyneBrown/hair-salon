@@ -3,7 +3,8 @@
 import { CanActivateAuthGuard } from './can-activate-auth.service';
 import { UserProfileService } from '../shared/user-profile.service';
 
-import { HomeComponent } from '../home/home.component';
+import { HomeComponent } from "../home/home.component";
+import { LoginComponent } from "../login/login.component";
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: 'services',

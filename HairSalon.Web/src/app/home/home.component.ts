@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, OnInit } from "@angular/core";
+import { Component, ChangeDetectionStrategy, Input, OnInit, ElementRef } from "@angular/core";
 
 @Component({
     template: require("./home.component.html"),
@@ -7,7 +7,10 @@ import { Component, ChangeDetectionStrategy, Input, OnInit } from "@angular/core
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit { 
+    constructor(private _elementRef: ElementRef) {
+        
+    }
     ngOnInit() {
-
+        
     }
 }
