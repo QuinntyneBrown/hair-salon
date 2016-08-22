@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 const declarables = [AdminComponent, routedComponents]
 
 @NgModule({
+    exports: [declarables],
     imports: [routing, SharedModule],
     declarations: [declarables]
 })

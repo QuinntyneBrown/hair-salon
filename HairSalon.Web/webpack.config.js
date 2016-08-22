@@ -2,15 +2,15 @@
     entry: {
         'polyfills': './src/polyfills.ts',
         'vendor': './src/vendor.ts',
-        'app': './src/main.ts',
+        'app': './src/main.ts'
 
-        'about': './src/app/about/about.module.ts',
-        'admin': './src/app/admin/admin.module.ts',
-        'contact': './src/app/contact/contact.module.ts',
-        'gallery': './src/app/gallery/gallery.module.ts',
-        'home': './src/app/home/home.module.ts',
-        'services': './src/app/services/services.module.ts',
-        'whats-new': './src/app/whats-new/whats-new.module.ts'        
+        //'about': './src/app/about/about.module.ts',
+        //'admin': './src/app/admin/admin.module.ts',
+        //'contact': './src/app/contact/contact.module.ts',
+        //'gallery': './src/app/gallery/gallery.module.ts',
+        //'home': './src/app/home/home.module.ts',
+        //'services': './src/app/services/services.module.ts',
+        //'whats-new': './src/app/whats-new/whats-new.module.ts'        
     },
     output: {
         path: "./dist",

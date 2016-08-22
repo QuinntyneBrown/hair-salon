@@ -3,6 +3,8 @@
 import { CanActivateAuthGuard } from './can-activate-auth.service';
 import { UserProfileService } from '../shared/user-profile.service';
 
+import { HomeComponent } from '../home/home.component';
+
 export const routes: Routes = [
     {
         path: '',
@@ -28,7 +30,7 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        loadChildren: 'dist/home.js'
+        component: HomeComponent
     },
     {
         path: 'services',

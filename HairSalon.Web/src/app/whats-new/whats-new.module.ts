@@ -6,6 +6,7 @@ import { WhatsNewComponent } from './whats-new.component';
 const declarables = [WhatsNewComponent, routedComponents]
 
 @NgModule({
+    exports: [declarables],
     imports: [routing, SharedModule],
     declarations: [declarables]
 })

@@ -6,6 +6,7 @@ import { ServicesComponent } from './services.component';
 const declarables = [ServicesComponent, routedComponents]
 
 @NgModule({
+    exports: [declarables],
     imports: [routing, SharedModule],
     declarations: [declarables]
 })

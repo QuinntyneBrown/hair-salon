@@ -6,6 +6,7 @@ import { ContactComponent } from './contact.component';
 const declarables = [ContactComponent, routedComponents]
 
 @NgModule({
+    exports: [declarables],
     imports: [routing, SharedModule],
     declarations: [declarables]
 })

@@ -6,6 +6,7 @@ import { GalleryComponent } from './gallery.component';
 const declarables = [GalleryComponent, routedComponents]
 
 @NgModule({
+    exports: [declarables],
     imports: [routing, SharedModule],
     declarations: [declarables]
 })

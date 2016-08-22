@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 const declarables = [HomeComponent, routedComponents]
 
 @NgModule({
+    exports:[declarables],
     imports: [routing, SharedModule],
     declarations: [declarables]
 })
