@@ -1,7 +1,6 @@
-<h2>LOGIN</h2>
-
-<p>
-    <button (click)="login()" *ngIf="!isLoggedIn">Login</button>
-
-    <button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
-</p>
+<h2>Login</h2>
+<form novalidate [formGroup]="form">
+    <input placeholder="Username" formControlName="username" />
+    <input placeholder="Password" formControlName="password" type="password" />
+    <button (click)="onSubmit()">Submit</button>
+</form>

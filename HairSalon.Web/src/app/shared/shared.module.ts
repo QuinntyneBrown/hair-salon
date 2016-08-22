@@ -2,11 +2,12 @@ import { NgModule, ModuleWithProviders }  from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NavComponent } from './nav.component';
-import { HeaderComponent } from './header.component';
+
+import { NavComponent, HeaderComponent, HeroComponent } from './components';
+
 import { UserProfileService } from "./user-profile.service";
 
-const declarables = [NavComponent, HeaderComponent];
+const declarables = [NavComponent, HeaderComponent, HeroComponent];
 
 const providers = [UserProfileService];
 

@@ -1,4 +1,16 @@
-import { Component, ChangeDetectionStrategy, Input, OnInit } from "@angular/core";
+import {
+    Component,
+    ChangeDetectionStrategy,
+    Input,
+    OnInit,
+    EventEmitter,
+    Output
+} from "@angular/core";
+
+import {
+    FormGroup,
+    FormControl
+} from "@angular/forms";
 
 @Component({
     template: require("./login-form.component.html"),
@@ -7,9 +19,20 @@ import { Component, ChangeDetectionStrategy, Input, OnInit } from "@angular/core
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginFormComponent implements OnInit { 
-    ngOnInit() {
+    ngOnInit() { }
 
-    }
+    @Output() loginFormSubmitted = new EventEmitter();
 
     public isLoggedIn: boolean = true;
+
+    public form = new FormGroup({
+        username: new FormControl(),
+        password: new FormControl()
+    });
+
+    public onSubmit = () => {
+        this.loginFormSubmitted.emit({
+            value: this.form.value
+        });
+    }
 }
