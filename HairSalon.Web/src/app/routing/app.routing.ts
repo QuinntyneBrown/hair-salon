@@ -3,8 +3,14 @@
 import { CanActivateAuthGuard } from './can-activate-auth.service';
 import { UserProfileService } from '../core/user-profile.service';
 
+import { AboutComponent } from "../about/about.component";
+import { AdminComponent } from "../admin/admin.component";
+import { ContactComponent } from "../contact/contact.component";
+import { GalleryComponent } from "../gallery/gallery.component";
 import { HomeComponent } from "../home/home.component";
 import { LoginComponent } from "../login/login.component";
+import { ServicesComponent } from "../services/services.component";
+import { WhatsNewComponent } from "../whats-new/whats-new.component";
 
 export const routes: Routes = [
     {
@@ -14,20 +20,20 @@ export const routes: Routes = [
     },
     {
         path: 'about',
-        loadChildren: 'app/about/about.module'
+        component: AboutComponent
     },
     {
         path: 'admin',
-        loadChildren: 'app/admin/admin.module',
+        component: AdminComponent,
         canActivate: [CanActivateAuthGuard],
     },
     {
         path: 'contact',
-        loadChildren: 'app/contact/contact.module'        
+        component: ContactComponent        
     },
     {
         path: 'gallery',
-        loadChildren: 'app/gallery/gallery.module'
+        component: GalleryComponent
     },
     {
         path: 'home',
@@ -39,17 +45,17 @@ export const routes: Routes = [
     },
     {
         path: 'services',
-        loadChildren: 'app/services/services.module'
+        component: ServicesComponent
     },
     {
         path: 'whats-new',
-        loadChildren: 'app/whats-new/whats-new.module'
+        component: WhatsNewComponent
     }
 ];
 
 export const routing = RouterModule.forRoot(routes);
 
 routing.providers.push([
-    //CanActivateAuthGuard,    
-    //UserProfileService
+    CanActivateAuthGuard,    
+    UserProfileService
 ]);

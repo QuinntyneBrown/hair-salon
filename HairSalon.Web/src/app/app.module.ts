@@ -35,6 +35,7 @@ import { WhatsNewModule } from "./whats-new/whats-new.module";
         ServicesModule,
         SharedModule,
         WhatsNewModule,
+
         routing,
 
         BrowserModule
