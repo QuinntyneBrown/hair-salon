@@ -43,3 +43,6 @@ import { WhatsNewModule } from "./whats-new/whats-new.module";
     bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+export * from "./environment";

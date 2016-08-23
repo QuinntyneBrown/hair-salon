@@ -7,7 +7,7 @@ const declarables = [AdminComponent, routedComponents]
 
 @NgModule({
     exports: [declarables],
-    imports: [routing, SharedModule],
+    imports: [SharedModule],
     declarations: [declarables]
 })
 export class AdminModule { }

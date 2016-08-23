@@ -4,6 +4,7 @@
   "description": "hair-salon-app",
   "main": "index.html",
   "scripts": {
+    "postinstall": "typings install",
     "rimraf": "rimraf",
     "tslint": "tslint",
     "typedoc": "typedoc",
@@ -18,6 +19,7 @@
     "minify-vendor": "uglifyjs dist/vendor.js --screw-ie8 --compress --mangle --output dist/vendor.min.js",
     "minify-polyfills": "uglifyjs dist/polyfills.js --screw-ie8 --compress --mangle --output dist/polyfills.min.js"
   },
+  "private": true,
   "repository": {
     "type": "git",
     "url": ""

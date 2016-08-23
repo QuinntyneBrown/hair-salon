@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { NavComponent, HeaderComponent, HeroComponent } from './components';
+import { NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent } from './components';
 import { UserProfileService } from "./user-profile.service";
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
-const declarables = [NavComponent, HeaderComponent, HeroComponent];
+const declarables = [NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent ];
 const providers = [UserProfileService];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
+    imports: [CommonModule, RouterModule, ReactiveFormsModule],
     exports: [declarables],
     declarations: [declarables],
     providers: providers

@@ -258,6 +258,12 @@
     <Content Include="src\app\contact\contact.component.scss">
       <DependentUpon>contact.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\core\components\photo-gallery\photo-gallery.component.html">
+      <DependentUpon>photo-gallery.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\core\components\photo-gallery\photo-gallery.component.scss">
+      <DependentUpon>photo-gallery.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\gallery\gallery.component.html">
       <DependentUpon>gallery.component.ts</DependentUpon>
     </Content>
@@ -410,8 +416,15 @@
     <TypeScriptCompile Include="src\app\contact\contact.component.spec.ts">
       <DependentUpon>contact.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\core\components\photo-gallery\index.ts" />
+    <TypeScriptCompile Include="src\app\core\components\photo-gallery\photo-gallery.component.spec.ts">
+      <DependentUpon>photo-gallery.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\core\components\photo-gallery\shared\index.ts" />
+    <TypeScriptCompile Include="src\app\core\components\photo-gallery\shared\photo.model.ts" />
     <TypeScriptCompile Include="src\app\core\module-import-guard.ts" />
     <TypeScriptCompile Include="src\app\core\rxjs-extensions.ts" />
+    <TypeScriptCompile Include="src\app\environment.ts" />
     <TypeScriptCompile Include="src\app\gallery\gallery.component.spec.ts">
       <DependentUpon>gallery.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -459,6 +472,7 @@
     <TypeScriptCompile Include="src\app\home\home.component.ts" />
     <TypeScriptCompile Include="src\app\core\components\nav.component.ts" />
     <TypeScriptCompile Include="src\app\core\components\header.component.ts" />
+    <TypeScriptCompile Include="src\assets\ss.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\polyfills.ts" />
     <TypeScriptCompile Include="src\vendor.ts" />
@@ -485,6 +499,7 @@
     <TypeScriptCompile Include="src\app\core\components\hero.component.ts" />
     <TypeScriptCompile Include="src\app\core\components\digital-asset-upload.component.ts" />
     <TypeScriptCompile Include="src\app\core\core.module.ts" />
+    <TypeScriptCompile Include="src\app\core\components\photo-gallery\photo-gallery.component.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
