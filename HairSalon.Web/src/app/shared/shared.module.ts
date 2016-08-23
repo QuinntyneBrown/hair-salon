@@ -3,24 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { NavComponent, HeaderComponent, HeroComponent } from './components';
-
-import { UserProfileService } from "./user-profile.service";
-
-const declarables = [NavComponent, HeaderComponent, HeroComponent];
-
-const providers = [UserProfileService];
+const declarables = [];
 
 @NgModule({
     imports: [CommonModule, FormsModule, RouterModule],
     exports: [CommonModule, FormsModule, declarables],
     declarations: [declarables],
 })
-export class SharedModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: SharedModule,
-            providers: [providers]
-        };
-    }
-}
+export class SharedModule {}

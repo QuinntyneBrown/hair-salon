@@ -4,9 +4,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from "./app.component";
 
-import './shared/rxjs-extensions';
+import './core/rxjs-extensions';
 
 import { routing } from './routing/app.routing';
+
+/* Feature Modules */
+import { CoreModule } from './core/core.module';
 
 import { AboutModule } from "./about/about.module";
 import { AdminModule } from "./admin/admin.module";
@@ -20,7 +23,9 @@ import { WhatsNewModule } from "./whats-new/whats-new.module";
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [        
+    imports: [   
+        CoreModule,
+             
         AboutModule,
         AdminModule,
         ContactModule,
@@ -28,7 +33,7 @@ import { WhatsNewModule } from "./whats-new/whats-new.module";
         HomeModule,
         LoginModule.forRoot(),
         ServicesModule,
-        SharedModule.forRoot(),
+        SharedModule,
         WhatsNewModule,
         routing,
 

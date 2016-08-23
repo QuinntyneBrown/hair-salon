@@ -288,28 +288,28 @@
     <Content Include="src\app\services\services.component.scss">
       <DependentUpon>services.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\shared\components\digital-asset-upload.component.html">
+    <Content Include="src\app\core\components\digital-asset-upload.component.html">
       <DependentUpon>digital-asset-upload.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\shared\components\digital-asset-upload.component.scss">
+    <Content Include="src\app\core\components\digital-asset-upload.component.scss">
       <DependentUpon>digital-asset-upload.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\shared\components\hero.component.html">
+    <Content Include="src\app\core\components\hero.component.html">
       <DependentUpon>hero.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\shared\components\hero.component.scss">
+    <Content Include="src\app\core\components\hero.component.scss">
       <DependentUpon>hero.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\shared\components\header.component.html">
+    <Content Include="src\app\core\components\header.component.html">
       <DependentUpon>header.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\shared\components\header.component.scss">
+    <Content Include="src\app\core\components\header.component.scss">
       <DependentUpon>header.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\shared\components\nav.component.html">
+    <Content Include="src\app\core\components\nav.component.html">
       <DependentUpon>nav.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\shared\components\nav.component.scss">
+    <Content Include="src\app\core\components\nav.component.scss">
       <DependentUpon>nav.component.ts</DependentUpon>
     </Content>
     <Content Include="src\app\whats-new\whats-new.component.html">
@@ -351,9 +351,7 @@
       <Name>HairSalon</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\app\shared\services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
@@ -412,6 +410,8 @@
     <TypeScriptCompile Include="src\app\contact\contact.component.spec.ts">
       <DependentUpon>contact.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\core\module-import-guard.ts" />
+    <TypeScriptCompile Include="src\app\core\rxjs-extensions.ts" />
     <TypeScriptCompile Include="src\app\gallery\gallery.component.spec.ts">
       <DependentUpon>gallery.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -434,25 +434,22 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\services\services.component.ts" />
     <TypeScriptCompile Include="src\app\login\form-encode.ts" />
-    <TypeScriptCompile Include="src\app\shared\components\digital-asset-upload.component.spec.ts">
+    <TypeScriptCompile Include="src\app\core\components\digital-asset-upload.component.spec.ts">
       <DependentUpon>digital-asset-upload.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\shared\components\hero.component.spec.ts">
+    <TypeScriptCompile Include="src\app\core\components\hero.component.spec.ts">
       <DependentUpon>hero.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\shared\components\header.component.spec.ts">
+    <TypeScriptCompile Include="src\app\core\components\header.component.spec.ts">
       <DependentUpon>header.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\shared\components\index.ts" />
-    <TypeScriptCompile Include="src\app\shared\http-client.ts" />
-    <TypeScriptCompile Include="src\app\shared\index.ts" />
-    <TypeScriptCompile Include="src\app\shared\local-storage-manager.service.ts" />
-    <TypeScriptCompile Include="src\app\shared\components\nav.component.spec.ts">
+    <TypeScriptCompile Include="src\app\core\components\index.ts" />
+    <TypeScriptCompile Include="src\app\core\http-client.ts" />
+    <TypeScriptCompile Include="src\app\core\local-storage-manager.service.ts" />
+    <TypeScriptCompile Include="src\app\core\components\nav.component.spec.ts">
       <DependentUpon>nav.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\shared\rxjs-extensions.ts" />
-    <TypeScriptCompile Include="src\app\shared\ui.service.ts" />
-    <TypeScriptCompile Include="src\app\shared\user-profile.service.ts" />
+    <TypeScriptCompile Include="src\app\core\user-profile.service.ts" />
     <TypeScriptCompile Include="src\app\whats-new\whats-new.component.spec.ts">
       <DependentUpon>whats-new.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -460,8 +457,8 @@
     <TypeScriptCompile Include="src\app\gallery\gallery.component.ts" />
     <TypeScriptCompile Include="src\app\contact\contact.component.ts" />
     <TypeScriptCompile Include="src\app\home\home.component.ts" />
-    <TypeScriptCompile Include="src\app\shared\components\nav.component.ts" />
-    <TypeScriptCompile Include="src\app\shared\components\header.component.ts" />
+    <TypeScriptCompile Include="src\app\core\components\nav.component.ts" />
+    <TypeScriptCompile Include="src\app\core\components\header.component.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\polyfills.ts" />
     <TypeScriptCompile Include="src\vendor.ts" />
@@ -485,8 +482,9 @@
     <TypeScriptCompile Include="src\app\whats-new\whats-new.module.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\login\login-form.component.ts" />
-    <TypeScriptCompile Include="src\app\shared\components\hero.component.ts" />
-    <TypeScriptCompile Include="src\app\shared\components\digital-asset-upload.component.ts" />
+    <TypeScriptCompile Include="src\app\core\components\hero.component.ts" />
+    <TypeScriptCompile Include="src\app\core\components\digital-asset-upload.component.ts" />
+    <TypeScriptCompile Include="src\app\core\core.module.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
