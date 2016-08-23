@@ -288,6 +288,12 @@
     <Content Include="src\app\services\services.component.scss">
       <DependentUpon>services.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\shared\components\digital-asset-upload.component.html">
+      <DependentUpon>digital-asset-upload.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\shared\components\digital-asset-upload.component.scss">
+      <DependentUpon>digital-asset-upload.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\shared\components\hero.component.html">
       <DependentUpon>hero.component.ts</DependentUpon>
     </Content>
@@ -428,6 +434,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\services\services.component.ts" />
     <TypeScriptCompile Include="src\app\login\form-encode.ts" />
+    <TypeScriptCompile Include="src\app\shared\components\digital-asset-upload.component.spec.ts">
+      <DependentUpon>digital-asset-upload.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\shared\components\hero.component.spec.ts">
       <DependentUpon>hero.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -477,6 +486,7 @@
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\login\login-form.component.ts" />
     <TypeScriptCompile Include="src\app\shared\components\hero.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\components\digital-asset-upload.component.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

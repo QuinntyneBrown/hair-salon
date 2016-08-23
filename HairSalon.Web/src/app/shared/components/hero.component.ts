@@ -7,7 +7,7 @@ import { Component, ChangeDetectionStrategy, Input, OnInit } from "@angular/core
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroComponent implements OnInit { 
-    ngOnInit() {
+    ngOnInit() { }
 
-    }
+    @Input() public backgroundImageUrl: string;
 }
