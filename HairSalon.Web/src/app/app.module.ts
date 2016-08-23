@@ -31,7 +31,7 @@ import { WhatsNewModule } from "./whats-new/whats-new.module";
         ContactModule,
         GalleryModule,
         HomeModule,
-        LoginModule.forRoot(),
+        LoginModule,
         ServicesModule,
         SharedModule,
         WhatsNewModule,

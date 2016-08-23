@@ -16,13 +16,7 @@ const providers = [LoginService, LoginRedirectService];
 @NgModule({
     exports: [declarables, FormsModule, ReactiveFormsModule],
     imports: [FormsModule, ReactiveFormsModule, SharedModule, routing],
-    declarations: [declarables]
+    declarations: [declarables],
+    providers: providers
 })
-export class LoginModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: LoginModule,
-            providers: [providers]
-        };
-    }
-}
+export class LoginModule {}
