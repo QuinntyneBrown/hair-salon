@@ -8,6 +8,7 @@ namespace HairSalon.Services
         UIAddOrUpdateResponseDto AddOrUpdate(UIAddOrUpdateRequestDto request);
         ICollection<UIDto> Get();
         UIDto GetById(int id);
+        UIDto GetByName(string name);
         dynamic Remove(int id);
     }
 }

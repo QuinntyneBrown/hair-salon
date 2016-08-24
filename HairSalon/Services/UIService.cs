@@ -49,6 +49,11 @@ namespace HairSalon.Services
             return new UIDto(repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
 
+        public UIDto GetByName(string name)
+        {
+            return new UIDto(repository.GetAll().Where(x => x.Name == name && x.IsDeleted == false).FirstOrDefault());
+        }
+
         protected readonly IUow uow;
         protected readonly IRepository<UI> repository;
         protected readonly ICache cache;
