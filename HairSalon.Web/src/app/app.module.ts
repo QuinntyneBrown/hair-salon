@@ -8,6 +8,8 @@ import './core/rxjs-extensions';
 
 import { routing } from './routing/app.routing';
 
+import { PageNotFoundComponent } from "./page-not-found.component";
+
 /* Feature Modules */
 import { CoreModule } from './core/core.module';
 
@@ -22,7 +24,7 @@ import { SharedModule } from "./shared/shared.module";
 import { WhatsNewModule } from "./whats-new/whats-new.module";
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, PageNotFoundComponent],
     imports: [   
         CoreModule,
              

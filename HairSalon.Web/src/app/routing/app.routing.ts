@@ -11,6 +11,7 @@ import { HomeComponent } from "../home/home.component";
 import { LoginComponent } from "../login/login.component";
 import { ServicesComponent } from "../services/services.component";
 import { WhatsNewComponent } from "../whats-new/whats-new.component";
+import { PageNotFoundComponent } from '../page-not-found.component';
 
 export const routes: Routes = [
     {
@@ -50,6 +51,11 @@ export const routes: Routes = [
     {
         path: 'whats-new',
         component: WhatsNewComponent
+    },
+    {
+        path: '**',
+        pathMatch: 'full',
+        component: PageNotFoundComponent
     }
 ];
 
