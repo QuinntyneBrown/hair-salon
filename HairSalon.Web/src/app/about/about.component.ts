@@ -16,7 +16,13 @@ export class AboutComponent implements OnInit {
         this.getViewModel();
     }
 
-    getViewModel(): Subscription | any {
-        return this._uiService.getViewModel({ name: "about" });
+    getViewModel(): Subscription {
+        return this._uiService
+            .getViewModel({ name: "about" })
+            .subscribe(viewModel => {
+                this.heroImageUrl = viewModel.heroImageUrl;
+            });
     }
+
+    public heroImageUrl: string;
 }

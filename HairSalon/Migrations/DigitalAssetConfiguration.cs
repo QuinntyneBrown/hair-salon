@@ -6,6 +6,8 @@ namespace HairSalon.Migrations
     {
         public static void Seed(DataContext context) {
 
+
+            context.SaveChanges();
         }
     }
 }
