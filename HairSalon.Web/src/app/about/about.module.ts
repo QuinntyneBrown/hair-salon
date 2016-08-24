@@ -7,7 +7,7 @@ const declarables = [AboutComponent, routedComponents]
 
 @NgModule({
     exports: [declarables],
-    imports: [routing, SharedModule],
+    imports: [SharedModule],
     declarations: [declarables]
 })
 export class AboutModule { }

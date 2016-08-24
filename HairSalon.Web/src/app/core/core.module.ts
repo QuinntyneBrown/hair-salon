@@ -5,10 +5,11 @@ import { RouterModule } from '@angular/router';
 
 import { NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent } from './components';
 import { UserProfileService } from "./user-profile.service";
+import { UIService } from "./services/ui.service";
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
 const declarables = [NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent ];
-const providers = [UserProfileService];
+const providers = [UserProfileService, UIService];
 
 @NgModule({
     imports: [CommonModule, RouterModule, ReactiveFormsModule],
