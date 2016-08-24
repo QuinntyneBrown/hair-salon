@@ -40,7 +40,8 @@ import { WhatsNewModule } from "./whats-new/whats-new.module";
 
         routing,
 
-        BrowserModule
+        BrowserModule,
+        HttpModule
     ],
     bootstrap: [AppComponent]
 })

@@ -3,7 +3,7 @@ import { LoginService } from "./login.service";
 import { LoginRedirectService } from "./login-redirect.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { UserProfileService } from "../core/user-profile.service";
+import { UserProfileService } from "../core/services";
 
 @Component({
     template: require("./login.component.html"),

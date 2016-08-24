@@ -431,6 +431,7 @@
     <TypeScriptCompile Include="src\app\core\components\photo-gallery\shared\photo.model.ts" />
     <TypeScriptCompile Include="src\app\core\module-import-guard.ts" />
     <TypeScriptCompile Include="src\app\core\rxjs-extensions.ts" />
+    <TypeScriptCompile Include="src\app\core\services\index.ts" />
     <TypeScriptCompile Include="src\app\core\services\ui.service.ts" />
     <TypeScriptCompile Include="src\app\environment.ts" />
     <TypeScriptCompile Include="src\app\gallery\gallery.component.spec.ts">
@@ -468,12 +469,12 @@
       <DependentUpon>header.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\core\components\index.ts" />
-    <TypeScriptCompile Include="src\app\core\http-client.ts" />
-    <TypeScriptCompile Include="src\app\core\local-storage-manager.service.ts" />
+    <TypeScriptCompile Include="src\app\core\services\http-client.ts" />
+    <TypeScriptCompile Include="src\app\core\services\local-storage-manager.service.ts" />
     <TypeScriptCompile Include="src\app\core\components\nav.component.spec.ts">
       <DependentUpon>nav.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\core\user-profile.service.ts" />
+    <TypeScriptCompile Include="src\app\core\services\user-profile.service.ts" />
     <TypeScriptCompile Include="src\app\whats-new\whats-new.component.spec.ts">
       <DependentUpon>whats-new.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -483,7 +484,6 @@
     <TypeScriptCompile Include="src\app\home\home.component.ts" />
     <TypeScriptCompile Include="src\app\core\components\nav.component.ts" />
     <TypeScriptCompile Include="src\app\core\components\header.component.ts" />
-    <TypeScriptCompile Include="src\assets\ss.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\polyfills.ts" />
     <TypeScriptCompile Include="src\vendor.ts" />

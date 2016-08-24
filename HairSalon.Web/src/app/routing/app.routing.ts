@@ -1,7 +1,7 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
 import { CanActivateAuthGuard } from './can-activate-auth.service';
-import { UserProfileService } from '../core/user-profile.service';
+import { UserProfileService } from '../core/services';
 
 import { AboutComponent } from "../about/about.component";
 import { AdminComponent } from "../admin/admin.component";

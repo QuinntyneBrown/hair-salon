@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { UserProfileService } from '../core/user-profile.service';
+import { UserProfileService } from '../core/services';
 
 @Injectable()
 export class LoginService {

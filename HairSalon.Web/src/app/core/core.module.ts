@@ -4,8 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent } from './components';
-import { UserProfileService } from "./user-profile.service";
-import { UIService } from "./services/ui.service";
+import { UserProfileService, UIService } from "./services";
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
 const declarables = [NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent ];

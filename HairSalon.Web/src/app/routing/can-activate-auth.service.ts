@@ -6,7 +6,7 @@ import {
     RouterStateSnapshot
 } from '@angular/router';
 
-import { UserProfileService } from "../core/user-profile.service";
+import { UserProfileService } from "../core/services";
 import { LoginRedirectService } from "../login/login-redirect.service";
 
 @Injectable()
