@@ -34,6 +34,7 @@ namespace HairSalon
             container.RegisterType<IProfessionalServiceService, ProfessionalServiceService>();
             container.RegisterType<IMenuItemService, MenuItemService>();
             container.RegisterType<IMenuService, MenuService>();
+            container.RegisterType<IViewModelService, ViewModelService>();
 
             container.RegisterInstance(AuthConfiguration.LazyConfig);   
             container.RegisterInstance(TraceConfiguration.LazyConfig);         

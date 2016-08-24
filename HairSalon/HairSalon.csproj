@@ -211,6 +211,7 @@
     <Compile Include="Clients\SearchClient.cs" />
     <Compile Include="Configuration\AuthConfiguration.cs" />
     <Compile Include="Configuration\IAuthConfiguration.cs" />
+    <Compile Include="Controllers\ViewModelController.cs" />
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Data\EFRepository.cs" />
     <Compile Include="Data\IDbContext.cs" />
@@ -225,6 +226,13 @@
     <Compile Include="Dtos\RegistrationRequestDto.cs" />
     <Compile Include="Dtos\RegistrationResponseDto.cs" />
     <Compile Include="Dtos\TokenDto.cs" />
+    <Compile Include="Dtos\ViewModels\AboutViewModelDto.cs" />
+    <Compile Include="Dtos\ViewModels\BaseViewModelDto.cs" />
+    <Compile Include="Dtos\ViewModels\ContactViewModelDto.cs" />
+    <Compile Include="Dtos\ViewModels\GalleryViewModelDto.cs" />
+    <Compile Include="Dtos\ViewModels\HomeViewModelDto.cs" />
+    <Compile Include="Dtos\ViewModels\ServicesViewModelDto.cs" />
+    <Compile Include="Dtos\ViewModels\WhatsNewViewModelDto.cs" />
     <Compile Include="Filters\HandleError.cs" />
     <Compile Include="Helpers\FrontEndPreCacheHelper.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
@@ -270,8 +278,10 @@
     <Compile Include="Services\IdentityService.cs" />
     <Compile Include="Services\IEncryptionService.cs" />
     <Compile Include="Services\IIdentityService.cs" />
+    <Compile Include="Services\IViewModelService.cs" />
     <Compile Include="Services\MemoryCache.cs" />
     <Compile Include="Services\PropertyHelper.cs" />
+    <Compile Include="Services\ViewModelService.cs" />
     <Compile Include="Trace\EventIdEnricher.cs" />
     <Compile Include="Trace\ITraceService.cs" />
     <Compile Include="Trace\LoggerExtensions.cs" />

@@ -7,7 +7,7 @@ export class UIService {
     constructor(private _http: Http) { }
 
     public getViewModel = (options: { name: string }): Observable<any> => {
-        return this._http.get(`/api/ui/getviewmodel?name=${options.name}`)
+        return this._http.get(`/api/viewmodel/get?name=${options.name}`)
             .map((data) => data.json());
     }
 }
