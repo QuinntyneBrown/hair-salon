@@ -294,6 +294,12 @@
     <Content Include="src\app\page-not-found.component.scss">
       <DependentUpon>page-not-found.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\schedule\schedule.component.html">
+      <DependentUpon>schedule.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\schedule\schedule.component.scss">
+      <DependentUpon>schedule.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\services\services.component.html">
       <DependentUpon>services.component.ts</DependentUpon>
     </Content>
@@ -434,6 +440,8 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\core\components\photo-gallery\shared\index.ts" />
     <TypeScriptCompile Include="src\app\core\components\photo-gallery\shared\photo.model.ts" />
+    <TypeScriptCompile Include="src\app\core\helpers\index.ts" />
+    <TypeScriptCompile Include="src\app\core\infrastructure\index.ts" />
     <TypeScriptCompile Include="src\app\core\initial-state.ts" />
     <TypeScriptCompile Include="src\app\core\module-import-guard.ts" />
     <TypeScriptCompile Include="src\app\core\reducers\user-logged-out.reducer.ts" />
@@ -441,7 +449,7 @@
     <TypeScriptCompile Include="src\app\core\services\gallery.service.ts" />
     <TypeScriptCompile Include="src\app\core\services\index.ts" />
     <TypeScriptCompile Include="src\app\core\services\login.service.ts" />
-    <TypeScriptCompile Include="src\app\core\services\oauth-helper.ts" />
+    <TypeScriptCompile Include="src\app\core\helpers\oauth-helper.ts" />
     <TypeScriptCompile Include="src\app\core\services\services.service.ts" />
     <TypeScriptCompile Include="src\app\core\services\ui.service.ts" />
     <TypeScriptCompile Include="src\app\environment.ts" />
@@ -465,6 +473,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\routing\app.routing.ts" />
     <TypeScriptCompile Include="src\app\routing\can-activate-auth.service.ts" />
+    <TypeScriptCompile Include="src\app\schedule\schedule.component.spec.ts">
+      <DependentUpon>schedule.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\services\services.component.spec.ts">
       <DependentUpon>services.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -479,7 +490,7 @@
       <DependentUpon>header.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\core\components\index.ts" />
-    <TypeScriptCompile Include="src\app\core\services\local-storage-manager.service.ts" />
+    <TypeScriptCompile Include="src\app\core\infrastructure\local-storage-manager.service.ts" />
     <TypeScriptCompile Include="src\app\core\components\nav.component.spec.ts">
       <DependentUpon>nav.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -523,6 +534,8 @@
     <TypeScriptCompile Include="src\app\page-not-found.component.ts" />
     <TypeScriptCompile Include="src\app\core\reducers\user-logged-in.reducer.ts" />
     <TypeScriptCompile Include="src\app\core\reducers\load-services-success.reducer.ts" />
+    <TypeScriptCompile Include="src\app\schedule\schedule.component.ts" />
+    <TypeScriptCompile Include="src\app\schedule\schedule.module.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

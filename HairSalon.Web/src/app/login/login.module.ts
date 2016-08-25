@@ -1,7 +1,6 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { routing } from './login.routing';
 import { SharedModule } from '../shared/shared.module';
 import { LoginService } from "./login.service";
 import { LoginRedirectService } from "./login-redirect.service";
@@ -14,8 +13,8 @@ const declarables = [LoginComponent, LoginFormComponent];
 const providers = [LoginService, LoginRedirectService];
 
 @NgModule({
-    exports: [declarables, FormsModule, ReactiveFormsModule],
-    imports: [FormsModule, ReactiveFormsModule, SharedModule, routing],
+    exports: [declarables, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, SharedModule],
     declarations: [declarables],
     providers: providers
 })

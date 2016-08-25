@@ -1,7 +1,7 @@
 ﻿import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { Store } from "@ngrx/store";
-import { OAuthHelper } from "./oauth-helper";
+import { OAuthHelper } from "../helpers";
 
 @Injectable()
 export class UserService {

@@ -6,7 +6,7 @@ import { UserService } from '../core/services';
 @Injectable()
 export class LoginService {
     constructor(
-        private userProfileService: UserService) { }
+        private _userService: UserService) { }
 
     login():any {
         //return Observable.of(true)
@@ -22,6 +22,6 @@ export class LoginService {
     }
 
     private _toggleLogState(val: boolean) {
-        this.userProfileService.isLoggedIn = val;        
+        this._userService.isLoggedIn = val;        
     }
 }
