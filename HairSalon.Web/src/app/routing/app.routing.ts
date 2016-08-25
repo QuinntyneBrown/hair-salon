@@ -1,7 +1,7 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
 import { CanActivateAuthGuard } from './can-activate-auth.service';
-import { UserProfileService } from '../core/services';
+import { UserService } from '../core/services';
 
 import { AboutComponent } from "../about/about.component";
 import { AdminComponent } from "../admin/admin.component";
@@ -63,5 +63,5 @@ export const routing = RouterModule.forRoot([...routes, ...routes]);
 
 routing.providers.push([
     CanActivateAuthGuard,    
-    UserProfileService
+    UserService
 ]);

@@ -6,9 +6,7 @@ export const userLoggedIn = (state = initialState, action: Action) => {
     switch (action.type) {
 
         case USER_LOGGED_IN:            
-            return {
-                currentUser: action.payload
-            }; 
+            return Object.assign({}, state, { currentUser: action.payload }); 
 
         default:
             return state;

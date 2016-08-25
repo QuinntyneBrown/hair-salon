@@ -6,14 +6,14 @@ import {
     RouterStateSnapshot
 } from '@angular/router';
 
-import { UserProfileService } from "../core/services";
+import { UserService } from "../core/services";
 import { LoginRedirectService } from "../login/login-redirect.service";
 
 @Injectable()
 export class CanActivateAuthGuard implements CanActivate {
     constructor(
         private _loginRedirectService: LoginRedirectService,
-        private _userProfileService: UserProfileService,
+        private _userProfileService: UserService,
         private router: Router) { }
 
     canActivate(

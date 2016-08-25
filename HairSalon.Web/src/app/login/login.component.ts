@@ -3,7 +3,7 @@ import { LoginService } from "./login.service";
 import { LoginRedirectService } from "./login-redirect.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { UserProfileService } from "../core/services";
+import { UserService } from "../core/services";
 
 @Component({
     template: require("./login.component.html"),
@@ -21,7 +21,7 @@ export class LoginComponent implements OnDestroy {
         private _loginRedirectService: LoginRedirectService,
         private _route: ActivatedRoute,
         private _router: Router,
-        private _userProfileService: UserProfileService) {
+        private _userProfileService: UserService) {
     }
 
     login() {

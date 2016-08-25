@@ -4,11 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent } from './components';
-import { UserProfileService, UIService } from "./services";
+import { UserService, UIService } from "./services";
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
 const declarables = [NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent ];
-const providers = [UserProfileService, UIService];
+const providers = [UserService, UIService];
 
 @NgModule({
     imports: [CommonModule, RouterModule, ReactiveFormsModule],

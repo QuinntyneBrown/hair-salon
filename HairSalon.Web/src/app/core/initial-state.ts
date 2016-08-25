@@ -1,3 +1,5 @@
 ﻿export const initialState = {
-    currentUser: null
+    currentUser: null,
+    services: null,
+    gallery: null
 }

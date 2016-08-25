@@ -425,6 +425,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\core\action-creators\login.action-creator.ts" />
     <TypeScriptCompile Include="src\app\core\actions\index.ts" />
+    <TypeScriptCompile Include="src\app\core\actions\load-services-success.action.ts" />
     <TypeScriptCompile Include="src\app\core\actions\user_logged_out.action.ts" />
     <TypeScriptCompile Include="src\app\core\actions\user_logged_in.action.ts" />
     <TypeScriptCompile Include="src\app\core\components\photo-gallery\index.ts" />
@@ -437,8 +438,11 @@
     <TypeScriptCompile Include="src\app\core\module-import-guard.ts" />
     <TypeScriptCompile Include="src\app\core\reducers\user-logged-out.reducer.ts" />
     <TypeScriptCompile Include="src\app\core\rxjs-extensions.ts" />
+    <TypeScriptCompile Include="src\app\core\services\gallery.service.ts" />
     <TypeScriptCompile Include="src\app\core\services\index.ts" />
     <TypeScriptCompile Include="src\app\core\services\login.service.ts" />
+    <TypeScriptCompile Include="src\app\core\services\oauth-helper.ts" />
+    <TypeScriptCompile Include="src\app\core\services\services.service.ts" />
     <TypeScriptCompile Include="src\app\core\services\ui.service.ts" />
     <TypeScriptCompile Include="src\app\environment.ts" />
     <TypeScriptCompile Include="src\app\gallery\gallery.component.spec.ts">
@@ -465,7 +469,6 @@
       <DependentUpon>services.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\services\services.component.ts" />
-    <TypeScriptCompile Include="src\app\login\form-encode.ts" />
     <TypeScriptCompile Include="src\app\core\components\digital-asset-upload.component.spec.ts">
       <DependentUpon>digital-asset-upload.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -476,12 +479,11 @@
       <DependentUpon>header.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\core\components\index.ts" />
-    <TypeScriptCompile Include="src\app\core\services\http-client.ts" />
     <TypeScriptCompile Include="src\app\core\services\local-storage-manager.service.ts" />
     <TypeScriptCompile Include="src\app\core\components\nav.component.spec.ts">
       <DependentUpon>nav.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\core\services\user-profile.service.ts" />
+    <TypeScriptCompile Include="src\app\core\services\user.service.ts" />
     <TypeScriptCompile Include="src\app\whats-new\whats-new.component.spec.ts">
       <DependentUpon>whats-new.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -520,6 +522,7 @@
     <TypeScriptCompile Include="src\app\core\components\photo-gallery\photo-gallery.component.ts" />
     <TypeScriptCompile Include="src\app\page-not-found.component.ts" />
     <TypeScriptCompile Include="src\app\core\reducers\user-logged-in.reducer.ts" />
+    <TypeScriptCompile Include="src\app\core\reducers\load-services-success.reducer.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

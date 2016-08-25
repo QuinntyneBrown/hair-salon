@@ -6,9 +6,7 @@ export const userLoggedOut = (state = initialState, action: Action) => {
     switch (action.type) {
 
         case USER_LOGGED_OUT:
-            return {
-                currentUser: null
-            };
+            return Object.assign({}, state, { currentUser: null });
 
         default:
             return state;

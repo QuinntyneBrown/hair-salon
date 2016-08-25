@@ -1,12 +1,12 @@
 ﻿import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { UserProfileService } from '../core/services';
+import { UserService } from '../core/services';
 
 @Injectable()
 export class LoginService {
     constructor(
-        private userProfileService: UserProfileService) { }
+        private userProfileService: UserService) { }
 
     login():any {
         //return Observable.of(true)
