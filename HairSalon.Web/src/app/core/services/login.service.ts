@@ -7,7 +7,8 @@ export class LoginService {
     constructor(private _http: Http) { }
 
     public tryToLogin = (options: { username: string, password: string }): Observable<any> => {
-        throw new Error("Not Implemented!");
+        return this._http.post(`/api/token`, this._formEncode(options))
+            .map((data) => data.json());
     }
 
     private _formEncode = data => {

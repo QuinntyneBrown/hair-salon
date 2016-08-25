@@ -240,6 +240,12 @@
     <Content Include="src\app\about\about.component.scss">
       <DependentUpon>about.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\admin\admin-side-nav.component.html">
+      <DependentUpon>admin-side-nav.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\admin\admin-side-nav.component.scss">
+      <DependentUpon>admin-side-nav.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\admin\admin.component.html">
       <DependentUpon>admin.component.ts</DependentUpon>
     </Content>
@@ -355,6 +361,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="src\app\admin\services\services.component.scss" />
+    <Content Include="src\app\admin\services\services.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -419,10 +427,14 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\about\about.component.ts" />
     <TypeScriptCompile Include="src\app\about\about.view-model.ts" />
+    <TypeScriptCompile Include="src\app\admin\admin-side-nav.component.spec.ts">
+      <DependentUpon>admin-side-nav.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\admin\admin.component.spec.ts">
       <DependentUpon>admin.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\admin\admin.component.ts" />
+    <TypeScriptCompile Include="src\app\admin\index.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts">
       <DependentUpon>app.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -536,6 +548,9 @@
     <TypeScriptCompile Include="src\app\core\reducers\load-services-success.reducer.ts" />
     <TypeScriptCompile Include="src\app\schedule\schedule.component.ts" />
     <TypeScriptCompile Include="src\app\schedule\schedule.module.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\services.component.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\services.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\admin\admin-side-nav.component.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

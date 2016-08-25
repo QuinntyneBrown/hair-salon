@@ -2,12 +2,25 @@ import { NgModule } from '@angular/core';
 import { routing, routedComponents } from './admin.routing';
 import { SharedModule } from '../shared/shared.module';
 import { AdminComponent } from './admin.component';
+import { AdminSideNavComponent } from './admin-side-nav.component';
 
-const declarables = [AdminComponent, routedComponents]
+
+import { ServicesComponent } from './services/services.component';
+
+import { RouterModule } from '@angular/router';
+
+const declarables = [
+    AdminComponent,
+    AdminSideNavComponent,
+
+    ServicesComponent,
+
+    routedComponents
+];
 
 @NgModule({
     exports: [declarables],
-    imports: [SharedModule],
+    imports: [SharedModule, RouterModule],
     declarations: [declarables]
 })
 export class AdminModule { }

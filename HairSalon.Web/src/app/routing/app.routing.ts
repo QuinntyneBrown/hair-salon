@@ -5,6 +5,9 @@ import { UserService } from '../core/services';
 
 import { AboutComponent } from "../about/about.component";
 import { AdminComponent } from "../admin/admin.component";
+
+import * as admin from "../admin";
+
 import { ContactComponent } from "../contact/contact.component";
 import { GalleryComponent } from "../gallery/gallery.component";
 import { HomeComponent } from "../home/home.component";
@@ -27,6 +30,12 @@ export const routes: Routes = [
         path: 'admin',
         component: AdminComponent,
         canActivate: [CanActivateAuthGuard],
+        children: [
+            {
+                path: '',
+                component: admin.ServicesComponent
+            }
+        ]
     },
     {
         path: 'contact',

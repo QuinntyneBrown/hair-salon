@@ -1,6 +1,6 @@
 ﻿import { BaseException } from '@angular/core';
 
-export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
+export function throwIfAlreadyLoaded(parentModule: any, moduleName: string): ModuleImportGuardException | void {
     if (parentModule) {
         throw new ModuleImportGuardException(moduleName);
     }

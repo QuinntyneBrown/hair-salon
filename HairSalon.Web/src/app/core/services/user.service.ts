@@ -12,5 +12,5 @@ export class UserService {
             .map((data) => data.json());
     }
 
-    public isLoggedIn: boolean;
+    public isLoggedIn: boolean = true;
 }
