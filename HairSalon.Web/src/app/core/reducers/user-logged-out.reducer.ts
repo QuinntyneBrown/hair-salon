@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
 import { USER_LOGGED_OUT } from "../actions";
-import { initialState } from "../initial-state";
+import { initialState } from "./initial-state";
 
 export const userLoggedOut = (state = initialState, action: Action) => {
     switch (action.type) {

@@ -12,6 +12,7 @@ import { ViewModelActionCreator } from "./action-creators";
 
 import { OAuthHelper } from "./helpers";
 import { userLoggedIn } from "./reducers/user-logged-in.reducer";
+import { viewModelsReducer } from "./reducers";
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
@@ -26,7 +27,10 @@ const providers = [
     ViewModelService,
 
     OAuthHelper,
-    provideStore(userLoggedIn)
+    provideStore({
+        currentUser: userLoggedIn,
+        viewModels: viewModelsReducer
+    })
 ];
 
 @NgModule({

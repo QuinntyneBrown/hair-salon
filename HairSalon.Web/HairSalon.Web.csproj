@@ -466,9 +466,12 @@
     <TypeScriptCompile Include="src\app\core\helpers\index.ts" />
     <TypeScriptCompile Include="src\app\core\index.ts" />
     <TypeScriptCompile Include="src\app\core\infrastructure\index.ts" />
-    <TypeScriptCompile Include="src\app\core\initial-state.ts" />
+    <TypeScriptCompile Include="src\app\core\reducers\app-state.ts" />
+    <TypeScriptCompile Include="src\app\core\reducers\index.ts" />
+    <TypeScriptCompile Include="src\app\core\reducers\initial-state.ts" />
     <TypeScriptCompile Include="src\app\core\module-import-guard.ts" />
     <TypeScriptCompile Include="src\app\core\reducers\user-logged-out.reducer.ts" />
+    <TypeScriptCompile Include="src\app\core\reducers\view-models.reducer.ts" />
     <TypeScriptCompile Include="src\app\core\rxjs-extensions.ts" />
     <TypeScriptCompile Include="src\app\core\services\gallery.service.ts" />
     <TypeScriptCompile Include="src\app\core\services\index.ts" />
@@ -477,6 +480,8 @@
     <TypeScriptCompile Include="src\app\core\services\services.service.ts" />
     <TypeScriptCompile Include="src\app\core\services\ui.service.ts" />
     <TypeScriptCompile Include="src\app\core\services\view-model.service.ts" />
+    <TypeScriptCompile Include="src\app\core\utilities\add-or-update.ts" />
+    <TypeScriptCompile Include="src\app\core\utilities\index.ts" />
     <TypeScriptCompile Include="src\app\environment.ts" />
     <TypeScriptCompile Include="src\app\gallery\gallery.component.spec.ts">
       <DependentUpon>gallery.component.ts</DependentUpon>
