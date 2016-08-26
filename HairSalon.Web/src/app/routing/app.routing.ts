@@ -1,6 +1,15 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
 import { CanActivateAuthGuard } from './can-activate-auth.service';
+
+import { CanActivateAboutPageGuard } from './can-activate-about-page.service';
+import { CanActivateContactPageGuard } from './can-activate-contact-page.service';
+import { CanActivateGalleryPageGuard } from './can-activate-gallery-page.service';
+import { CanActivateHomePageGuard } from './can-activate-home-page.service';
+import { CanActivateServicesPageGuard } from './can-activate-services-page.service';
+import { CanActivateWhatsNewPageGuard } from './can-activate-whats-new-page.service';
+
+
 import { UserService } from '../core/services';
 
 import { AboutComponent } from "../about/about.component";
@@ -24,7 +33,8 @@ export const routes: Routes = [
     },
     {
         path: 'about',
-        component: AboutComponent
+        component: AboutComponent,
+        canActivate:[CanActivateAboutPageGuard]
     },
     {
         path: 'admin',
@@ -39,15 +49,18 @@ export const routes: Routes = [
     },
     {
         path: 'contact',
-        component: ContactComponent        
+        component: ContactComponent,
+        canActivate: [CanActivateContactPageGuard]        
     },
     {
         path: 'gallery',
-        component: GalleryComponent
+        component: GalleryComponent,
+        canActivate: [CanActivateGalleryPageGuard]
     },
     {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [CanActivateHomePageGuard]
     },
     {
         path: 'login',
@@ -55,11 +68,13 @@ export const routes: Routes = [
     },
     {
         path: 'services',
-        component: ServicesComponent
+        component: ServicesComponent,
+        canActivate: [CanActivateServicesPageGuard]
     },
     {
         path: 'whats-new',
-        component: WhatsNewComponent
+        component: WhatsNewComponent,
+        canActivate: [CanActivateWhatsNewPageGuard]
     },
     {
         path: '**',
@@ -71,6 +86,12 @@ export const routes: Routes = [
 export const routing = RouterModule.forRoot([...routes, ...routes]);
 
 routing.providers.push([
+    CanActivateAboutPageGuard,
+    CanActivateContactPageGuard,
+    CanActivateGalleryPageGuard,
+    CanActivateHomePageGuard,
+    CanActivateServicesPageGuard,
+    CanActivateWhatsNewPageGuard,
     CanActivateAuthGuard,    
     UserService
 ]);

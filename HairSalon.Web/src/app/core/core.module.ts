@@ -5,7 +5,11 @@ import { RouterModule } from '@angular/router';
 import { provideStore } from "@ngrx/store";
 
 import { NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent } from './components';
-import { UserService, UIService } from "./services";
+
+import { UserService, UIService, ViewModelService } from "./services";
+
+import { ViewModelActionCreator } from "./action-creators";
+
 import { OAuthHelper } from "./helpers";
 import { userLoggedIn } from "./reducers/user-logged-in.reducer";
 
@@ -14,8 +18,13 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 const declarables = [NavComponent, HeaderComponent, HeroComponent, PhotoGalleryComponent];
 
 const providers = [
+
+    ViewModelActionCreator,
+
     UserService,
     UIService,
+    ViewModelService,
+
     OAuthHelper,
     provideStore(userLoggedIn)
 ];

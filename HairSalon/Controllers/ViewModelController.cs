@@ -14,10 +14,10 @@ namespace HairSalon.Controllers
             _viewModelService = viewModelService;
         }
 
-        [Route("get")]
-        [HttpPost]
+        [Route("getByName")]
+        [HttpGet]
         [ResponseType(typeof(BaseViewModelDto))]
-        public IHttpActionResult Get(string name) {
+        public IHttpActionResult GetByName(string name) {
             return Ok(_viewModelService.Get(name));
         }
 

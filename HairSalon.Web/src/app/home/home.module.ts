@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
-import { routing, routedComponents } from './home.routing';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home.component';
 
-const declarables = [HomeComponent, routedComponents]
+const declarables = [HomeComponent]
 
 @NgModule({
     exports:[declarables],
-    imports: [routing, SharedModule],
+    imports: [SharedModule],
     declarations: [declarables]
 })
 export class HomeModule { }

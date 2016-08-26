@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 export class GalleryActionCreator {
     constructor(private _galleryService: GalleryService, private _store: Store<any>) { }
 
-    public getByName = (options: { name: string }): Observable<boolean> => {
+    public getByName = (options: { name: string }): Observable<boolean> => {        
         return this._galleryService.getByName({ name: options.name })
             .map( data => {
                 this._store.dispatch({
