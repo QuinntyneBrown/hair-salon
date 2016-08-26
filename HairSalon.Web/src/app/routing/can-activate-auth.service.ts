@@ -8,28 +8,35 @@ import {
 
 import { UserService } from "../core/services";
 import { LoginRedirectService } from "../login/login-redirect.service";
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CanActivateAuthGuard implements CanActivate {
     constructor(
         private _loginRedirectService: LoginRedirectService,
-        private _userProfileService: UserService,
-        private router: Router) { }
+        private _userService: UserService,
+        private _router: Router) { }
 
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ) {
-        
+        return this._userService
+            .getCurrentUser()
+            .map(data => {
 
-        if (this._userProfileService.isLoggedIn) {
-            return true;
-        }
+                alert(JSON.stringify(data));
+                return data;
+            });
 
-        this._loginRedirectService.lastPath = state.url;
+        //if (this._userService.isLoggedIn) {
+        //    return Observable.of(true);
+        //}
 
-        this.router.navigate(['/login'], { queryParams: { redirectTo: state.url } });
+        //this._loginRedirectService.lastPath = state.url;
 
-        return false;
+        //this._router.navigate(['/login'], { queryParams: { redirectTo: state.url } });
+
+        //return Observable.of(true);
     }
 }
